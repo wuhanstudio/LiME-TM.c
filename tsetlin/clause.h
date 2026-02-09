@@ -7,7 +7,7 @@
 
 #if defined(TSETLIN_USING_PROTOBUF)
   #include <tsetlin.pb-c.h>
-#else
+#elif defined(TSETLIN_USING_STATIC_MODEL)
   #include <tsetlin_model.h>
 #endif
 
