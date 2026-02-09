@@ -7,7 +7,7 @@ float random_float_01(void) {
 #elif defined(ESP_PLATFORM)
     uint32_t r = esp_random();
 #elif defined(__RTTHREAD__)
-    rt_uint32_t r = pcg32_fast();
+    uint32_t r = pcg32_fast();
 #else
     uint32_t r = pcg32_fast();
 #endif

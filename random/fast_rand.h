@@ -1,5 +1,6 @@
 #ifndef _FAST_RAND_H_
 #define _FAST_RAND_H_
+
 #include <stdint.h>
 #include <math.h>
 

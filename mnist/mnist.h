@@ -1,3 +1,6 @@
+#ifndef MNIST_H
+#define MNIST_H
+
 #include <math.h>
 #include <stdio.h>
 #include <stdlib.h>
@@ -41,3 +44,5 @@ uint8_t* mnist_booleanize_img_n_bit(
 );
 
 void mnist_booleanize_img(uint8_t* img, uint32_t size, uint8_t threshold);
+
+#endif // MNIST_H
