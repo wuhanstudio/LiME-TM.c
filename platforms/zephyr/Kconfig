@@ -1,0 +1,33 @@
+source "Kconfig.zephyr"
+
+menu "LiME-TM: Lightning fast and Memory Efficient Machine Learning for MCU (Tsetlin Machine)"
+    choice
+        prompt "Choose exmaple"
+    
+        config LIME_TM_USING_MNIST_FS_EXAMPLE
+            bool "Training and testing MNIST example (File System)"
+            select TSETLIN_USING_PROTOBUF
+            help
+                Training a compressed Tsetlin Machine model on the MNIST dataset.
+    
+        config LIME_TM_USING_MNIST_STATIC_EXAMPLE
+            bool "Training and testing MNIST example (Static Model)"
+            select TSETLIN_USING_STATIC_MODEL
+            help
+                Training a compressed Tsetlin Machine model on the MNIST dataset.
+    endchoice
+    
+    config TSETLIN_USING_PROTOBUF
+        bool "Load model from protobuf file"
+        help
+            Using proto-c to save the model as a protobuf file.
+        depends on LIME_TM_USING_MNIST_FS_EXAMPLE
+        default y
+    
+    config TSETLIN_USING_STATIC_MODEL
+        bool "Load model from static headers"
+        help
+            Using the tsetlin compiler to save the model as a static C header file.
+        depends on LIME_TM_USING_MNIST_STATIC_EXAMPLE
+        default y
+endmenu

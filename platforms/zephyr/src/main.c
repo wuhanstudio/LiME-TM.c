@@ -6,6 +6,16 @@
 
 #include "sdcard.h"
 
+#if !defined(CONFIG_TSETLIN_USING_PROTOBUF)
+static inline void tsetlin__unpack(Tsetlin* model, size_t size) {
+    // Do nothing
+}
+
+static inline void tsetlin__free_unpacked(Tsetlin* model, void* allocator) {
+    // Do nothing
+}
+#endif
+
 LOG_MODULE_REGISTER(main);
 static const char *TAG = "main";
 
@@ -33,7 +43,7 @@ int main(void)
         return -1;
     }
 
-    LOGI(TAG, "Disk mounted.\n");
+    LOGI(TAG, "Disk mounted.");
 
     // Get training set info
     int rows, cols;
@@ -119,6 +129,8 @@ int main(void)
         return -1;
     }
 
+    Tsetlin* model = NULL;
+#if defined(CONFIG_TSETLIN_USING_PROTOBUF)
     // Load Tsetlin model from file
     size_t size = 0;
     uint8_t* data = tsetlin_read_file(DISK_MOUNT_PT"/tsetlin_model.cpb", &size);
@@ -129,11 +141,18 @@ int main(void)
 
     LOGI(TAG, "Model loaded (%d Bytes)", size);
 
-    Tsetlin* model = tsetlin__unpack(NULL, size, data);
+    model = tsetlin__unpack(NULL, size, data);
     free(data);
 
+#elif defined(CONFIG_TSETLIN_USING_STATIC_MODEL)
+    model = &tsetlin_model;
+#else
+    LOGE(TAG, "No model loading method defined!");
+    return -1;
+#endif
+
     if (!model) {
-        LOGE(TAG, "Failed to unpack protobuf");
+        LOGE(TAG, "Failed to load model");
         return -1;
     }
 
@@ -177,7 +196,7 @@ int main(void)
     // Evaluate
     tsetlin_evaluate(model, bool_img, votes, &predicted_class);
 
-    LOGI(TAG, "Predicted class: %d with %d votes\n", predicted_class, votes[predicted_class]);
+    LOGI(TAG, "Predicted class: %d with %d votes", predicted_class, votes[predicted_class]);
     for (size_t i = 0; i < model->n_class; i++)
     {
         LOGI(TAG, "Class %d: %d votes", i, votes[i]);
@@ -303,7 +322,7 @@ int main(void)
             }
         }
 
-        LOGI(TAG, "\n");
+        LOGI(TAG, "");
 
         // Evaluate on test set after each epoch
         correct = 0;
@@ -354,8 +373,10 @@ int main(void)
         printf("Testing Accuracy after epoch %d: %.2f%%\n", i + 1, (double)correct / test_img_count * 100);
     }
 
+#if defined(CONFIG_TSETLIN_USING_PROTOBUF)
     // free protobuf
     tsetlin__free_unpacked(model, NULL);
+#endif
 
     fclose(f_train_imgs);
     fclose(f_test_imgs);

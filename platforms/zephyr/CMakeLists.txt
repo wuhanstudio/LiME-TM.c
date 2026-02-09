@@ -9,6 +9,7 @@ target_include_directories(app PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/../../protobuf
 target_include_directories(app PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/../../random)
 target_include_directories(app PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/../../mnist)
 target_include_directories(app PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/../../utils)
+target_include_directories(app PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/../../model)
 
 file(GLOB app_sources src/* "../../tsetlin/*" "../../protobuf/*" "../../protobuf-c/*" "../../mnist/*" "../../random/*")
 target_sources(app PRIVATE ${app_sources})
