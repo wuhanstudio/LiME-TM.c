@@ -151,15 +151,12 @@ uint8_t* mnist_load_next_image(FILE* f, int idx, int rows, int cols) {
     uint8_t* buf = (uint8_t*) malloc( sizeof(uint8_t) * total);
     if (!buf) {
         LOGE(TAG, "Failed to allocate %d bytes of memory", total);
-        fclose(f);
         return NULL;
     }
 
     if (fread(buf, 1, total, f) != total) {
-
         LOGE(TAG, "Failed to read %d bytes data", total);
         free(buf);
-        fclose(f);
         return NULL;
     }
 
@@ -205,7 +202,7 @@ int8_t mnist_load_label(FILE* f, int idx) {
 
 int8_t mnist_load_next_label(FILE* f, int idx) {
     uint8_t label;
-    if (fread(&label, 1, 1, f) != 1) { fclose(f); return 0; }
+    if (fread(&label, 1, 1, f) != 1) { return 0; }
 
     return label;
 }
