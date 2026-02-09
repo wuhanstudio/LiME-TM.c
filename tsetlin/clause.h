@@ -5,7 +5,11 @@
 #include <sys/unistd.h>
 #endif
 
-#include <tsetlin.pb-c.h>
+#if defined(TSETLIN_USING_PROTOBUF)
+  #include <tsetlin.pb-c.h>
+#else
+  #include <tsetlin_model.h>
+#endif
 
 #if defined(__ZEPHYR__)
   /* Zephyr RTOS */

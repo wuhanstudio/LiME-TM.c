@@ -55,8 +55,13 @@ void tsetlin_step(Tsetlin* model, uint8_t* X_img, int8_t y_target, uint32_t T, f
 
     for (size_t i = 0; i <(size_t) model->n_clause / 2; i++)
     {
-        ClauseCompressed* p_clause = model->clauses_compressed[y_target * model->n_clause + i * 2];
-        ClauseCompressed* n_clause = model->clauses_compressed[y_target * model->n_clause + i * 2 + 1];
+        #if defined(TSETLIN_USING_PROTOBUF)
+            ClauseCompressed* p_clause = model->clauses_compressed[y_target * model->n_clause + i * 2];
+            ClauseCompressed* n_clause = model->clauses_compressed[y_target * model->n_clause + i * 2 + 1];
+        #else
+            ClauseCompressed* p_clause = &model->clauses_compressed[y_target * model->n_clause + i * 2];
+            ClauseCompressed* n_clause = &model->clauses_compressed[y_target * model->n_clause + i * 2 + 1];
+        #endif
 
         pos_clauses_eval[i] = clause_evaluate(p_clause, X_img, model->n_state, model->n_feature);
         neg_clauses_eval[i] = clause_evaluate(n_clause, X_img, model->n_state, model->n_feature);
@@ -77,8 +82,13 @@ void tsetlin_step(Tsetlin* model, uint8_t* X_img, int8_t y_target, uint32_t T, f
 
     // Update clauses for the target class
     for (size_t i = 0; i <(size_t) model->n_clause / 2; i++) {
-        ClauseCompressed* p_clause = model->clauses_compressed[y_target * model->n_clause + i * 2];
-        ClauseCompressed* n_clause = model->clauses_compressed[y_target * model->n_clause + i * 2 + 1];
+        #if defined(TSETLIN_USING_PROTOBUF)
+            ClauseCompressed* p_clause = model->clauses_compressed[y_target * model->n_clause + i * 2];
+            ClauseCompressed* n_clause = model->clauses_compressed[y_target * model->n_clause + i * 2 + 1];
+        #else
+            ClauseCompressed* p_clause = &model->clauses_compressed[y_target * model->n_clause + i * 2];
+            ClauseCompressed* n_clause = &model->clauses_compressed[y_target * model->n_clause + i * 2 + 1];
+        #endif
 
         // Positive Clause: Type I Feedback
         if (random_float_01() <= c1)
@@ -111,8 +121,13 @@ void tsetlin_step(Tsetlin* model, uint8_t* X_img, int8_t y_target, uint32_t T, f
     memset(neg_clauses_eval, 0, sizeof(int8_t) * model->n_clause / 2);
     for (size_t i = 0; i <(size_t) model->n_clause / 2; i++)
     {
-        ClauseCompressed* p_clause = model->clauses_compressed[other_class * model->n_clause + i * 2];
-        ClauseCompressed* n_clause = model->clauses_compressed[other_class * model->n_clause + i * 2 + 1];
+        #if defined(TSETLIN_USING_PROTOBUF)
+            ClauseCompressed* p_clause = model->clauses_compressed[other_class * model->n_clause + i * 2];
+            ClauseCompressed* n_clause = model->clauses_compressed[other_class * model->n_clause + i * 2 + 1];
+        #else
+            ClauseCompressed* p_clause = &model->clauses_compressed[other_class * model->n_clause + i * 2];
+            ClauseCompressed* n_clause = &model->clauses_compressed[other_class * model->n_clause + i * 2 + 1];
+        #endif
 
         pos_clauses_eval[i] = clause_evaluate(p_clause, X_img, model->n_state, model->n_feature);
         neg_clauses_eval[i] = clause_evaluate(n_clause, X_img, model->n_state, model->n_feature);
@@ -130,8 +145,13 @@ void tsetlin_step(Tsetlin* model, uint8_t* X_img, int8_t y_target, uint32_t T, f
 
     float c2 = (T + class_sum) / (2 * T);
     for( size_t i = 0; i <(size_t) model->n_clause / 2; i++) {
-        ClauseCompressed* p_clause = model->clauses_compressed[other_class * model->n_clause + i * 2];
-        ClauseCompressed* n_clause = model->clauses_compressed[other_class * model->n_clause + i * 2 + 1];
+        #if defined(TSETLIN_USING_PROTOBUF)
+            ClauseCompressed* p_clause = model->clauses_compressed[other_class * model->n_clause + i * 2];
+            ClauseCompressed* n_clause = model->clauses_compressed[other_class * model->n_clause + i * 2 + 1];
+        #else
+            ClauseCompressed* p_clause = &model->clauses_compressed[other_class * model->n_clause + i * 2];
+            ClauseCompressed* n_clause = &model->clauses_compressed[other_class * model->n_clause + i * 2 + 1];
+        #endif
 
         // Positive Clause: Type II Feedback
         if (pos_clauses_eval[i] == 1 && (random_float_01() <= c2)) {
@@ -152,8 +172,13 @@ int tsetlin_evaluate(Tsetlin* model, uint8_t* input, int32_t *out_votes, uint8_t
     {
         for (uint32_t j = 0; j <(size_t) model->n_clause / 2; j++)
         {
-            ClauseCompressed* p_clause = model->clauses_compressed[c * model->n_clause + j * 2];
-            ClauseCompressed* n_clause = model->clauses_compressed[c * model->n_clause + j * 2 + 1];
+            #if defined(TSETLIN_USING_PROTOBUF)
+                ClauseCompressed* p_clause = model->clauses_compressed[c * model->n_clause + j * 2];
+                ClauseCompressed* n_clause = model->clauses_compressed[c * model->n_clause + j * 2 + 1];
+            #else
+                ClauseCompressed* p_clause = &model->clauses_compressed[c * model->n_clause + j * 2];
+                ClauseCompressed* n_clause = &model->clauses_compressed[c * model->n_clause + j * 2 + 1];
+            #endif
 
             out_votes[c] += clause_evaluate(p_clause, input, model->n_state, model->n_feature);
             out_votes[c] -= clause_evaluate(n_clause, input, model->n_state, model->n_feature);
