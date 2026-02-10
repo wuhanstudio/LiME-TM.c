@@ -15,6 +15,8 @@ project ("lime-tm")
 set(CMAKE_C_STANDARD 11)
 set(CMAKE_C_STANDARD_REQUIRED ON)
 
+add_definitions( -DTSETLIN_USING_PROTOBUF)
+
 # Include sub-projects.
 set(TSETLIN_SOURCE_DIR ${CMAKE_SOURCE_DIR}/../../tsetlin)
 set(TSETLIN_BINARY_DIR ${CMAKE_BINARY_DIR}/tsetlin)

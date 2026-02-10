@@ -181,12 +181,12 @@ uint8_t* mnist_load_next_image(FILE* f, int idx, int rows, int cols) {
     size_t total = (size_t) rows * cols;
     uint8_t* buf = (uint8_t*) malloc( sizeof(uint8_t) * total);
     if (!buf) {
-        LOGE(TAG, "Failed to allocate %d bytes of memory", total);
+        LOGE(TAG, "Failed to allocate %lu bytes of memory", total);
         return NULL;
     }
 
     if (fread(buf, 1, total, f) != total) {
-        LOGE(TAG, "Failed to read %d bytes data", total);
+        LOGE(TAG, "Failed to read %lu bytes data", total);
         free(buf);
         return NULL;
     }

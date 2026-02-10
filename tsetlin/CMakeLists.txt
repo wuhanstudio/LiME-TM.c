@@ -13,3 +13,5 @@ target_include_directories(tsetlin PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/../)
 target_include_directories(tsetlin PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/../protobuf)
 target_include_directories(tsetlin PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/../random)
 target_include_directories(tsetlin PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/../utils)
+
+target_link_libraries(tsetlin random)

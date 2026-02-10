@@ -171,7 +171,7 @@ int lime_tm_mnist_test_all(Tsetlin* model, FILE* f_test_imgs, FILE* f_test_label
         }
     }
 
-    LOGI(TAG, "");
+    printf("\n");
 
     double tks = test_img_count / (double)(total_calc_time / RT_TICK_PER_SECOND);
     printf("[TM] Achieved images/s: %f\n", tks);
@@ -183,7 +183,7 @@ int lime_tm_mnist_test_all(Tsetlin* model, FILE* f_test_imgs, FILE* f_test_label
 
 }
 
-static void lime_tm_mnist(int argc, char* argv[]) 
+static int lime_tm_mnist(int argc, char* argv[]) 
 {
     // Step 0: Load Tsetlin model
     Tsetlin* model = NULL;
@@ -194,12 +194,12 @@ static void lime_tm_mnist(int argc, char* argv[])
         model = &tsetlin_model;
     #else
         LOGE(TAG, "No model loading method defined!");
-        return;
+        return -1;
     #endif
 
     if (!model) {
         LOGE(TAG, "Failed to load model");
-        return;
+        return -1;
     }
 
     LOGI(TAG, "");
@@ -222,7 +222,7 @@ static void lime_tm_mnist(int argc, char* argv[])
         LOGE(TAG, "Failed to allocate memory for votes");
         free(votes);
 
-        return;
+        return -1;
     }
 
     LOGI(TAG, "");
@@ -233,7 +233,7 @@ static void lime_tm_mnist(int argc, char* argv[])
 
     if (train_img_count == 0) {
         LOGE(TAG, "No images found in training dataset!");
-        return;
+        return -1;
     }
 
     // Step 2: Print mnist testing set info
@@ -242,26 +242,25 @@ static void lime_tm_mnist(int argc, char* argv[])
 
     if (test_img_count == 0) {
         LOGE(TAG, "No images found in testing dataset!");
-        return;
+        return -1;
     }
 
     LOGI(TAG, "");
 
     // Step 3: Print a random mnist train image
-
     int img_index = fast_rand() % train_img_count;
     LOGI(TAG, "Loading and printing training image %d", img_index);
 
     FILE* f_train_imgs = fopen(MNIST_TRAIN_IMG_PATH, "rb");
     if (!f_train_imgs) {
         LOGE(TAG, "Failed to open file %s", MNIST_TRAIN_IMG_PATH);
-        return;
+        return -1;
     }
 
     FILE *f_train_labels = fopen(MNIST_TRAIN_LABEL_PATH, "rb");
     if (!f_train_labels) {
         LOGE(TAG, "Failed to open file %s", MNIST_TRAIN_LABEL_PATH);
-        return;
+        return -1;
     }
 
     mnist_print_info(f_train_imgs, f_train_labels, img_index, rows, cols);
@@ -275,13 +274,13 @@ static void lime_tm_mnist(int argc, char* argv[])
     FILE* f_test_imgs = fopen(MNIST_TEST_IMG_PATH, "rb");
     if (!f_test_imgs) {
         LOGE(TAG, "Failed to open file %s", MNIST_TEST_IMG_PATH);
-        return;
+        return -1;
     }
 
     FILE* f_test_labels = fopen(MNIST_TEST_LABEL_PATH, "rb");
     if (!f_test_labels) {
         LOGE(TAG, "Failed to open file %s", MNIST_TEST_LABEL_PATH);
-        return;
+        return -1;
     }
 
     mnist_print_info(f_test_imgs, f_test_labels, img_index, rows, cols);
@@ -296,7 +295,7 @@ static void lime_tm_mnist(int argc, char* argv[])
         LOGE(TAG, "Failed to load test image");
 
         tsetlin__free_unpacked(model, NULL);
-        return;
+        return -1;
     }
 
     int8_t label = mnist_load_label(f_test_labels, img_index);
@@ -305,7 +304,7 @@ static void lime_tm_mnist(int argc, char* argv[])
 
         tsetlin__free_unpacked(model, NULL);
         free(img);
-        return;
+        return -1;
     }
 
     mnist_print_img(img);
@@ -317,7 +316,7 @@ static void lime_tm_mnist(int argc, char* argv[])
         LOGE(TAG, "Inference failed");
 
         tsetlin__free_unpacked(model, NULL);
-        return;
+        return -1;
     }
 
     for (size_t i = 0; i < model->n_class; i++)
@@ -372,7 +371,7 @@ static void lime_tm_mnist(int argc, char* argv[])
             }
         }
 
-        LOGI(TAG, "");
+        printf("\n");
 
         // Evaluate on test set after each epoch
         lime_tm_mnist_test_all(model, f_test_imgs, f_test_labels, test_img_count, rows, cols, votes);
