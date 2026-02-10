@@ -11,5 +11,17 @@ target_include_directories(app PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/../../mnist)
 target_include_directories(app PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/../../utils)
 target_include_directories(app PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/../../model)
 
+if (CONFIG_TSETLIN_USING_PROTOBUF)
+    target_compile_definitions(app
+        PRIVATE TSETLIN_USING_PROTOBUF
+    )
+endif()
+
+if (CONFIG_TSETLIN_USING_STATIC_MODEL)
+    target_compile_definitions(app
+        PRIVATE TSETLIN_USING_STATIC_MODEL
+    )
+endif()
+
 file(GLOB app_sources src/* "../../tsetlin/*" "../../protobuf/*" "../../protobuf-c/*" "../../mnist/*" "../../random/*")
 target_sources(app PRIVATE ${app_sources})

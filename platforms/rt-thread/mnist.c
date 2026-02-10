@@ -388,6 +388,6 @@ static int lime_tm_mnist(int argc, char* argv[])
     fclose(f_train_labels);
     fclose(f_test_labels);
 
-	return;
+	return 0;
 }
 MSH_CMD_EXPORT(lime_tm_mnist, LiME-TM mnist training and testing example (static model));
