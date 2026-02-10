@@ -2,7 +2,7 @@
 
 #include "board.h"
 
-#define MOUNT_POINT "/sdcard"
+#define DISK_MOUNT_PT "/sdcard"
 
 sdmmc_card_t* sdcard_init();
 void sdcard_deinit(sdmmc_card_t* card);

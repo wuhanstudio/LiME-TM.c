@@ -43,7 +43,7 @@ sdmmc_card_t* sdcard_init() {
         .allocation_unit_size = 16 * 1024
     };
 
-    const char mount_point[] = MOUNT_POINT;
+    const char mount_point[] = DISK_MOUNT_PT;
     ESP_LOGI(TAG, "Initializing SD card");
 
 #if defined(USE_SPI_MODE)
@@ -146,6 +146,6 @@ sdmmc_card_t* sdcard_init() {
 
 void sdcard_deinit(sdmmc_card_t* card) {
     // All done, unmount partition and disable SPI peripheral
-    esp_vfs_fat_sdcard_unmount(MOUNT_POINT, card);
+    esp_vfs_fat_sdcard_unmount(DISK_MOUNT_PT, card);
     ESP_LOGI(TAG, "Card unmounted");
 }
