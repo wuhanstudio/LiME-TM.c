@@ -4,6 +4,7 @@
 typedef enum {
     MODELTYPE_INFERENCE = 0,
     MODELTYPE_TRAINING = 1,
+
     MODELTYPE_COMPRESSED = 2,
     MODELTYPE_COMPRESSED_OFFSET = 3,
     MODELTYPE_COMPRESSED_BITPACK = 4,
@@ -14,15 +15,15 @@ typedef struct {
 } Clause;
 
 typedef struct {
-    uint32_t n_pos_literal;
-    uint32_t n_neg_literal;
+    uint16_t n_pos_literal;
+    uint16_t n_neg_literal;
     uint16_t *position;
     uint16_t *data;
 } ClauseCompressed;
 
 typedef struct {
-    uint32_t n_pos_literal;
-    uint32_t n_neg_literal;
+    uint16_t n_pos_literal;
+    uint16_t n_neg_literal;
     uint16_t *offset;
     uint16_t *data;
 } ClauseCompressedOffset;
@@ -37,10 +38,10 @@ typedef struct {
     uint32_t n_feature;
     uint32_t n_clause;
     uint32_t n_state;
+
     ModelType model_type;
 
     Clause *clauses;
-
     ClauseCompressed *clauses_compressed;
     ClauseCompressedOffset *clauses_compressed_offset;
     ClauseCompressedBitpack *clauses_compressed_bitpack;
@@ -5062,7 +5063,7 @@ static ClauseCompressedBitpack clauses_compressed_bitpack[] = {
 };
 
 
-#define TSETLIN_MODEL_TOTAL_BYTES 63528
+#define TSETLIN_MODEL_TOTAL_BYTES 59528
 
 static Tsetlin tsetlin_model = {
     .n_class = 10,

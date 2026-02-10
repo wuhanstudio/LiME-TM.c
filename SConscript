@@ -24,7 +24,7 @@ if GetDepend('LIME_TM_USING_MNIST_FS_EXAMPLE'):
     src    += Glob('protobuf/*.c')
     src    += Glob('protobuf-c/*.c')
 
-    src    += Glob('platforms/rt-thread/mnist_fs.c')
+    src    += Glob('platforms/rt-thread/mnist.c')
 
     # LOCAL_CCFLAGS = '-D TSETLIN_USING_PROTOBUF'
 
@@ -34,7 +34,7 @@ if GetDepend('LIME_TM_USING_MNIST_STATIC_EXAMPLE'):
     src    += Glob('mnist/*.c')
 
     path   += [cwd + '/model']
-    src    += Glob('platforms/rt-thread/mnist_static.c')
+    src    += Glob('platforms/rt-thread/mnist.c')
 
     # LOCAL_CCFLAGS = '-D TSETLIN_USING_STATIC_MODEL'
 

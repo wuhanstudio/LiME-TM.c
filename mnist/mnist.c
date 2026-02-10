@@ -9,6 +9,27 @@ static const char *TAG = "mnist";
 #define MNIST_X_MEAN 33.318f
 #define MNIST_X_STD 78.567f
 
+/* Set bit i to 0 or 1 */
+static inline void bit_set(uint8_t *buf, int i, int value)
+{
+    int byte   = i >> 3;        // i / 8
+    int offset = 7 - (i & 7);   // MSB-first
+
+    if (value)
+        buf[byte] |=  (1u << offset);
+    else
+        buf[byte] &= ~(1u << offset);
+}
+
+/* Get bit i (returns 0 or 1) */
+static inline int bit_get(const uint8_t *buf, int i)
+{
+    int byte   = i >> 3;        // i / 8
+    int offset = 7 - (i & 7);
+
+    return (buf[byte] >> offset) & 1u;
+}
+
 static inline float norm_cdf(float x) {
     return 0.5f * (1.0f + erff(x / 1.41421356237f)); // sqrt(2)
 }
@@ -22,12 +43,18 @@ static uint32_t read_u32_be(const uint8_t *p) {
 
 static float* mnist_int_to_float(uint8_t *src, int rows, int cols) {
     float *dst = malloc(rows * cols * sizeof(float));
+    if (!dst)
+    {
+        LOGE(TAG, "Failed to allocate memory for float image");
+        return NULL;
+    }
 
     for (int i = 0; i < rows; i++) {
         for (int j = 0; j < cols; j++) {
             dst[i * cols + j] = (float) src[i * cols + j];
         }
     }
+
     return dst;
 }
 
@@ -65,9 +92,11 @@ static uint8_t* mnist_booleanize_features(
     int cols,
     int num_bits
 ) {
-    int out_cols = cols * num_bits;
-
-    uint8_t* X_bool = malloc(rows * out_cols * sizeof(uint8_t));
+    uint8_t* X_bool = malloc(rows * cols * num_bits * sizeof(uint8_t));
+    if(!X_bool) {
+        LOGE(TAG, "Failed to allocate memory for booleanized features");
+        return NULL;
+    }
 
     int offset = 0;
     for (int i = 0; i < rows; i++) {
@@ -87,6 +116,8 @@ uint8_t* mnist_booleanize_img_n_bit(
 ) {
     // Booleanize image using 8-bit representation
     float* float_img = mnist_int_to_float(img, rows, cols);
+    free(img);
+
     misst_normalize_img(float_img, rows, cols);
 
     uint8_t* bool_img = mnist_booleanize_features(float_img, rows, cols, num_bits);
@@ -195,14 +226,14 @@ int8_t mnist_load_label(FILE* f, int idx) {
     fseek(f, 8 + (size_t)idx, SEEK_SET);
 
     uint8_t label;
-    if (fread(&label, 1, 1, f) != 1) { fclose(f); return 0; }
+    if (fread(&label, 1, 1, f) != 1) { fclose(f); return -1; }
 
     return label;
 }
 
 int8_t mnist_load_next_label(FILE* f, int idx) {
     uint8_t label;
-    if (fread(&label, 1, 1, f) != 1) { return 0; }
+    if (fread(&label, 1, 1, f) != 1) { return -1; }
 
     return label;
 }
