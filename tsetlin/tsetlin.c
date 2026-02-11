@@ -82,10 +82,10 @@ void tsetlin_step(Tsetlin* model, uint8_t* X_img, int8_t y_target, uint32_t T, f
 
     // Update clauses for the target class
     for (size_t i = 0; i <(size_t) model->n_clause / 2; i++) {
-        #if defined(TSETLIN_USING_PROTOBUF) || defined(CONFIG_TSETLIN_USING_PROTOBUF)
+        #if defined(TSETLIN_USING_PROTOBUF)
             ClauseCompressed* p_clause = model->clauses_compressed[y_target * model->n_clause + i * 2];
             ClauseCompressed* n_clause = model->clauses_compressed[y_target * model->n_clause + i * 2 + 1];
-        #elif defined(TSETLIN_USING_STATIC_MODEL) || defined(CONFIG_TSETLIN_USING_STATIC_MODEL)
+        #elif defined(TSETLIN_USING_STATIC_MODEL)
             ClauseCompressed* p_clause = &model->clauses_compressed[y_target * model->n_clause + i * 2];
             ClauseCompressed* n_clause = &model->clauses_compressed[y_target * model->n_clause + i * 2 + 1];
         #endif
@@ -121,10 +121,10 @@ void tsetlin_step(Tsetlin* model, uint8_t* X_img, int8_t y_target, uint32_t T, f
     memset(neg_clauses_eval, 0, sizeof(int8_t) * model->n_clause / 2);
     for (size_t i = 0; i <(size_t) model->n_clause / 2; i++)
     {
-        #if defined(TSETLIN_USING_PROTOBUF) || defined(CONFIG_TSETLIN_USING_PROTOBUF)
+        #if defined(TSETLIN_USING_PROTOBUF)
             ClauseCompressed* p_clause = model->clauses_compressed[other_class * model->n_clause + i * 2];
             ClauseCompressed* n_clause = model->clauses_compressed[other_class * model->n_clause + i * 2 + 1];
-        #elif defined(TSETLIN_USING_STATIC_MODEL) || defined(CONFIG_TSETLIN_USING_STATIC_MODEL)
+        #elif defined(TSETLIN_USING_STATIC_MODEL)
             ClauseCompressed* p_clause = &model->clauses_compressed[other_class * model->n_clause + i * 2];
             ClauseCompressed* n_clause = &model->clauses_compressed[other_class * model->n_clause + i * 2 + 1];
         #endif
@@ -145,10 +145,10 @@ void tsetlin_step(Tsetlin* model, uint8_t* X_img, int8_t y_target, uint32_t T, f
 
     float c2 = (T + class_sum) / (2 * T);
     for( size_t i = 0; i <(size_t) model->n_clause / 2; i++) {
-        #if defined(TSETLIN_USING_PROTOBUF) || defined(CONFIG_TSETLIN_USING_PROTOBUF)
+        #if defined(TSETLIN_USING_PROTOBUF)
             ClauseCompressed* p_clause = model->clauses_compressed[other_class * model->n_clause + i * 2];
             ClauseCompressed* n_clause = model->clauses_compressed[other_class * model->n_clause + i * 2 + 1];
-        #elif defined(TSETLIN_USING_STATIC_MODEL) || defined(CONFIG_TSETLIN_USING_STATIC_MODEL)
+        #elif defined(TSETLIN_USING_STATIC_MODEL)
             ClauseCompressed* p_clause = &model->clauses_compressed[other_class * model->n_clause + i * 2];
             ClauseCompressed* n_clause = &model->clauses_compressed[other_class * model->n_clause + i * 2 + 1];
         #endif
@@ -175,10 +175,10 @@ int tsetlin_evaluate(Tsetlin* model, uint8_t* input, int32_t *out_votes, uint8_t
     {
         for (uint32_t j = 0; j <(size_t) model->n_clause / 2; j++)
         {
-            #if defined(TSETLIN_USING_PROTOBUF) || defined(CONFIG_TSETLIN_USING_PROTOBUF)
+            #if defined(TSETLIN_USING_PROTOBUF)
                 ClauseCompressed* p_clause = model->clauses_compressed[c * model->n_clause + j * 2];
                 ClauseCompressed* n_clause = model->clauses_compressed[c * model->n_clause + j * 2 + 1];
-            #elif defined(TSETLIN_USING_STATIC_MODEL) || defined(CONFIG_TSETLIN_USING_STATIC_MODEL)
+            #elif defined(TSETLIN_USING_STATIC_MODEL)
                 ClauseCompressed* p_clause = &model->clauses_compressed[c * model->n_clause + j * 2];
                 ClauseCompressed* n_clause = &model->clauses_compressed[c * model->n_clause + j * 2 + 1];
             #endif

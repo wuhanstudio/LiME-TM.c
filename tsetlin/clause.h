@@ -24,9 +24,9 @@
   #include <fast_rand.h>
 #endif
 
-#if defined(TSETLIN_USING_PROTOBUF) || defined(CONFIG_TSETLIN_USING_PROTOBUF)
+#if defined(TSETLIN_USING_PROTOBUF)
   #include <tsetlin.pb-c.h>
-#elif defined(TSETLIN_USING_STATIC_MODEL) || defined(CONFIG_TSETLIN_USING_STATIC_MODEL)
+#elif defined(TSETLIN_USING_STATIC_MODEL)
   #include <tsetlin_model.h>
 #endif
 
