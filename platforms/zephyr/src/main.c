@@ -343,6 +343,12 @@ int main(void)
     LOGI(TAG, "");
 
     // Step 7: Train the model on the training set
+	if (model->model_type == MODEL_TYPE__INFERENCE) 
+    {
+        LOGE(TAG, "Inference-only Model cannot be trained."); 
+        return -1; 
+    }
+
     for (size_t i = 0; i < N_EPOCHS; i++)
     {
         for (uint32_t j = 0; j < train_img_count; j++)
