@@ -83,6 +83,10 @@ configure_file(${CMAKE_SOURCE_DIR}/tsetlin_model_8_bit.cpb
                ${CMAKE_BINARY_DIR}/mnist/tsetlin_model_8_bit.cpb
                COPYONLY)
 
+configure_file(${CMAKE_SOURCE_DIR}/tsetlin_model_8_bit.ipb
+               ${CMAKE_BINARY_DIR}/mnist/tsetlin_model_8_bit.ipb
+               COPYONLY)
+
 configure_file(${CMAKE_SOURCE_DIR}/mnist/train-images-idx3-ubyte
                ${CMAKE_BINARY_DIR}/mnist/train-images-idx3-ubyte
                COPYONLY)

@@ -34,6 +34,12 @@ uint8_t* tsetlin_read_file(const char* path, size_t* out_size) {
 }
 
 void tsetlin_step(Tsetlin* model, uint8_t* X_img, int8_t y_target, uint32_t T, float s) {
+    // Make sure the model is in training mode
+	if (model->model_type == MODEL_TYPE__INFERENCE) {
+        LOGE(TAG, "Inference-only Model cannot be trained."); 
+        return; 
+    }
+
     // Pair 1: Target class
     int32_t class_sum = 0;
     
@@ -55,10 +61,10 @@ void tsetlin_step(Tsetlin* model, uint8_t* X_img, int8_t y_target, uint32_t T, f
 
     for (size_t i = 0; i <(size_t) model->n_clause / 2; i++)
     {
-        #if defined(TSETLIN_USING_PROTOBUF) || defined(CONFIG_TSETLIN_USING_PROTOBUF)
+        #if defined(TSETLIN_USING_PROTOBUF)
             ClauseCompressed* p_clause = model->clauses_compressed[y_target * model->n_clause + i * 2];
             ClauseCompressed* n_clause = model->clauses_compressed[y_target * model->n_clause + i * 2 + 1];
-        #elif defined(TSETLIN_USING_STATIC_MODEL) || defined(CONFIG_TSETLIN_USING_STATIC_MODEL)
+        #elif defined(TSETLIN_USING_STATIC_MODEL)
             ClauseCompressed* p_clause = &model->clauses_compressed[y_target * model->n_clause + i * 2];
             ClauseCompressed* n_clause = &model->clauses_compressed[y_target * model->n_clause + i * 2 + 1];
         #endif
