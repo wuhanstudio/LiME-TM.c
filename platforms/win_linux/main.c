@@ -29,7 +29,8 @@ static const char *TAG = "main";
 #define MNIST_TEST_IMG_PATH DISK_MOUNT_PT"/t10k-images-idx3-ubyte"
 #define MNIST_TEST_LABEL_PATH DISK_MOUNT_PT"/t10k-labels-idx1-ubyte"
 
-#define TSETLIN_MODEL_PATH DISK_MOUNT_PT"/tsetlin_model_8_bit.ipb"
+#define TSETLIN_MODEL_PATH DISK_MOUNT_PT"/tsetlin_model_8_bit.cpb"
+//#define TSETLIN_MODEL_PATH DISK_MOUNT_PT"/tsetlin_model_8_bit.ipb"
 
 uint32_t N_EPOCHS = 10;
 uint32_t T = 10;
