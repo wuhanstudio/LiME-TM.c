@@ -9,6 +9,10 @@
 #define fast_rand() pcg32_fast()
 //#define fast_rand() xorshift128p_fast()
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 uint32_t xorshift128p_fast();
 uint32_t pcg32_fast();
 
@@ -32,5 +36,9 @@ inline static int poisson(double lambda) {
     }
     return k - 1;
 }
+
+#ifdef __cplusplus
+}
+#endif
 
 #endif // _FAST_RAND_H_

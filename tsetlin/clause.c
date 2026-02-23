@@ -15,6 +15,7 @@ float random_float_01(void) {
     return (float)r / ((float)UINT32_MAX + 1.0f);
 }
 
+#if defined(TSETLIN_MODEL_TRAINABLE)
 void clause_update_type_I(ClauseCompressed* clause, uint8_t* input, int8_t clause_output, uint32_t n_state, uint32_t n_feature, float s) {
     // Want clause_output to be 1
     float s1 = 1 / s;
@@ -110,6 +111,7 @@ void clause_update_type_II(ClauseCompressed* clause, uint8_t* input, uint32_t n_
         }
     }
 }
+#endif
 
 uint8_t clause_evaluate(ClauseCompressed* clause, uint8_t* input, uint32_t n_state, uint32_t n_feature, ModelType type) {
     for (size_t k = 0; k < clause->n_pos_literal; k++)

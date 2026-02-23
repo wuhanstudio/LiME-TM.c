@@ -24,17 +24,31 @@
   #include <fast_rand.h>
 #endif
 
+#if defined(ARDUINO)
+  /* Arduino */
+  #define TSETLIN_USING_STATIC_MODEL
+#endif
+
 #if defined(TSETLIN_USING_PROTOBUF)
   #include <tsetlin.pb-c.h>
+  #define TSETLIN_MODEL_TRAINABLE
 #elif defined(TSETLIN_USING_STATIC_MODEL)
-  #include <tsetlin_model.h>
+  #include "tsetlin_model.h"
+#endif
+
+#ifdef __cplusplus
+extern "C" {
 #endif
 
 float random_float_01(void);
 
-uint8_t clause_evaluate(ClauseCompressed* clause, uint8_t* input, uint32_t n_state, uint32_t n_feature);
+uint8_t clause_evaluate(ClauseCompressed* clause, uint8_t* input, uint32_t n_state, uint32_t n_feature, ModelType type);
 
 void clause_update_type_I(ClauseCompressed* clause, uint8_t* input, int8_t clause_output, uint32_t n_state, uint32_t n_feature, float s);
 void clause_update_type_II(ClauseCompressed* clause, uint8_t* input, uint32_t n_state, uint32_t n_feature);
+
+#ifdef __cplusplus
+}
+#endif
 
 #endif // CLAUSE_H

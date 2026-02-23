@@ -33,6 +33,7 @@ uint8_t* tsetlin_read_file(const char* path, size_t* out_size) {
     return buffer;
 }
 
+#if defined(TSETLIN_MODEL_TRAINABLE)
 void tsetlin_step(Tsetlin* model, uint8_t* X_img, int8_t y_target, uint32_t T, float s) {
     // Make sure the model is in training mode
 	if (model->model_type == MODEL_TYPE__INFERENCE) {
@@ -69,8 +70,8 @@ void tsetlin_step(Tsetlin* model, uint8_t* X_img, int8_t y_target, uint32_t T, f
             ClauseCompressed* n_clause = &model->clauses_compressed[y_target * model->n_clause + i * 2 + 1];
         #endif
 
-        pos_clauses_eval[i] = clause_evaluate(p_clause, X_img, model->n_state, model->n_feature);
-        neg_clauses_eval[i] = clause_evaluate(n_clause, X_img, model->n_state, model->n_feature);
+        pos_clauses_eval[i] = clause_evaluate(p_clause, X_img, model->n_state, model->n_feature, model->model_type);
+        neg_clauses_eval[i] = clause_evaluate(n_clause, X_img, model->n_state, model->n_feature, model->model_type);
 
         class_sum += pos_clauses_eval[i];
         class_sum -= neg_clauses_eval[i];
@@ -135,8 +136,8 @@ void tsetlin_step(Tsetlin* model, uint8_t* X_img, int8_t y_target, uint32_t T, f
             ClauseCompressed* n_clause = &model->clauses_compressed[other_class * model->n_clause + i * 2 + 1];
         #endif
 
-        pos_clauses_eval[i] = clause_evaluate(p_clause, X_img, model->n_state, model->n_feature);
-        neg_clauses_eval[i] = clause_evaluate(n_clause, X_img, model->n_state, model->n_feature);
+        pos_clauses_eval[i] = clause_evaluate(p_clause, X_img, model->n_state, model->n_feature, model->model_type);
+        neg_clauses_eval[i] = clause_evaluate(n_clause, X_img, model->n_state, model->n_feature, model->model_type);
 
         class_sum += pos_clauses_eval[i];
         class_sum -= neg_clauses_eval[i];
@@ -173,6 +174,7 @@ void tsetlin_step(Tsetlin* model, uint8_t* X_img, int8_t y_target, uint32_t T, f
     free(pos_clauses_eval);
     free(neg_clauses_eval);
 }
+#endif
 
 int tsetlin_evaluate(Tsetlin* model, uint8_t* input, int32_t *out_votes, uint8_t* out_class) {
     memset(out_votes, 0, model->n_class * sizeof(int32_t));
@@ -189,8 +191,8 @@ int tsetlin_evaluate(Tsetlin* model, uint8_t* input, int32_t *out_votes, uint8_t
                 ClauseCompressed* n_clause = &model->clauses_compressed[c * model->n_clause + j * 2 + 1];
             #endif
 
-            out_votes[c] += clause_evaluate(p_clause, input, model->n_state, model->n_feature);
-            out_votes[c] -= clause_evaluate(n_clause, input, model->n_state, model->n_feature);
+            out_votes[c] += clause_evaluate(p_clause, input, model->n_state, model->n_feature, model->model_type);
+            out_votes[c] -= clause_evaluate(n_clause, input, model->n_state, model->n_feature, model->model_type);
         }
     }
 
