@@ -1,0 +1,5084 @@
+#ifndef __TSETLIN_MODEL_H__
+#define __TSETLIN_MODEL_H__
+
+#include <stdint.h>
+
+typedef enum {
+    MODEL_TYPE__INFERENCE = 0,
+    MODEL_TYPE__TRAINING = 1,
+
+    MODEL_TYPE__COMPRESSED = 2,
+    MODEL_TYPE__COMPRESSED_OFFSET = 3,
+    MODEL_TYPE__COMPRESSED_BITPACK = 4,
+} ModelType;
+
+typedef struct {
+    uint32_t *data;
+} Clause;
+
+typedef struct {
+    const uint16_t n_pos_literal;
+    const uint16_t n_neg_literal;
+    const uint16_t *position;
+    const uint16_t *data;
+} ClauseCompressed;
+
+typedef struct {
+    const uint16_t n_pos_literal;
+    const uint16_t n_neg_literal;
+    const uint16_t *offset;
+    const uint16_t *data;
+} ClauseCompressedOffset;
+
+typedef struct {
+    const uint32_t n_literal;
+    const uint32_t *data;
+} ClauseCompressedBitpack;
+
+typedef struct {
+    const uint32_t n_class;
+    const uint32_t n_feature;
+    const uint32_t n_clause;
+    const uint32_t n_state;
+
+    const ModelType model_type;
+
+    Clause *clauses;
+    ClauseCompressed *clauses_compressed;
+    ClauseCompressedOffset *clauses_compressed_offset;
+    ClauseCompressedBitpack *clauses_compressed_bitpack;
+} Tsetlin;
+
+#endif // __TSETLIN_MODEL_H__
+
+
+static Clause clauses[] = {
+};
+
+static const uint16_t clausec_0_pos[] = { 3880, 4330, 1864, 3980 };
+
+static const uint16_t clausec_0_data[] = {  };
+
+static const uint16_t clausec_1_pos[] = { 2800, 2130 };
+
+static const uint16_t clausec_1_data[] = {  };
+
+static const uint16_t clausec_2_pos[] = { 5521 };
+
+static const uint16_t clausec_2_data[] = {  };
+
+static const uint16_t clausec_3_pos[] = { 3252 };
+
+static const uint16_t clausec_3_data[] = {  };
+
+static const uint16_t clausec_4_pos[] = { 5853 };
+
+static const uint16_t clausec_4_data[] = {  };
+
+static const uint16_t clausec_5_pos[] = { 165, 166, 587, 1041, 1761, 2413, 2645, 3347, 4037, 4174, 4381, 4587, 5549, 6086, 6125, 1359, 2416, 2428, 2882, 2954, 3106, 4032, 4928, 5632, 6260 };
+
+static const uint16_t clausec_5_data[] = {  };
+
+static const uint16_t clausec_6_pos[] = { 827 };
+
+static const uint16_t clausec_6_data[] = {  };
+
+static const uint16_t clausec_7_pos[] = { 4138, 1930 };
+
+static const uint16_t clausec_7_data[] = {  };
+
+static const uint16_t clausec_8_pos[] = { 35, 181, 323, 345, 421, 499, 574, 657, 675, 705, 897, 905, 950, 981, 1069, 1305, 1326, 1377, 1409, 1549, 1574, 1779, 2225, 2253, 2301, 2427, 2457, 2715, 2961, 3142, 3377, 3611, 3614, 3625, 3630, 3846, 4073, 4454, 4481, 4713, 5187, 5357, 5419, 5589, 5665, 5973, 50, 98, 196, 463, 471, 552, 767, 860, 1202, 1402, 1740, 1772, 1863, 1976, 2050, 2082, 2084, 2255, 2292, 2456, 2527, 2679, 2728, 3360, 3364, 3468, 3760, 3999, 4002, 4036, 4040, 4226, 4228, 4290, 4311, 4464, 4496, 4503, 4682, 4746, 4944, 4960, 5103, 5144, 5410, 5623, 5652, 5708, 5716, 5970, 6096, 6172, 6175 };
+
+static const uint16_t clausec_8_data[] = {  };
+
+static const uint16_t clausec_9_pos[] = { 389, 1299, 184, 4082, 4096, 4112, 4120, 5111, 5632 };
+
+static const uint16_t clausec_9_data[] = {  };
+
+static const uint16_t clausec_10_pos[] = { 2130, 2140, 2848, 4554, 5756 };
+
+static const uint16_t clausec_10_data[] = {  };
+
+static const uint16_t clausec_11_pos[] = { 3280, 3424, 3452 };
+
+static const uint16_t clausec_11_data[] = {  };
+
+static const uint16_t clausec_12_pos[] = { 2538, 2810, 3712 };
+
+static const uint16_t clausec_12_data[] = {  };
+
+static const uint16_t clausec_13_pos[] = { 3032, 4154 };
+
+static const uint16_t clausec_13_data[] = {  };
+
+static const uint16_t clausec_14_pos[] = { 393, 501, 565, 878, 969, 1395, 1598, 1837, 1867, 2009, 2485, 3872, 4096, 5091, 5429, 5581, 5965, 6070, 6237, 50, 122, 744, 751, 778, 807, 823, 1090, 1820, 2064, 2216, 2460, 3036, 3160, 3338, 3583, 3834, 4044, 4274, 5338, 5568, 5716, 6072 };
+
+static const uint16_t clausec_14_data[] = {  };
+
+static const uint16_t clausec_15_pos[] = { 3150, 3433, 400, 738, 1327, 1330, 3546, 4088, 4092, 4348, 4679 };
+
+static const uint16_t clausec_15_data[] = {  };
+
+static const uint16_t clausec_16_pos[] = { 2642, 4538 };
+
+static const uint16_t clausec_16_data[] = {  };
+
+static const uint16_t clausec_17_pos[] = { 94, 97, 153, 549, 701, 705, 859, 1345, 1569, 2243, 2262, 2449, 2869, 2873, 3597, 4955, 5577, 5590, 5779, 6049, 376, 532, 2218, 2404, 2610, 2632, 2644, 2648, 2663, 3132, 5143, 5620, 5815, 5879 };
+
+static const uint16_t clausec_17_data[] = {  };
+
+static const uint16_t clausec_18_pos[] = { 2874 };
+
+static const uint16_t clausec_18_data[] = {  };
+
+static const uint16_t clausec_19_pos[] = { 1441, 3253, 864, 1216, 3324, 4332, 4770 };
+
+static const uint16_t clausec_19_data[] = {  };
+
+static const uint16_t clausec_20_pos[] = { 2600, 3040, 3928, 4140 };
+
+static const uint16_t clausec_20_data[] = {  };
+
+static const uint16_t clausec_21_pos[] = { 1423, 2428, 2624, 2632 };
+
+static const uint16_t clausec_21_data[] = {  };
+
+static const uint16_t clausec_22_pos[] = { 1117, 1581, 3587, 4011, 4523, 4907, 5033, 5044, 463, 2588, 4031, 5615, 5680, 5728, 5824 };
+
+static const uint16_t clausec_22_data[] = {  };
+
+static const uint16_t clausec_23_pos[] = { 1125, 3728, 4945, 4977, 2780, 2783 };
+
+static const uint16_t clausec_23_data[] = {  };
+
+static const uint16_t clausec_24_pos[] = { 1704, 3504, 3946, 6238, 2528, 3034, 4200 };
+
+static const uint16_t clausec_24_data[] = {  };
+
+static const uint16_t clausec_25_pos[] = { 3924, 2584, 2711 };
+
+static const uint16_t clausec_25_data[] = {  };
+
+static const uint16_t clausec_26_pos[] = { 3096, 3264 };
+
+static const uint16_t clausec_26_data[] = {  };
+
+static const uint16_t clausec_27_pos[] = { 3193, 3472 };
+
+static const uint16_t clausec_27_data[] = {  };
+
+static const uint16_t clausec_28_pos[] = { 2136, 2864 };
+
+static const uint16_t clausec_28_data[] = {  };
+
+static const uint16_t clausec_29_pos[] = { 2475, 224, 2732, 3426, 3660, 3676 };
+
+static const uint16_t clausec_29_data[] = {  };
+
+static const uint16_t clausec_30_pos[] = { 1, 45, 150, 299, 413, 441, 577, 589, 657, 686, 721, 867, 953, 1321, 1549, 1798, 1809, 1838, 2025, 2499, 3041, 3785, 4037, 4689, 4715, 5547, 5611, 5627, 5725, 5803, 5838, 6070, 6163, 6181, 6233, 152, 231, 408, 524, 599, 834, 872, 1116, 1376, 1802, 2024, 2479, 2572, 2706, 2722, 3024, 3112, 3370, 3472, 3914, 4271, 4455, 4464, 4898, 4967, 5184, 5540, 5618, 5628, 5632, 5680, 5700, 5704, 5720, 5768, 5935, 5959 };
+
+static const uint16_t clausec_30_data[] = {  };
+
+static const uint16_t clausec_31_pos[] = { 1165, 3613, 3696, 346, 2802 };
+
+static const uint16_t clausec_31_data[] = {  };
+
+static const uint16_t clausec_32_pos[] = { 3232, 3490 };
+
+static const uint16_t clausec_32_data[] = {  };
+
+static const uint16_t clausec_33_pos[] = { 3256, 2858 };
+
+static const uint16_t clausec_33_data[] = {  };
+
+static const uint16_t clausec_34_pos[] = { 1498, 2864 };
+
+static const uint16_t clausec_34_data[] = {  };
+
+static const uint16_t clausec_35_pos[] = { 3472, 3668 };
+
+static const uint16_t clausec_35_data[] = {  };
+
+static const uint16_t clausec_36_pos[] = { 4090, 3016, 3700 };
+
+static const uint16_t clausec_36_data[] = {  };
+
+static const uint16_t clausec_37_pos[] = { 3640, 3650, 3888 };
+
+static const uint16_t clausec_37_data[] = {  };
+
+static const uint16_t clausec_38_pos[] = { 113, 683, 1173, 1353, 1403, 1706, 2067, 2275, 3125, 4441, 5020, 5101, 5513, 5653, 5763, 6222, 218, 546, 695, 824, 826, 1130, 1408, 1994, 3690, 4258, 5170, 5634, 5650, 5658, 6199 };
+
+static const uint16_t clausec_38_data[] = {  };
+
+static const uint16_t clausec_39_pos[] = { 1289, 2702, 5141, 3322, 4548, 4568, 4576 };
+
+static const uint16_t clausec_39_data[] = {  };
+
+static const uint16_t clausec_40_pos[] = { 4248 };
+
+static const uint16_t clausec_40_data[] = {  };
+
+static const uint16_t clausec_41_pos[] = { 3252 };
+
+static const uint16_t clausec_41_data[] = {  };
+
+static const uint16_t clausec_42_pos[] = { 4628, 3008 };
+
+static const uint16_t clausec_42_data[] = {  };
+
+static const uint16_t clausec_43_pos[] = { 2864, 4792, 5224 };
+
+static const uint16_t clausec_43_data[] = {  };
+
+static const uint16_t clausec_44_pos[] = { 6, 449, 1339, 1539, 4477, 5357, 5363, 416, 738, 959, 1092, 1828, 2367, 2592, 3260, 3268, 3922, 4138, 5722, 5752, 6244 };
+
+static const uint16_t clausec_44_data[] = {  };
+
+static const uint16_t clausec_45_pos[] = { 3686, 4861, 1248, 1480 };
+
+static const uint16_t clausec_45_data[] = {  };
+
+static const uint16_t clausec_46_pos[] = { 1912, 3440, 3442, 4114, 610, 816, 1154, 1799, 3472, 3632, 4664, 4936, 5816 };
+
+static const uint16_t clausec_46_data[] = {  };
+
+static const uint16_t clausec_47_pos[] = { 5798, 656, 1700, 4556 };
+
+static const uint16_t clausec_47_data[] = {  };
+
+static const uint16_t clausec_48_pos[] = { 443 };
+
+static const uint16_t clausec_48_data[] = {  };
+
+static const uint16_t clausec_49_pos[] = { 3720, 3724, 2568, 2791, 6180 };
+
+static const uint16_t clausec_49_data[] = {  };
+
+static const uint16_t clausec_50_pos[] = { 3320 };
+
+static const uint16_t clausec_50_data[] = {  };
+
+static const uint16_t clausec_51_pos[] = {  };
+
+static const uint16_t clausec_51_data[] = {  };
+
+static const uint16_t clausec_52_pos[] = { 369, 881, 2978, 3416, 4913, 320, 3050, 5684, 5976 };
+
+static const uint16_t clausec_52_data[] = {  };
+
+static const uint16_t clausec_53_pos[] = { 1821, 2891, 3010, 3024, 4270 };
+
+static const uint16_t clausec_53_data[] = {  };
+
+static const uint16_t clausec_54_pos[] = { 910, 148, 1764, 2568, 2802, 2804, 3928, 5402, 5671 };
+
+static const uint16_t clausec_54_data[] = {  };
+
+static const uint16_t clausec_55_pos[] = { 3688 };
+
+static const uint16_t clausec_55_data[] = {  };
+
+static const uint16_t clausec_56_pos[] = { 1914, 2620, 4330, 5525, 5886, 322, 402, 5456 };
+
+static const uint16_t clausec_56_data[] = {  };
+
+static const uint16_t clausec_57_pos[] = { 3696, 5245, 5409 };
+
+static const uint16_t clausec_57_data[] = {  };
+
+static const uint16_t clausec_58_pos[] = { 2404, 2856, 4098, 1624 };
+
+static const uint16_t clausec_58_data[] = {  };
+
+static const uint16_t clausec_59_pos[] = { 1155, 3347, 5133, 5651, 6022, 183, 1120, 1556, 1972, 2152, 2168, 2424, 2735, 4719, 5136, 5943, 6079 };
+
+static const uint16_t clausec_59_data[] = {  };
+
+static const uint16_t clausec_60_pos[] = { 2562, 2670, 2721, 2842, 3218, 780, 1204, 1986, 4208 };
+
+static const uint16_t clausec_60_data[] = {  };
+
+static const uint16_t clausec_61_pos[] = { 3416, 3880, 3888 };
+
+static const uint16_t clausec_61_data[] = {  };
+
+static const uint16_t clausec_62_pos[] = { 1704, 2560, 3656, 5002 };
+
+static const uint16_t clausec_62_data[] = {  };
+
+static const uint16_t clausec_63_pos[] = { 3690, 2330 };
+
+static const uint16_t clausec_63_data[] = {  };
+
+static const uint16_t clausec_64_pos[] = { 121, 206, 281, 493, 638, 969, 1345, 1539, 1566, 1611, 1625, 1737, 1789, 2005, 3139, 3291, 3389, 3461, 4249, 4710, 5141, 5190, 5427, 5603, 5845, 5909, 5937, 6009, 6181, 6211, 108, 138, 178, 375, 415, 464, 479, 548, 584, 756, 1071, 2060, 2242, 2244, 2580, 2688, 3028, 3138, 3250, 3354, 3586, 3922, 4727, 4890, 5320, 5344, 5372, 5708, 5724, 5922, 5962, 6175, 6188, 6239 };
+
+static const uint16_t clausec_64_data[] = {  };
+
+static const uint16_t clausec_65_pos[] = { 3256 };
+
+static const uint16_t clausec_65_data[] = {  };
+
+static const uint16_t clausec_66_pos[] = { 3088, 3056 };
+
+static const uint16_t clausec_66_data[] = {  };
+
+static const uint16_t clausec_67_pos[] = { 3474, 2588 };
+
+static const uint16_t clausec_67_data[] = {  };
+
+static const uint16_t clausec_68_pos[] = { 2683 };
+
+static const uint16_t clausec_68_data[] = {  };
+
+static const uint16_t clausec_69_pos[] = { 3490, 2152 };
+
+static const uint16_t clausec_69_data[] = {  };
+
+static const uint16_t clausec_70_pos[] = { 281, 398, 1289, 1622, 2013, 3565, 4481, 4725, 5161, 5189, 5333, 5829, 6081, 448, 1824, 2279, 2808, 4156, 4375, 5714, 5760, 5847, 5968, 6071 };
+
+static const uint16_t clausec_70_data[] = {  };
+
+static const uint16_t clausec_71_pos[] = { 3928, 3940, 2788 };
+
+static const uint16_t clausec_71_data[] = {  };
+
+static const uint16_t clausec_72_pos[] = { 2866, 3312, 4041 };
+
+static const uint16_t clausec_72_data[] = {  };
+
+static const uint16_t clausec_73_pos[] = { 291, 3194, 3442, 3674 };
+
+static const uint16_t clausec_73_data[] = {  };
+
+static const uint16_t clausec_74_pos[] = { 67, 427, 565, 829, 3803, 5057, 516, 554, 636, 816, 1594, 1866, 2292, 2500, 3032, 3980, 4212, 4236, 4424, 4626, 5456, 5722 };
+
+static const uint16_t clausec_74_data[] = {  };
+
+static const uint16_t clausec_75_pos[] = { 2818, 2146, 4060 };
+
+static const uint16_t clausec_75_data[] = {  };
+
+static const uint16_t clausec_76_pos[] = { 3420, 3858, 4994 };
+
+static const uint16_t clausec_76_data[] = {  };
+
+static const uint16_t clausec_77_pos[] = { 3266 };
+
+static const uint16_t clausec_77_data[] = {  };
+
+static const uint16_t clausec_78_pos[] = {  };
+
+static const uint16_t clausec_78_data[] = {  };
+
+static const uint16_t clausec_79_pos[] = { 3040, 471, 2156, 5559 };
+
+static const uint16_t clausec_79_data[] = {  };
+
+static const uint16_t clausec_80_pos[] = { 4792, 824, 826, 1408, 1754, 3042, 3698 };
+
+static const uint16_t clausec_80_data[] = {  };
+
+static const uint16_t clausec_81_pos[] = { 4104, 4296 };
+
+static const uint16_t clausec_81_data[] = {  };
+
+static const uint16_t clausec_82_pos[] = { 2168, 2840, 3436, 4330 };
+
+static const uint16_t clausec_82_data[] = {  };
+
+static const uint16_t clausec_83_pos[] = { 3997, 1736, 1936, 2023, 2152, 5842 };
+
+static const uint16_t clausec_83_data[] = {  };
+
+static const uint16_t clausec_84_pos[] = { 2472 };
+
+static const uint16_t clausec_84_data[] = {  };
+
+static const uint16_t clausec_85_pos[] = { 3692, 4255 };
+
+static const uint16_t clausec_85_data[] = {  };
+
+static const uint16_t clausec_86_pos[] = { 851, 939, 1181, 1341, 1472, 1595, 2259, 3373, 5033, 5321, 6062, 676, 700, 786, 972, 1767, 2039, 2295, 2812, 3039, 3258, 3472, 4140, 4468, 4928, 5312, 5559, 5626, 5664, 5704, 5730, 5943 };
+
+static const uint16_t clausec_86_data[] = {  };
+
+static const uint16_t clausec_87_pos[] = { 491, 2305, 2633, 5201, 1362, 2050, 2178, 2186, 2384, 2610, 2890 };
+
+static const uint16_t clausec_87_data[] = {  };
+
+static const uint16_t clausec_88_pos[] = { 1928, 2856, 2984, 3520, 4726, 4875, 5659, 5713, 6019, 568, 944, 1391, 5698 };
+
+static const uint16_t clausec_88_data[] = {  };
+
+static const uint16_t clausec_89_pos[] = { 3872, 4114 };
+
+static const uint16_t clausec_89_data[] = {  };
+
+static const uint16_t clausec_90_pos[] = { 3605, 4235, 5016, 5771, 6059, 2584, 2679, 2943, 3028, 3700, 4911, 5720, 6199 };
+
+static const uint16_t clausec_90_data[] = {  };
+
+static const uint16_t clausec_91_pos[] = { 81, 3377, 4675, 6069, 234, 487, 2456, 2972, 3200, 3216, 3226, 6216 };
+
+static const uint16_t clausec_91_data[] = {  };
+
+static const uint16_t clausec_92_pos[] = { 149, 283, 417, 638, 761, 845, 2006, 2241, 2942, 3483, 4062, 4254, 4603, 4753, 5182, 5526, 5579, 5645, 5678, 5693, 5790, 5933, 6075, 244, 460, 543, 818, 948, 1300, 1383, 2800, 2944, 3026, 3399, 3580, 3592, 4148, 4284, 4911, 5538, 5568, 5716, 5728, 5799, 5820, 5960 };
+
+static const uint16_t clausec_92_data[] = {  };
+
+static const uint16_t clausec_93_pos[] = { 3922, 2960, 5250 };
+
+static const uint16_t clausec_93_data[] = {  };
+
+static const uint16_t clausec_94_pos[] = { 2864, 2986, 3856 };
+
+static const uint16_t clausec_94_data[] = {  };
+
+static const uint16_t clausec_95_pos[] = { 3252 };
+
+static const uint16_t clausec_95_data[] = {  };
+
+static const uint16_t clausec_96_pos[] = { 3674, 3248, 3924, 5656, 5700 };
+
+static const uint16_t clausec_96_data[] = {  };
+
+static const uint16_t clausec_97_pos[] = { 3021, 3936, 4035, 2148 };
+
+static const uint16_t clausec_97_data[] = {  };
+
+static const uint16_t clausec_98_pos[] = { 67, 141, 947, 1121, 2136, 2848, 3874, 4401, 4489, 5189, 2, 1164, 1170, 5298, 5431 };
+
+static const uint16_t clausec_98_data[] = {  };
+
+static const uint16_t clausec_99_pos[] = { 1097, 1542, 1731, 2185, 4227, 4937, 5246, 5445, 5790, 359, 2132, 2890, 5255, 5256 };
+
+static const uint16_t clausec_99_data[] = {  };
+
+static const uint16_t clausec_100_pos[] = { 101, 123, 149, 187, 237, 275, 294, 313, 321, 337, 347, 397, 437, 534, 569, 593, 686, 689, 697, 921, 1129, 1197, 1278, 1502, 1619, 1749, 1771, 1822, 2017, 2022, 2049, 2061, 2128, 2197, 2211, 2267, 2277, 2398, 2425, 2429, 2453, 2675, 2697, 2873, 3057, 3077, 3187, 3195, 3350, 3557, 3606, 3635, 3969, 4326, 4331, 4467, 4705, 4997, 5115, 5121, 5171, 5190, 5329, 5371, 5453, 5611, 5654, 5693, 5701, 5854, 5910, 5993, 6101, 98, 279, 335, 380, 418, 423, 439, 932, 936, 1090, 1116, 1199, 1335, 1528, 1576, 1600, 1636, 1752, 1776, 1783, 1864, 1936, 2004, 2072, 2215, 2247, 2460, 2848, 2863, 3058, 3178, 3304, 3391, 3548, 3663, 3810, 3892, 4036, 4060, 4672, 4714, 4735, 4911, 4912, 4938, 4972, 4999, 5106, 5114, 5140, 5160, 5175, 5188, 5196, 5362, 5450, 5519, 5628, 5783, 5876, 5890, 5892, 5946, 6020, 6080, 6084, 6136, 6236 };
+
+static const uint16_t clausec_100_data[] = {  };
+
+static const uint16_t clausec_101_pos[] = { 3656 };
+
+static const uint16_t clausec_101_data[] = {  };
+
+static const uint16_t clausec_102_pos[] = { 163, 269, 622, 893, 955, 1161, 1203, 1566, 1585, 1814, 2091, 2469, 2483, 2873, 2893, 2917, 3117, 3201, 3310, 3355, 3389, 3545, 3597, 3653, 4177, 4445, 4598, 4603, 4717, 4854, 4857, 5078, 5891, 6145, 103, 252, 287, 338, 375, 591, 746, 824, 936, 986, 991, 1128, 1372, 1439, 1596, 1884, 2202, 2208, 2260, 2264, 2290, 2452, 2551, 2714, 3168, 3255, 3514, 4696, 4864, 5154, 5599, 5628, 5700, 6084 };
+
+static const uint16_t clausec_102_data[] = {  };
+
+static const uint16_t clausec_103_pos[] = { 1712 };
+
+static const uint16_t clausec_103_data[] = {  };
+
+static const uint16_t clausec_104_pos[] = { 558, 569, 829, 1901, 2958, 4443, 4451, 5109, 5635, 20, 148, 680, 1000, 1380, 1583, 1658, 1860, 2208, 2338, 2455, 3956, 3992, 4455, 4639, 4836, 5722 };
+
+static const uint16_t clausec_104_data[] = {  };
+
+static const uint16_t clausec_105_pos[] = { 2394 };
+
+static const uint16_t clausec_105_data[] = {  };
+
+static const uint16_t clausec_106_pos[] = { 5939 };
+
+static const uint16_t clausec_106_data[] = {  };
+
+static const uint16_t clausec_107_pos[] = { 5474 };
+
+static const uint16_t clausec_107_data[] = {  };
+
+static const uint16_t clausec_108_pos[] = { 3175 };
+
+static const uint16_t clausec_108_data[] = {  };
+
+static const uint16_t clausec_109_pos[] = { 174, 1676, 3550, 1312, 2356, 2706 };
+
+static const uint16_t clausec_109_data[] = {  };
+
+static const uint16_t clausec_110_pos[] = { 919 };
+
+static const uint16_t clausec_110_data[] = {  };
+
+static const uint16_t clausec_111_pos[] = { 1752 };
+
+static const uint16_t clausec_111_data[] = {  };
+
+static const uint16_t clausec_112_pos[] = { 181, 190, 229, 315, 365, 558, 573, 689, 755, 766, 833, 853, 1117, 1141, 1163, 1174, 1270, 1557, 1601, 1779, 2045, 2083, 2169, 2237, 2310, 2406, 2430, 2454, 2473, 2483, 2486, 2499, 2502, 2533, 2661, 2705, 2726, 2853, 2941, 3086, 3091, 3107, 3353, 3355, 3403, 3566, 3662, 3757, 3830, 3877, 3920, 4001, 4054, 4077, 4078, 4101, 4113, 4118, 4206, 4225, 4249, 4262, 4286, 4305, 4310, 4326, 4483, 4541, 4757, 4891, 4939, 5009, 5137, 5190, 5209, 5225, 5347, 5358, 5382, 5429, 5573, 5630, 5662, 5689, 5873, 5894, 6011, 6021, 6030, 6038, 6069, 6109, 6125, 6153, 6190, 6245, 2, 10, 60, 68, 242, 335, 396, 476, 532, 552, 576, 583, 716, 816, 850, 874, 914, 1128, 1344, 1372, 1519, 1572, 1580, 1599, 1600, 1612, 1727, 1764, 1802, 1826, 1940, 1968, 2303, 2432, 2490, 2608, 2618, 2663, 2864, 2890, 2967, 2980, 3072, 3112, 3114, 3122, 3128, 3176, 3194, 3311, 3346, 3586, 3640, 3671, 3770, 3772, 3887, 3970, 4042, 4071, 4100, 4104, 4263, 4316, 4328, 4336, 4348, 4431, 4496, 4535, 4660, 5164, 5223, 5479, 5564, 5642, 5652, 5684, 5730, 5776, 5895, 5936, 5952, 5975, 5996, 6058, 6064, 6080, 6164, 6212, 6226 };
+
+static const uint16_t clausec_112_data[] = {  };
+
+static const uint16_t clausec_113_pos[] = { 3288 };
+
+static const uint16_t clausec_113_data[] = {  };
+
+static const uint16_t clausec_114_pos[] = { 555, 643, 667, 891, 931, 1329, 1509, 1862, 2190, 2233, 2243, 2318, 2353, 2593, 2809, 3342, 3598, 3771, 3913, 3965, 4094, 4281, 4435, 4913, 5083, 5245, 5665, 6014, 6105, 6149, 264, 356, 416, 511, 514, 551, 807, 911, 919, 1128, 1152, 1546, 1642, 1756, 1834, 1970, 2648, 2666, 2679, 2852, 2890, 3138, 3340, 3399, 3431, 3463, 3607, 3732, 4258, 4298, 4474, 4640, 4932, 4948, 5194, 5538, 5540, 5600, 5680, 5762, 6016, 6146 };
+
+static const uint16_t clausec_114_data[] = {  };
+
+static const uint16_t clausec_115_pos[] = { 4090 };
+
+static const uint16_t clausec_115_data[] = {  };
+
+static const uint16_t clausec_116_pos[] = { 29, 198, 233, 291, 325, 355, 366, 369, 437, 493, 557, 577, 601, 609, 661, 701, 715, 765, 787, 857, 870, 929, 933, 934, 1035, 1065, 1163, 1283, 1369, 1379, 1405, 1721, 1733, 1737, 1793, 1809, 1977, 2230, 2283, 2291, 2417, 2425, 2433, 2469, 2526, 2800, 2851, 2853, 2883, 2953, 3070, 3073, 3139, 3353, 3393, 3441, 3577, 3589, 3622, 3662, 3758, 3769, 3801, 3857, 4029, 4093, 4097, 4144, 4193, 4214, 4230, 4246, 4285, 4309, 4385, 4441, 4481, 4489, 4577, 4710, 4878, 4886, 4897, 5089, 5118, 5149, 5221, 5313, 5414, 5443, 5446, 5531, 5625, 5627, 5637, 5657, 5729, 5795, 5797, 5861, 5942, 6033, 6045, 6049, 6067, 6142, 6209, 8, 88, 98, 111, 122, 172, 183, 215, 226, 284, 330, 336, 352, 380, 392, 402, 583, 596, 703, 722, 724, 736, 746, 860, 916, 1106, 1140, 1300, 1303, 1343, 1402, 1407, 1570, 1752, 1842, 1855, 1954, 2020, 2048, 2060, 2092, 2178, 2188, 2431, 2463, 2476, 2850, 3172, 3288, 3338, 3359, 3380, 3392, 3520, 3624, 3804, 3807, 3968, 4042, 4202, 4240, 4426, 4698, 4903, 4954, 5186, 5210, 5319, 5324, 5338, 5444, 5520, 5543, 5554, 5775, 5823, 5831, 5882, 5906, 5930, 6028, 6160, 6191 };
+
+static const uint16_t clausec_116_data[] = {  };
+
+static const uint16_t clausec_117_pos[] = { 157, 363, 1472, 2362 };
+
+static const uint16_t clausec_117_data[] = {  };
+
+static const uint16_t clausec_118_pos[] = { 489, 537, 1251, 1625, 2054, 2099, 2816, 4123, 4597, 4643, 5813, 6211, 994, 1615, 2096, 2858, 3743, 4168, 4688, 5407, 5738, 5935, 5975, 6016, 6226 };
+
+static const uint16_t clausec_118_data[] = {  };
+
+static const uint16_t clausec_119_pos[] = { 446, 1381, 1472, 1809, 2454, 3371, 5761, 6241, 1767, 2364, 2932, 4280, 5871 };
+
+static const uint16_t clausec_119_data[] = {  };
+
+static const uint16_t clausec_120_pos[] = { 2085, 2584, 2808, 2918, 3680, 3757, 4502, 2418, 3127, 4162, 4402 };
+
+static const uint16_t clausec_120_data[] = {  };
+
+static const uint16_t clausec_121_pos[] = { 3032 };
+
+static const uint16_t clausec_121_data[] = {  };
+
+static const uint16_t clausec_122_pos[] = { 1177 };
+
+static const uint16_t clausec_122_data[] = {  };
+
+static const uint16_t clausec_123_pos[] = { 4082 };
+
+static const uint16_t clausec_123_data[] = {  };
+
+static const uint16_t clausec_124_pos[] = { 389, 470, 561, 579, 1187, 1878, 2707, 2814, 3409, 3475, 3912, 3957, 3969, 4185, 4209, 4217, 4445, 4533, 5133, 5645, 5913, 56, 168, 236, 248, 588, 1103, 1424, 1640, 1880, 2642, 2964, 3119, 3620, 3743, 4170, 4520, 5138, 5868, 6052, 6136 };
+
+static const uint16_t clausec_124_data[] = {  };
+
+static const uint16_t clausec_125_pos[] = { 2808, 4850 };
+
+static const uint16_t clausec_125_data[] = {  };
+
+static const uint16_t clausec_126_pos[] = { 53 };
+
+static const uint16_t clausec_126_data[] = {  };
+
+static const uint16_t clausec_127_pos[] = { 1184 };
+
+static const uint16_t clausec_127_data[] = {  };
+
+static const uint16_t clausec_128_pos[] = { 198, 333, 390, 821, 1313, 1587, 2102, 2237, 2421, 2576, 2638, 2699, 3466, 3589, 3690, 4147, 4501, 4525, 5329, 5337, 5379, 5605, 5629, 6043, 6262, 128, 1090, 1096, 1144, 1199, 1420, 1727, 1754, 1767, 1848, 1864, 2188, 2490, 2642, 2887, 2908, 3532, 3556, 3970, 4072, 4178, 4287, 4426, 4455, 4636, 5188, 5424, 5642, 5951, 5968, 6055, 6103 };
+
+static const uint16_t clausec_128_data[] = {  };
+
+static const uint16_t clausec_129_pos[] = { 3024 };
+
+static const uint16_t clausec_129_data[] = {  };
+
+static const uint16_t clausec_130_pos[] = { 4499 };
+
+static const uint16_t clausec_130_data[] = {  };
+
+static const uint16_t clausec_131_pos[] = { 4886, 3474 };
+
+static const uint16_t clausec_131_data[] = {  };
+
+static const uint16_t clausec_132_pos[] = {  };
+
+static const uint16_t clausec_132_data[] = {  };
+
+static const uint16_t clausec_133_pos[] = { 49, 361, 491, 4661, 5006, 103, 431, 2016, 2572, 2580, 3584, 4986, 5447, 5559 };
+
+static const uint16_t clausec_133_data[] = {  };
+
+static const uint16_t clausec_134_pos[] = { 2592, 5045, 1226, 1890, 3940 };
+
+static const uint16_t clausec_134_data[] = {  };
+
+static const uint16_t clausec_135_pos[] = { 2528 };
+
+static const uint16_t clausec_135_data[] = {  };
+
+static const uint16_t clausec_136_pos[] = { 75, 605, 715, 1467, 1574, 2021, 2221, 2385, 2515, 2942, 2982, 3355, 3472, 3614, 3790, 4505, 4651, 5581, 5861, 48, 186, 634, 772, 823, 1036, 1146, 1170, 1554, 1608, 1696, 1840, 2044, 2280, 2959, 2988, 3087, 3184, 3216, 3220, 3632, 4236, 4263, 4428, 5362, 5480, 5490, 5623, 5687, 5856, 5911, 6004, 6104, 6152, 6231 };
+
+static const uint16_t clausec_136_data[] = {  };
+
+static const uint16_t clausec_137_pos[] = { 65, 2400, 6195, 1300 };
+
+static const uint16_t clausec_137_data[] = {  };
+
+static const uint16_t clausec_138_pos[] = { 2224 };
+
+static const uint16_t clausec_138_data[] = {  };
+
+static const uint16_t clausec_139_pos[] = { 3740 };
+
+static const uint16_t clausec_139_data[] = {  };
+
+static const uint16_t clausec_140_pos[] = { 33, 73, 86, 261, 451, 518, 723, 742, 853, 889, 897, 1285, 1507, 1553, 1621, 2414, 2578, 2580, 2673, 2851, 2885, 2945, 3254, 3385, 3405, 3427, 3912, 3923, 4238, 4243, 4489, 4945, 5057, 5189, 5889, 5939, 5973, 5995, 6089, 6133, 64, 264, 394, 615, 664, 719, 744, 1186, 1416, 1863, 2210, 2231, 2396, 2484, 2642, 2919, 3415, 3519, 3772, 3786, 3840, 4200, 4247, 4300, 5138, 5400, 5698, 5864, 5976, 5991, 6095, 6220 };
+
+static const uint16_t clausec_140_data[] = {  };
+
+static const uint16_t clausec_141_pos[] = { 2992, 1240 };
+
+static const uint16_t clausec_141_data[] = {  };
+
+static const uint16_t clausec_142_pos[] = { 2503 };
+
+static const uint16_t clausec_142_data[] = {  };
+
+static const uint16_t clausec_143_pos[] = { 1944, 2776 };
+
+static const uint16_t clausec_143_data[] = {  };
+
+static const uint16_t clausec_144_pos[] = { 213, 547, 2378, 2654, 2857, 3421, 3517, 3589, 4630, 4673, 6158, 135, 802, 1666, 1842, 2332, 2692, 2992, 3127, 4268, 4408, 4476, 5072, 5802, 6111 };
+
+static const uint16_t clausec_144_data[] = {  };
+
+static const uint16_t clausec_145_pos[] = { 3432 };
+
+static const uint16_t clausec_145_data[] = {  };
+
+static const uint16_t clausec_146_pos[] = { 101, 129, 589, 699, 1877, 2368, 2518, 2808, 3537, 4475, 4846, 4918, 5563, 5649, 6137, 188, 364, 503, 1106, 1450, 1642, 2554, 3543, 3554, 4434, 4620, 4708, 4728, 4855, 4922, 5175, 5298, 5304, 5524, 5604, 6194 };
+
+static const uint16_t clausec_146_data[] = {  };
+
+static const uint16_t clausec_147_pos[] = { 3280, 4633, 1298 };
+
+static const uint16_t clausec_147_data[] = {  };
+
+static const uint16_t clausec_148_pos[] = { 19, 182, 230, 257, 270, 302, 409, 475, 689, 721, 897, 945, 1030, 1129, 1553, 1561, 1593, 1734, 1798, 1862, 1947, 2003, 2182, 2269, 2611, 2614, 2693, 2707, 2937, 3073, 3093, 3201, 3430, 3646, 3665, 3750, 3838, 3865, 3894, 3897, 4094, 4193, 4203, 4270, 4537, 4729, 4755, 4758, 4905, 4961, 5129, 5371, 5377, 5389, 5461, 5673, 5686, 5721, 5790, 5843, 5909, 5926, 5995, 5997, 6083, 6107, 6115, 6147, 58, 60, 114, 144, 154, 244, 440, 456, 594, 642, 700, 759, 844, 847, 864, 938, 943, 952, 1039, 1042, 1122, 1260, 1279, 1308, 1356, 1492, 1544, 1560, 1712, 1716, 1727, 1748, 1778, 1783, 1815, 2026, 2156, 2170, 2215, 2279, 2380, 2511, 2628, 2704, 2711, 2860, 2930, 2975, 2988, 3064, 3359, 3415, 3426, 3543, 3650, 3660, 3664, 3826, 3828, 3999, 4007, 4106, 4215, 4220, 4312, 4428, 4488, 4498, 4500, 4543, 4660, 4695, 4712, 4756, 4767, 4896, 4984, 5348, 5575, 5576, 5596, 5786, 5840, 5848, 5860, 5864, 5874, 5898, 5930, 5932, 5975, 6104, 6122, 6212 };
+
+static const uint16_t clausec_148_data[] = {  };
+
+static const uint16_t clausec_149_pos[] = { 3924, 4640 };
+
+static const uint16_t clausec_149_data[] = {  };
+
+static const uint16_t clausec_150_pos[] = { 341, 371, 387, 453, 461, 465, 867, 950, 1147, 1277, 1310, 1405, 1723, 2299, 2475, 2701, 2755, 3118, 3182, 3275, 3645, 3979, 4033, 4144, 4901, 4913, 5190, 5331, 5430, 5547, 5550, 5579, 5625, 5645, 5662, 5702, 5795, 6110, 226, 420, 431, 452, 586, 663, 1056, 1076, 1311, 1407, 1620, 1628, 1716, 1748, 2063, 2068, 2162, 2186, 2384, 2432, 2487, 2608, 2722, 3052, 3055, 3098, 3559, 3599, 3800, 3802, 3826, 4050, 4074, 4116, 4314, 4444, 4671, 4751, 5376, 5732, 5778, 5892, 5906, 5908, 5946, 6088 };
+
+static const uint16_t clausec_150_data[] = {  };
+
+static const uint16_t clausec_151_pos[] = { 1938, 4840 };
+
+static const uint16_t clausec_151_data[] = {  };
+
+static const uint16_t clausec_152_pos[] = { 297 };
+
+static const uint16_t clausec_152_data[] = {  };
+
+static const uint16_t clausec_153_pos[] = { 1426, 2348 };
+
+static const uint16_t clausec_153_data[] = {  };
+
+static const uint16_t clausec_154_pos[] = { 134, 358, 686, 827, 941, 1070, 1371, 1430, 1694, 1753, 2011, 2041, 2241, 2525, 2742, 2773, 2793, 3211, 3345, 3670, 3753, 3766, 3909, 4083, 4718, 4845, 4989, 5121, 5741, 5787, 5789, 236, 380, 540, 964, 1524, 1631, 1738, 1872, 2012, 2180, 2204, 2260, 2460, 2530, 2840, 2970, 3514, 3740, 3824, 4084, 4228, 5616, 5696, 5952, 5983, 5999 };
+
+static const uint16_t clausec_154_data[] = {  };
+
+static const uint16_t clausec_155_pos[] = { 1448, 4380 };
+
+static const uint16_t clausec_155_data[] = {  };
+
+static const uint16_t clausec_156_pos[] = { 2595, 2808, 1236, 1664, 1890, 2090, 2463, 2564, 3954 };
+
+static const uint16_t clausec_156_data[] = {  };
+
+static const uint16_t clausec_157_pos[] = { 3748 };
+
+static const uint16_t clausec_157_data[] = {  };
+
+static const uint16_t clausec_158_pos[] = { 189, 2105, 4309, 4939, 4985, 5429, 992, 1884, 1956, 2004, 2836, 3944, 4196, 4226, 4936, 6072 };
+
+static const uint16_t clausec_158_data[] = {  };
+
+static const uint16_t clausec_159_pos[] = { 4187, 4859, 220, 2792, 5202 };
+
+static const uint16_t clausec_159_data[] = {  };
+
+static const uint16_t clausec_160_pos[] = { 5289 };
+
+static const uint16_t clausec_160_data[] = {  };
+
+static const uint16_t clausec_161_pos[] = { 3728 };
+
+static const uint16_t clausec_161_data[] = {  };
+
+static const uint16_t clausec_162_pos[] = { 677, 2102, 2302, 2662, 3165, 3977, 5619, 6262, 55, 583, 711, 754, 770, 1852, 1896, 2116, 2768, 3519, 3970, 4160, 4624, 6250 };
+
+static const uint16_t clausec_162_data[] = {  };
+
+static const uint16_t clausec_163_pos[] = { 2368, 4510, 1228, 1232, 1258, 1279, 1504, 2930, 5196 };
+
+static const uint16_t clausec_163_data[] = {  };
+
+static const uint16_t clausec_164_pos[] = {  };
+
+static const uint16_t clausec_164_data[] = {  };
+
+static const uint16_t clausec_165_pos[] = { 3048, 2372 };
+
+static const uint16_t clausec_165_data[] = {  };
+
+static const uint16_t clausec_166_pos[] = { 21, 209, 249, 294, 533, 590, 637, 651, 697, 725, 742, 865, 1302, 1373, 1382, 1627, 1731, 1941, 1969, 1997, 2043, 2229, 2542, 2613, 2619, 2691, 2709, 2845, 2923, 3069, 3110, 3161, 3318, 3409, 3526, 3646, 3753, 3869, 4077, 4134, 4253, 4475, 4510, 4678, 4745, 4753, 4965, 5182, 5235, 5401, 5619, 5662, 5734, 5753, 5825, 5829, 5843, 5990, 6115, 6182, 20, 42, 104, 106, 132, 135, 240, 280, 672, 914, 1114, 1311, 1800, 1855, 1956, 1972, 1986, 2162, 2196, 2204, 2210, 2276, 2384, 2842, 3050, 3136, 3144, 3194, 3224, 3306, 3340, 3376, 3447, 3504, 3610, 3656, 3658, 3863, 3903, 3956, 4050, 4452, 4672, 4946, 5456, 5584, 5688, 6172, 6252, 6266 };
+
+static const uint16_t clausec_166_data[] = {  };
+
+static const uint16_t clausec_167_pos[] = { 771, 2994, 3659, 5383 };
+
+static const uint16_t clausec_167_data[] = {  };
+
+static const uint16_t clausec_168_pos[] = {  };
+
+static const uint16_t clausec_168_data[] = {  };
+
+static const uint16_t clausec_169_pos[] = { 1062, 1277, 903, 1804, 4778, 5818 };
+
+static const uint16_t clausec_169_data[] = {  };
+
+static const uint16_t clausec_170_pos[] = { 1210, 1391, 2176, 2524, 2615, 3396, 3944, 4228, 5490 };
+
+static const uint16_t clausec_170_data[] = {  };
+
+static const uint16_t clausec_171_pos[] = { 3760 };
+
+static const uint16_t clausec_171_data[] = {  };
+
+static const uint16_t clausec_172_pos[] = { 551 };
+
+static const uint16_t clausec_172_data[] = {  };
+
+static const uint16_t clausec_173_pos[] = { 2996, 3228 };
+
+static const uint16_t clausec_173_data[] = {  };
+
+static const uint16_t clausec_174_pos[] = { 4269 };
+
+static const uint16_t clausec_174_data[] = {  };
+
+static const uint16_t clausec_175_pos[] = { 5058, 4372 };
+
+static const uint16_t clausec_175_data[] = {  };
+
+static const uint16_t clausec_176_pos[] = { 1437, 1878, 3908, 988, 2336, 4162, 5047 };
+
+static const uint16_t clausec_176_data[] = {  };
+
+static const uint16_t clausec_177_pos[] = { 3456, 5032, 4136 };
+
+static const uint16_t clausec_177_data[] = {  };
+
+static const uint16_t clausec_178_pos[] = { 102, 179, 349, 390, 398, 483, 649, 737, 803, 811, 1163, 1173, 1401, 1558, 1771, 1822, 2078, 2187, 2305, 2470, 2859, 2995, 3171, 3355, 3589, 3669, 3757, 3766, 3790, 3875, 3877, 3889, 3922, 3989, 4222, 4445, 4517, 4961, 5395, 5521, 5553, 5667, 5669, 5750, 5921, 6025, 6243, 332, 410, 418, 540, 554, 656, 676, 732, 828, 922, 1064, 1120, 1354, 1383, 1618, 1730, 1751, 2002, 2072, 2250, 2256, 2399, 2471, 2612, 2674, 2946, 3060, 3124, 3322, 3540, 3546, 3602, 3620, 3844, 3952, 4020, 4247, 4263, 4306, 4450, 4482, 4823, 4904, 4935, 5188, 5394, 5455, 5548, 5727, 5732, 5826, 5848, 5970, 6080, 6196 };
+
+static const uint16_t clausec_178_data[] = {  };
+
+static const uint16_t clausec_179_pos[] = { 5684 };
+
+static const uint16_t clausec_179_data[] = {  };
+
+static const uint16_t clausec_180_pos[] = { 73, 83, 86, 99, 117, 129, 141, 147, 153, 230, 317, 389, 403, 422, 437, 478, 499, 553, 598, 633, 641, 649, 691, 729, 750, 931, 961, 1041, 1129, 1325, 1331, 1510, 1525, 1537, 1539, 1717, 1734, 1739, 1755, 1763, 1806, 1843, 2070, 2190, 2203, 2214, 2265, 2381, 2449, 2507, 2617, 2630, 2725, 2747, 2835, 2862, 2883, 2886, 2889, 2891, 2897, 2966, 3083, 3173, 3209, 3217, 3289, 3297, 3323, 3326, 3425, 3430, 3438, 3443, 3769, 3797, 3897, 3961, 4014, 4017, 4038, 4081, 4117, 4238, 4278, 4286, 4318, 4323, 4425, 4502, 4539, 4723, 4733, 4971, 4990, 5110, 5201, 5382, 5390, 5430, 5446, 5601, 5611, 5637, 5651, 5707, 5715, 5797, 5803, 5835, 5891, 5910, 5957, 5973, 5979, 5993, 6049, 6081, 6094, 6117, 6125, 6129, 6161, 6190, 6213, 135, 188, 191, 380, 442, 514, 586, 591, 602, 682, 684, 928, 956, 1052, 1136, 1284, 1287, 1288, 1311, 1354, 1498, 1530, 1599, 1770, 1788, 1800, 1816, 1828, 1936, 1960, 1978, 2002, 2020, 2050, 2210, 2232, 2280, 2394, 2408, 2500, 2528, 2664, 2666, 2692, 2719, 2847, 2887, 2890, 2919, 2936, 3087, 3119, 3178, 3188, 3322, 3386, 3508, 3524, 3559, 3612, 3743, 3799, 3824, 3860, 3868, 3890, 3892, 4016, 4039, 4202, 4258, 4274, 4303, 4322, 4439, 4444, 4456, 4519, 4663, 4704, 4916, 4962, 4970, 5132, 5162, 5183, 5327, 5351, 5360, 5410, 5552, 5583, 5640, 5647, 5698, 5711, 5727, 5818, 5980, 5994, 6028, 6052, 6135, 6191, 6232 };
+
+static const uint16_t clausec_180_data[] = {  };
+
+static const uint16_t clausec_181_pos[] = { 2376, 4176 };
+
+static const uint16_t clausec_181_data[] = {  };
+
+static const uint16_t clausec_182_pos[] = { 61, 97, 206, 317, 537, 598, 685, 721, 878, 891, 939, 1085, 1094, 1318, 1369, 1505, 1731, 1766, 1773, 1779, 1801, 1805, 1950, 2078, 2161, 2171, 2211, 2286, 2293, 2299, 2483, 2878, 2894, 3083, 3102, 3139, 3166, 3197, 3318, 3341, 3614, 3649, 3805, 3885, 4021, 4093, 4110, 4203, 4229, 4246, 4254, 4385, 4461, 4473, 4494, 4526, 4913, 4933, 4945, 4973, 5134, 5371, 5414, 5505, 5541, 5582, 5702, 5809, 5837, 5889, 5939, 6158, 6182, 7, 12, 122, 183, 239, 426, 464, 520, 616, 636, 650, 688, 874, 1044, 1111, 1130, 1143, 1266, 1306, 1327, 1343, 1530, 1596, 1706, 1720, 1976, 2034, 2068, 2200, 2378, 2400, 2428, 2496, 2519, 2647, 3176, 3298, 3535, 3660, 3864, 3872, 4000, 4039, 4090, 4271, 4348, 4444, 4447, 4532, 4680, 4967, 5140, 5464, 5602, 5624, 5640, 5682, 5696, 5740, 5880, 6055, 6216, 6271 };
+
+static const uint16_t clausec_182_data[] = {  };
+
+static const uint16_t clausec_183_pos[] = { 5034, 2138 };
+
+static const uint16_t clausec_183_data[] = {  };
+
+static const uint16_t clausec_184_pos[] = { 1208, 1648, 1906, 2122, 2776, 4618 };
+
+static const uint16_t clausec_184_data[] = {  };
+
+static const uint16_t clausec_185_pos[] = { 199, 584, 1983, 3026, 4420, 5066 };
+
+static const uint16_t clausec_185_data[] = {  };
+
+static const uint16_t clausec_186_pos[] = { 6127 };
+
+static const uint16_t clausec_186_data[] = {  };
+
+static const uint16_t clausec_187_pos[] = { 2192 };
+
+static const uint16_t clausec_187_data[] = {  };
+
+static const uint16_t clausec_188_pos[] = { 69, 131, 166, 254, 283, 305, 454, 507, 510, 677, 773, 891, 1059, 1061, 1123, 1294, 1342, 1525, 1622, 1729, 1758, 1774, 1889, 2021, 2030, 2195, 2230, 2261, 2297, 2318, 2344, 2461, 2515, 2859, 3059, 3139, 3294, 3531, 3553, 3597, 3638, 3649, 3769, 3821, 3846, 4027, 4459, 4573, 4789, 4931, 5214, 5309, 5406, 5409, 5601, 5611, 5645, 5811, 5941, 5982, 5990, 6006, 6035, 6073, 6269, 63, 383, 420, 436, 448, 463, 472, 612, 700, 826, 946, 960, 1058, 1079, 1188, 1364, 1378, 1410, 1511, 1610, 1732, 1994, 2008, 2023, 2072, 2191, 2434, 2479, 2512, 2690, 2759, 2976, 3180, 3312, 3351, 3560, 3623, 3640, 3711, 4010, 4034, 4298, 4343, 4450, 4658, 4708, 5432, 5551, 5583, 5602, 5632, 5671, 5708, 5812, 5856, 5880, 5932, 5960, 6076, 6186, 6216, 6260 };
+
+static const uint16_t clausec_188_data[] = {  };
+
+static const uint16_t clausec_189_pos[] = { 1888, 2612 };
+
+static const uint16_t clausec_189_data[] = {  };
+
+static const uint16_t clausec_190_pos[] = { 526, 921, 1593, 1809, 2109, 2449, 2486, 4213, 5318, 5998, 42, 783, 988, 996, 1388, 1452, 1784, 1871, 1890, 2338, 2551, 2552, 2882, 3143, 4170, 4384, 4863, 5386, 5644, 5716 };
+
+static const uint16_t clausec_190_data[] = {  };
+
+static const uint16_t clausec_191_pos[] = { 3948, 4499, 4856, 5076 };
+
+static const uint16_t clausec_191_data[] = {  };
+
+static const uint16_t clausec_192_pos[] = { 62 };
+
+static const uint16_t clausec_192_data[] = {  };
+
+static const uint16_t clausec_193_pos[] = { 4384 };
+
+static const uint16_t clausec_193_data[] = {  };
+
+static const uint16_t clausec_194_pos[] = { 6117 };
+
+static const uint16_t clausec_194_data[] = {  };
+
+static const uint16_t clausec_195_pos[] = { 1634 };
+
+static const uint16_t clausec_195_data[] = {  };
+
+static const uint16_t clausec_196_pos[] = { 251, 910, 1190, 1205, 1337, 1429, 1582, 1681, 1777, 2251, 2329, 3070, 3321, 3413, 3793, 4430, 4645, 5077, 5869, 292, 1364, 1442, 1538, 1762, 2116, 2207, 2343, 2660, 3124, 3200, 3516, 3568, 3948, 4264, 4714, 5730, 5752, 6072 };
+
+static const uint16_t clausec_196_data[] = {  };
+
+static const uint16_t clausec_197_pos[] = { 3724, 4840 };
+
+static const uint16_t clausec_197_data[] = {  };
+
+static const uint16_t clausec_198_pos[] = { 85, 377, 905, 915, 1147, 1213, 1849, 2053, 2179, 2307, 2405, 2485, 2678, 2773, 2845, 3214, 3301, 3318, 3729, 3922, 4361, 4406, 4513, 4766, 5406, 5830, 6025, 6155, 6233, 324, 900, 1191, 1202, 1368, 1514, 1650, 1842, 1876, 2071, 2103, 2256, 2290, 2671, 2970, 3728, 3826, 4071, 4308, 4535, 4546, 5114, 5639, 5743, 6087, 6140 };
+
+static const uint16_t clausec_198_data[] = {  };
+
+static const uint16_t clausec_199_pos[] = { 1009, 3696 };
+
+static const uint16_t clausec_199_data[] = {  };
+
+static const uint16_t clausec_200_pos[] = { 1, 46, 313, 357, 589, 822, 825, 857, 1027, 1115, 1713, 1745, 1966, 2222, 2465, 3389, 3833, 5057, 5467, 5590, 5659, 5806, 5853, 5929, 5939, 6093, 6238, 128, 284, 464, 599, 826, 887, 898, 1304, 1826, 2044, 2554, 2682, 2752, 2760, 3386, 4060, 4263, 5164, 5191, 5208, 5234, 5327, 5487, 5944, 6239 };
+
+static const uint16_t clausec_200_data[] = {  };
+
+static const uint16_t clausec_201_pos[] = { 2536 };
+
+static const uint16_t clausec_201_data[] = {  };
+
+static const uint16_t clausec_202_pos[] = { 57, 81, 315, 585, 621, 1025, 1061, 1827, 2014, 2245, 2497, 3155, 3821, 3830, 4457, 4483, 4521, 4718, 5174, 5726, 5763, 6142, 6198, 6206, 7, 28, 567, 839, 855, 1095, 1520, 1528, 1548, 1559, 2239, 2266, 2487, 2714, 2754, 2770, 2788, 2944, 2962, 4268, 5242, 5464, 5892, 6124 };
+
+static const uint16_t clausec_202_data[] = {  };
+
+static const uint16_t clausec_203_pos[] = { 109, 157, 731, 734, 789, 1197, 1563, 2033, 2883, 2973, 3201, 3337, 3581, 3819, 4195, 4217, 4470, 4645, 4651, 4982, 5806, 5891, 6077, 6190, 242, 356, 2962, 3200, 3316, 3378, 3388, 3402, 3628, 4218, 4306, 4484, 4640, 4863, 4882, 5080, 5176, 5514, 5580, 6007 };
+
+static const uint16_t clausec_203_data[] = {  };
+
+static const uint16_t clausec_204_pos[] = { 2538, 2552, 2736 };
+
+static const uint16_t clausec_204_data[] = {  };
+
+static const uint16_t clausec_205_pos[] = { 835, 909, 1033, 1131, 4113, 4579, 5150, 5158, 5173, 5939, 6089, 6201, 66, 127, 660, 815, 1786, 2218, 3786, 4106, 4130, 5159 };
+
+static const uint16_t clausec_205_data[] = {  };
+
+static const uint16_t clausec_206_pos[] = { 535 };
+
+static const uint16_t clausec_206_data[] = {  };
+
+static const uint16_t clausec_207_pos[] = { 2520, 3416 };
+
+static const uint16_t clausec_207_data[] = {  };
+
+static const uint16_t clausec_208_pos[] = { 1008, 3280 };
+
+static const uint16_t clausec_208_data[] = {  };
+
+static const uint16_t clausec_209_pos[] = { 1, 1137, 1971, 2179, 2926, 3333, 3558, 5755, 5797, 5867, 6225, 28, 104, 194, 522, 2698, 2882, 3330, 3404, 3567, 3762, 4063, 4232, 4544, 4640, 4866, 4911, 4944, 5343, 5770, 6112 };
+
+static const uint16_t clausec_209_data[] = {  };
+
+static const uint16_t clausec_210_pos[] = { 2918 };
+
+static const uint16_t clausec_210_data[] = {  };
+
+static const uint16_t clausec_211_pos[] = { 2536, 3208 };
+
+static const uint16_t clausec_211_data[] = {  };
+
+static const uint16_t clausec_212_pos[] = { 1648, 4576, 3432 };
+
+static const uint16_t clausec_212_data[] = {  };
+
+static const uint16_t clausec_213_pos[] = { 4852, 4354 };
+
+static const uint16_t clausec_213_data[] = {  };
+
+static const uint16_t clausec_214_pos[] = { 4008 };
+
+static const uint16_t clausec_214_data[] = {  };
+
+static const uint16_t clausec_215_pos[] = { 115, 1269, 1603, 2161, 2969, 3161, 3465, 3697, 3851, 4057, 4078, 5181, 5197, 5633, 5707, 5987, 6142, 103, 327, 540, 972, 1148, 1188, 2720, 3119, 3556, 3778, 3832, 4212, 4418, 4858, 4863, 4906, 5290, 5308, 5312, 5343, 5520, 5528, 5844, 5984 };
+
+static const uint16_t clausec_215_data[] = {  };
+
+static const uint16_t clausec_216_pos[] = { 77, 125, 851, 1534, 1590, 2737, 3326, 4241, 4257, 5129, 5358, 5601, 5613, 5870, 5893, 5987, 6093, 8, 194, 580, 671, 1783, 1831, 2522, 2538, 2580, 2736, 2800, 5460, 5463, 5578 };
+
+static const uint16_t clausec_216_data[] = {  };
+
+static const uint16_t clausec_217_pos[] = { 3020, 5258 };
+
+static const uint16_t clausec_217_data[] = {  };
+
+static const uint16_t clausec_218_pos[] = { 4699 };
+
+static const uint16_t clausec_218_data[] = {  };
+
+static const uint16_t clausec_219_pos[] = { 2536, 2976, 3200, 4068 };
+
+static const uint16_t clausec_219_data[] = {  };
+
+static const uint16_t clausec_220_pos[] = { 91, 621, 1397, 2515, 2693, 2937, 3347, 4269, 5158, 5657, 5675, 5998, 456, 1119, 1391, 1578, 1778, 2436, 2576, 2992, 3000, 3018, 3200, 3400, 3591, 3772, 4256, 5660, 5784, 6087, 6266 };
+
+static const uint16_t clausec_220_data[] = {  };
+
+static const uint16_t clausec_221_pos[] = { 5276 };
+
+static const uint16_t clausec_221_data[] = {  };
+
+static const uint16_t clausec_222_pos[] = { 3464, 5258 };
+
+static const uint16_t clausec_222_data[] = {  };
+
+static const uint16_t clausec_223_pos[] = { 941, 2430, 3781, 5091, 5645, 351, 679, 1802, 2951, 3322, 3338, 3780, 4090, 4776, 4888, 5528 };
+
+static const uint16_t clausec_223_data[] = {  };
+
+static const uint16_t clausec_224_pos[] = { 4226 };
+
+static const uint16_t clausec_224_data[] = {  };
+
+static const uint16_t clausec_225_pos[] = { 2784, 3337, 4003, 5102, 5875, 90, 2442, 2746, 3554, 3772, 4223, 4444, 4658 };
+
+static const uint16_t clausec_225_data[] = {  };
+
+static const uint16_t clausec_226_pos[] = { 4624, 3504, 3544, 3746, 5532, 6136, 6146 };
+
+static const uint16_t clausec_226_data[] = {  };
+
+static const uint16_t clausec_227_pos[] = { 494, 889, 2770, 2994, 6187, 687, 4228, 4888, 5980 };
+
+static const uint16_t clausec_227_data[] = {  };
+
+static const uint16_t clausec_228_pos[] = { 6263 };
+
+static const uint16_t clausec_228_data[] = {  };
+
+static const uint16_t clausec_229_pos[] = { 37, 289, 894, 977, 982, 1313, 2677, 3566, 3574, 3597, 3661, 3787, 5373, 5531, 6006, 767, 860, 944, 1199, 2255, 2880, 3090, 3167, 3764, 3768, 4076, 4204, 4220, 4434, 4642, 4852, 4856, 5296, 6200 };
+
+static const uint16_t clausec_229_data[] = {  };
+
+static const uint16_t clausec_230_pos[] = { 1450, 3361, 1994, 2570, 2786, 3424, 3439, 3754, 5842 };
+
+static const uint16_t clausec_230_data[] = {  };
+
+static const uint16_t clausec_231_pos[] = { 1041, 2429, 3715, 4318, 3994, 4088, 4224, 4231, 4448, 4776 };
+
+static const uint16_t clausec_231_data[] = {  };
+
+static const uint16_t clausec_232_pos[] = { 1208, 2462, 2340, 2538, 2746, 2952 };
+
+static const uint16_t clausec_232_data[] = {  };
+
+static const uint16_t clausec_233_pos[] = { 579, 953, 2326, 3693, 1434, 2962, 3120, 3959, 3992, 4208, 4736, 4860 };
+
+static const uint16_t clausec_233_data[] = {  };
+
+static const uint16_t clausec_234_pos[] = { 5869, 2540, 2552, 2568, 2744, 3338, 5456, 6162 };
+
+static const uint16_t clausec_234_data[] = {  };
+
+static const uint16_t clausec_235_pos[] = { 2869, 2, 3904, 4162 };
+
+static const uint16_t clausec_235_data[] = {  };
+
+static const uint16_t clausec_236_pos[] = {  };
+
+static const uint16_t clausec_236_data[] = {  };
+
+static const uint16_t clausec_237_pos[] = { 2152, 1236, 4652 };
+
+static const uint16_t clausec_237_data[] = {  };
+
+static const uint16_t clausec_238_pos[] = { 6107 };
+
+static const uint16_t clausec_238_data[] = {  };
+
+static const uint16_t clausec_239_pos[] = { 2738 };
+
+static const uint16_t clausec_239_data[] = {  };
+
+static const uint16_t clausec_240_pos[] = { 751 };
+
+static const uint16_t clausec_240_data[] = {  };
+
+static const uint16_t clausec_241_pos[] = { 2573, 5044, 4122, 4354, 5167, 5351 };
+
+static const uint16_t clausec_241_data[] = {  };
+
+static const uint16_t clausec_242_pos[] = { 3864, 2522, 2548, 2562 };
+
+static const uint16_t clausec_242_data[] = {  };
+
+static const uint16_t clausec_243_pos[] = { 73, 4001, 4709, 466, 602, 794, 952, 3866, 4104, 4344, 5338 };
+
+static const uint16_t clausec_243_data[] = {  };
+
+static const uint16_t clausec_244_pos[] = { 4224 };
+
+static const uint16_t clausec_244_data[] = {  };
+
+static const uint16_t clausec_245_pos[] = { 939, 979, 1813, 2505, 2585, 2694, 3549, 3566, 3985, 4003, 4317, 4397, 4526, 4710, 4902, 5166, 5713, 6070, 79, 688, 764, 952, 1160, 1320, 1324, 2007, 2652, 3564, 3623, 3764, 3775, 4216, 4298, 4530, 4535, 4648, 4690, 4879, 5322, 5503, 5527, 5735, 5954 };
+
+static const uint16_t clausec_245_data[] = {  };
+
+static const uint16_t clausec_246_pos[] = { 3658, 5773, 1319, 2308, 2552, 2738 };
+
+static const uint16_t clausec_246_data[] = {  };
+
+static const uint16_t clausec_247_pos[] = { 3208, 3016 };
+
+static const uint16_t clausec_247_data[] = {  };
+
+static const uint16_t clausec_248_pos[] = { 1464, 4138, 576, 2568 };
+
+static const uint16_t clausec_248_data[] = {  };
+
+static const uint16_t clausec_249_pos[] = { 1224 };
+
+static const uint16_t clausec_249_data[] = {  };
+
+static const uint16_t clausec_250_pos[] = { 686, 1224, 5433, 5821, 0, 2784, 2984, 3176, 4271 };
+
+static const uint16_t clausec_250_data[] = {  };
+
+static const uint16_t clausec_251_pos[] = { 2544, 5000 };
+
+static const uint16_t clausec_251_data[] = {  };
+
+static const uint16_t clausec_252_pos[] = { 1256, 4144, 2352 };
+
+static const uint16_t clausec_252_data[] = {  };
+
+static const uint16_t clausec_253_pos[] = { 2776, 3002, 663, 3794, 4426 };
+
+static const uint16_t clausec_253_data[] = {  };
+
+static const uint16_t clausec_254_pos[] = { 3021, 3922, 3939, 4778, 26, 592, 1986 };
+
+static const uint16_t clausec_254_data[] = {  };
+
+static const uint16_t clausec_255_pos[] = { 3024, 5232, 2048 };
+
+static const uint16_t clausec_255_data[] = {  };
+
+static const uint16_t clausec_256_pos[] = { 188 };
+
+static const uint16_t clausec_256_data[] = {  };
+
+static const uint16_t clausec_257_pos[] = { 459, 902, 1123, 1155, 1365, 2633, 2784, 3838, 4235, 4475, 4501, 4707, 4883, 4918, 5171, 5397, 5637, 5763, 5845, 6107, 6126, 567, 722, 762, 940, 1351, 1402, 1599, 3335, 3616, 3618, 4226, 4432, 4487, 5196, 5356, 5800, 6122 };
+
+static const uint16_t clausec_257_data[] = {  };
+
+static const uint16_t clausec_258_pos[] = { 3562 };
+
+static const uint16_t clausec_258_data[] = {  };
+
+static const uint16_t clausec_259_pos[] = { 2312, 2976 };
+
+static const uint16_t clausec_259_data[] = {  };
+
+static const uint16_t clausec_260_pos[] = { 4156, 3056, 5258, 5272 };
+
+static const uint16_t clausec_260_data[] = {  };
+
+static const uint16_t clausec_261_pos[] = { 2556, 3000 };
+
+static const uint16_t clausec_261_data[] = {  };
+
+static const uint16_t clausec_262_pos[] = { 897, 1305, 1387, 2659, 2662, 3579, 3803, 3888, 4053, 4499, 4709, 4795, 4933, 4955, 5053, 5107, 5390, 5565, 6139, 180, 282, 335, 546, 610, 844, 876, 1831, 2044, 2436, 2476, 2762, 2968, 3186, 4047, 5482, 5506, 5564, 5946, 6055, 6191, 6250 };
+
+static const uint16_t clausec_262_data[] = {  };
+
+static const uint16_t clausec_263_pos[] = { 3672, 3690 };
+
+static const uint16_t clausec_263_data[] = {  };
+
+static const uint16_t clausec_264_pos[] = { 390, 1240, 1326, 319, 2354, 2359, 2528, 2552, 2568 };
+
+static const uint16_t clausec_264_data[] = {  };
+
+static const uint16_t clausec_265_pos[] = { 1157, 1169, 3789, 4909, 6065, 1026, 1464, 2698, 3116, 3999, 4216, 4436, 4872, 6055 };
+
+static const uint16_t clausec_265_data[] = {  };
+
+static const uint16_t clausec_266_pos[] = { 175 };
+
+static const uint16_t clausec_266_data[] = {  };
+
+static const uint16_t clausec_267_pos[] = { 467, 837, 3193, 3361, 4670, 244, 799, 1194, 2226, 3119, 4098, 4336, 6012, 6178 };
+
+static const uint16_t clausec_267_data[] = {  };
+
+static const uint16_t clausec_268_pos[] = { 5, 633, 694, 933, 3358, 5635, 5878, 6091, 6269, 98, 399, 1303, 1762, 2276, 2580, 2664, 2778, 2978, 2984, 3567, 3591, 3768, 4024, 5460, 5575, 5578, 5676, 5708, 5714, 5919, 5996, 6138 };
+
+static const uint16_t clausec_268_data[] = {  };
+
+static const uint16_t clausec_269_pos[] = { 2808, 3542, 5115, 6190, 407, 1840, 2520, 3540, 3778, 4210, 4650, 4652, 4860, 4864, 4866 };
+
+static const uint16_t clausec_269_data[] = {  };
+
+static const uint16_t clausec_270_pos[] = { 4440 };
+
+static const uint16_t clausec_270_data[] = {  };
+
+static const uint16_t clausec_271_pos[] = { 3016, 3418, 3636, 3874, 4650 };
+
+static const uint16_t clausec_271_data[] = {  };
+
+static const uint16_t clausec_272_pos[] = { 4370, 2354 };
+
+static const uint16_t clausec_272_data[] = {  };
+
+static const uint16_t clausec_273_pos[] = { 851, 2734, 3334, 3382, 3869, 4027, 5582, 490, 970, 1356, 2664, 3538, 3648, 4188, 4194, 4410, 4428, 4456, 4850, 5072, 5400, 5938 };
+
+static const uint16_t clausec_273_data[] = {  };
+
+static const uint16_t clausec_274_pos[] = { 1218, 2752 };
+
+static const uint16_t clausec_274_data[] = {  };
+
+static const uint16_t clausec_275_pos[] = { 229, 4102, 3327, 3794, 4106, 4148 };
+
+static const uint16_t clausec_275_data[] = {  };
+
+static const uint16_t clausec_276_pos[] = { 163, 251, 275, 435, 643, 857, 881, 917, 953, 1333, 1381, 1757, 2086, 2275, 2451, 2673, 3155, 3390, 3795, 3813, 4021, 4483, 5195, 5430, 5501, 5710, 5737, 5766, 5771, 5915, 5947, 5974, 6246, 16, 204, 394, 488, 906, 919, 943, 1076, 1120, 1328, 1352, 1370, 1855, 2032, 2034, 2272, 2496, 2532, 2548, 2562, 2572, 2708, 2927, 4015, 4044, 4063, 4239, 4500, 4711, 5236, 5428, 5468, 5480, 5640, 5648, 5672, 5884, 5943, 5951, 5956, 5984, 6215, 6255, 6271 };
+
+static const uint16_t clausec_276_data[] = {  };
+
+static const uint16_t clausec_277_pos[] = { 2986, 4757, 4304 };
+
+static const uint16_t clausec_277_data[] = {  };
+
+static const uint16_t clausec_278_pos[] = { 1025 };
+
+static const uint16_t clausec_278_data[] = {  };
+
+static const uint16_t clausec_279_pos[] = { 2736 };
+
+static const uint16_t clausec_279_data[] = {  };
+
+static const uint16_t clausec_280_pos[] = { 4672 };
+
+static const uint16_t clausec_280_data[] = {  };
+
+static const uint16_t clausec_281_pos[] = { 2768, 4491, 263, 743, 3404, 3996, 4432, 4874 };
+
+static const uint16_t clausec_281_data[] = {  };
+
+static const uint16_t clausec_282_pos[] = { 5154 };
+
+static const uint16_t clausec_282_data[] = {  };
+
+static const uint16_t clausec_283_pos[] = { 102, 118, 469, 502, 523, 723, 749, 773, 939, 2718, 2870, 2997, 3101, 3369, 3398, 3550, 3555, 3585, 3613, 3766, 3795, 3801, 4214, 4286, 4669, 5357, 5521, 5526, 5555, 5750, 5766, 5833, 5873, 6145, 6219, 6237, 80, 136, 300, 519, 674, 687, 724, 736, 770, 831, 976, 1192, 2034, 2044, 2236, 2524, 2648, 2890, 3127, 3336, 3572, 3776, 3820, 3836, 3992, 4004, 4079, 4218, 4252, 4282, 4468, 4640, 4658, 4682, 4864, 4866, 4872, 5074, 5532, 5608, 5802, 5871, 6026, 6055, 6088, 6108 };
+
+static const uint16_t clausec_283_data[] = {  };
+
+static const uint16_t clausec_284_pos[] = { 3932, 4546, 2812 };
+
+static const uint16_t clausec_284_data[] = {  };
+
+static const uint16_t clausec_285_pos[] = { 3192, 3418, 3236 };
+
+static const uint16_t clausec_285_data[] = {  };
+
+static const uint16_t clausec_286_pos[] = { 4548, 4824 };
+
+static const uint16_t clausec_286_data[] = {  };
+
+static const uint16_t clausec_287_pos[] = { 1030, 1193, 5613, 748, 988, 1028, 1410, 3760, 4200, 4212, 4426, 4648, 4858, 4864, 5532 };
+
+static const uint16_t clausec_287_data[] = {  };
+
+static const uint16_t clausec_288_pos[] = { 890 };
+
+static const uint16_t clausec_288_data[] = {  };
+
+static const uint16_t clausec_289_pos[] = { 147, 267, 573, 675, 683, 731, 795, 2021, 2041, 2915, 3016, 3147, 3553, 3857, 4657, 4917, 5117, 458, 762, 794, 802, 1132, 3320, 3328, 3408, 3628, 3762, 3776, 4218, 4431, 4436, 4474, 4876, 5336, 5588 };
+
+static const uint16_t clausec_289_data[] = {  };
+
+static const uint16_t clausec_290_pos[] = { 1989, 4636, 3322, 3532, 3746, 5492, 5508 };
+
+static const uint16_t clausec_290_data[] = {  };
+
+static const uint16_t clausec_291_pos[] = { 1977, 2467, 2776, 3000, 5357, 58, 434, 1767, 1842, 4000, 4455, 5696 };
+
+static const uint16_t clausec_291_data[] = {  };
+
+static const uint16_t clausec_292_pos[] = {  };
+
+static const uint16_t clausec_292_data[] = {  };
+
+static const uint16_t clausec_293_pos[] = { 3896, 3940, 4128 };
+
+static const uint16_t clausec_293_data[] = {  };
+
+static const uint16_t clausec_294_pos[] = { 2701 };
+
+static const uint16_t clausec_294_data[] = {  };
+
+static const uint16_t clausec_295_pos[] = { 35, 129, 137, 315, 589, 597, 765, 797, 809, 894, 899, 981, 1105, 1827, 1869, 2477, 2654, 2699, 3614, 4077, 4221, 4229, 4507, 4669, 4862, 5153, 5715, 5739, 18, 308, 612, 799, 1031, 1120, 1330, 1612, 2472, 3328, 3762, 3764, 3808, 4007, 4063, 4506, 4652, 4658, 4864, 4914, 5084, 5146, 5308, 5530, 5583, 5855, 6056, 6228 };
+
+static const uint16_t clausec_295_data[] = {  };
+
+static const uint16_t clausec_296_pos[] = { 1252, 2616 };
+
+static const uint16_t clausec_296_data[] = {  };
+
+static const uint16_t clausec_297_pos[] = { 2304, 2970 };
+
+static const uint16_t clausec_297_data[] = {  };
+
+static const uint16_t clausec_298_pos[] = { 4896 };
+
+static const uint16_t clausec_298_data[] = {  };
+
+static const uint16_t clausec_299_pos[] = { 510, 3896, 3936, 5124, 5439 };
+
+static const uint16_t clausec_299_data[] = {  };
+
+static const uint16_t clausec_300_pos[] = { 1952, 2808, 4754 };
+
+static const uint16_t clausec_300_data[] = {  };
+
+static const uint16_t clausec_301_pos[] = { 2312, 2986 };
+
+static const uint16_t clausec_301_data[] = {  };
+
+static const uint16_t clausec_302_pos[] = { 1472, 2368, 4461, 5942, 1804, 1972, 4120, 4455 };
+
+static const uint16_t clausec_302_data[] = {  };
+
+static const uint16_t clausec_303_pos[] = { 2437, 3912, 4128, 4352, 3196 };
+
+static const uint16_t clausec_303_data[] = {  };
+
+static const uint16_t clausec_304_pos[] = { 321, 2302, 116, 2106, 2314, 3656, 3676, 3914, 3920, 5544 };
+
+static const uint16_t clausec_304_data[] = {  };
+
+static const uint16_t clausec_305_pos[] = { 1889, 2547, 3029, 5187, 5321, 642, 1344, 2818, 5087, 5938 };
+
+static const uint16_t clausec_305_data[] = {  };
+
+static const uint16_t clausec_306_pos[] = { 6107 };
+
+static const uint16_t clausec_306_data[] = {  };
+
+static const uint16_t clausec_307_pos[] = { 2586, 3034 };
+
+static const uint16_t clausec_307_data[] = {  };
+
+static const uint16_t clausec_308_pos[] = { 67, 121, 131, 237, 489, 590, 605, 1565, 1790, 2285, 2461, 2713, 2901, 3129, 3811, 3905, 5475, 5541, 5955, 12, 928, 1112, 1530, 1575, 1756, 2071, 2098, 2300, 2442, 2682, 2684, 2720, 3100, 3154, 3650, 3658, 3784, 3908, 3912, 4032, 5624, 5644 };
+
+static const uint16_t clausec_308_data[] = {  };
+
+static const uint16_t clausec_309_pos[] = { 2970 };
+
+static const uint16_t clausec_309_data[] = {  };
+
+static const uint16_t clausec_310_pos[] = { 1448, 2328, 2530, 4114, 4356 };
+
+static const uint16_t clausec_310_data[] = {  };
+
+static const uint16_t clausec_311_pos[] = { 1163, 4985, 5361, 5573, 778, 1424, 2887, 4300, 4528, 5226, 5466 };
+
+static const uint16_t clausec_311_data[] = {  };
+
+static const uint16_t clausec_312_pos[] = { 337 };
+
+static const uint16_t clausec_312_data[] = {  };
+
+static const uint16_t clausec_313_pos[] = { 3682, 3896, 4336 };
+
+static const uint16_t clausec_313_data[] = {  };
+
+static const uint16_t clausec_314_pos[] = { 5140 };
+
+static const uint16_t clausec_314_data[] = {  };
+
+static const uint16_t clausec_315_pos[] = { 4372, 2392 };
+
+static const uint16_t clausec_315_data[] = {  };
+
+static const uint16_t clausec_316_pos[] = { 807 };
+
+static const uint16_t clausec_316_data[] = {  };
+
+static const uint16_t clausec_317_pos[] = { 139, 1163, 3149, 3845, 178, 1404, 1628, 2471, 2584, 3844, 5212, 5348, 5436, 6002 };
+
+static const uint16_t clausec_317_data[] = {  };
+
+static const uint16_t clausec_318_pos[] = { 3348 };
+
+static const uint16_t clausec_318_data[] = {  };
+
+static const uint16_t clausec_319_pos[] = {  };
+
+static const uint16_t clausec_319_data[] = {  };
+
+static const uint16_t clausec_320_pos[] = { 1424, 2136, 3000 };
+
+static const uint16_t clausec_320_data[] = {  };
+
+static const uint16_t clausec_321_pos[] = { 929, 3155, 5787, 6003, 39, 2800, 3028, 3372 };
+
+static const uint16_t clausec_321_data[] = {  };
+
+static const uint16_t clausec_322_pos[] = { 265, 1922, 3358, 4003, 2756, 2762, 3314, 3994, 4362, 4884, 5956 };
+
+static const uint16_t clausec_322_data[] = {  };
+
+static const uint16_t clausec_323_pos[] = { 2528 };
+
+static const uint16_t clausec_323_data[] = {  };
+
+static const uint16_t clausec_324_pos[] = { 190, 453, 681, 1309, 1474, 2709, 3630, 3845, 4013, 6051, 55, 1106, 2752, 2972, 3184, 3376, 4104, 4106, 4352, 5631, 5956 };
+
+static const uint16_t clausec_324_data[] = {  };
+
+static const uint16_t clausec_325_pos[] = { 1353, 5710, 940, 2604, 4783 };
+
+static const uint16_t clausec_325_data[] = {  };
+
+static const uint16_t clausec_326_pos[] = { 75, 531, 885, 1169, 2227, 2277, 3085, 3232, 6054, 6221, 608, 816, 1100, 1760, 2552, 2930, 2968, 3176, 4104 };
+
+static const uint16_t clausec_326_data[] = {  };
+
+static const uint16_t clausec_327_pos[] = { 2588, 4504 };
+
+static const uint16_t clausec_327_data[] = {  };
+
+static const uint16_t clausec_328_pos[] = { 2384, 4992, 4116 };
+
+static const uint16_t clausec_328_data[] = {  };
+
+static const uint16_t clausec_329_pos[] = { 459, 3930, 5094, 4418, 5004, 5444 };
+
+static const uint16_t clausec_329_data[] = {  };
+
+static const uint16_t clausec_330_pos[] = { 3236, 5256, 2552 };
+
+static const uint16_t clausec_330_data[] = {  };
+
+static const uint16_t clausec_331_pos[] = { 190, 2768, 3821, 2356 };
+
+static const uint16_t clausec_331_data[] = {  };
+
+static const uint16_t clausec_332_pos[] = { 3806, 4707, 2344, 2544, 2752, 3196, 4132 };
+
+static const uint16_t clausec_332_data[] = {  };
+
+static const uint16_t clausec_333_pos[] = { 982, 5141, 2824, 3048, 5559, 5668, 5704 };
+
+static const uint16_t clausec_333_data[] = {  };
+
+static const uint16_t clausec_334_pos[] = { 2162, 2810, 4112 };
+
+static const uint16_t clausec_334_data[] = {  };
+
+static const uint16_t clausec_335_pos[] = { 1157, 3142, 4035, 5390, 6217, 484, 528, 1232, 1450, 2247, 4516, 4666, 4850 };
+
+static const uint16_t clausec_335_data[] = {  };
+
+static const uint16_t clausec_336_pos[] = { 2913 };
+
+static const uint16_t clausec_336_data[] = {  };
+
+static const uint16_t clausec_337_pos[] = { 3908, 3300 };
+
+static const uint16_t clausec_337_data[] = {  };
+
+static const uint16_t clausec_338_pos[] = { 2368, 3522 };
+
+static const uint16_t clausec_338_data[] = {  };
+
+static const uint16_t clausec_339_pos[] = { 1606, 3456, 4108 };
+
+static const uint16_t clausec_339_data[] = {  };
+
+static const uint16_t clausec_340_pos[] = { 961 };
+
+static const uint16_t clausec_340_data[] = {  };
+
+static const uint16_t clausec_341_pos[] = { 4144, 5433, 4752, 4844 };
+
+static const uint16_t clausec_341_data[] = {  };
+
+static const uint16_t clausec_342_pos[] = { 2154, 2802, 3906 };
+
+static const uint16_t clausec_342_data[] = {  };
+
+static const uint16_t clausec_343_pos[] = { 3814 };
+
+static const uint16_t clausec_343_data[] = {  };
+
+static const uint16_t clausec_344_pos[] = { 2136, 2568, 1740, 3696, 5434, 5520 };
+
+static const uint16_t clausec_344_data[] = {  };
+
+static const uint16_t clausec_345_pos[] = { 5321, 1020, 1452, 4068, 4436, 4976, 5082 };
+
+static const uint16_t clausec_345_data[] = {  };
+
+static const uint16_t clausec_346_pos[] = { 2808, 487, 844, 1751, 2304, 2320, 3912 };
+
+static const uint16_t clausec_346_data[] = {  };
+
+static const uint16_t clausec_347_pos[] = { 457, 1205, 1355, 2330, 3131, 3409, 4283, 5339, 5609, 6070, 848, 1002, 1188, 1212, 1416, 2010, 2095, 3552, 4050, 4672, 5580, 5668 };
+
+static const uint16_t clausec_347_data[] = {  };
+
+static const uint16_t clausec_348_pos[] = { 3894, 4669, 5371, 1064, 1288, 2316, 2738, 3858, 4348, 4368, 6263 };
+
+static const uint16_t clausec_348_data[] = {  };
+
+static const uint16_t clausec_349_pos[] = { 5014, 4332, 4412, 4994 };
+
+static const uint16_t clausec_349_data[] = {  };
+
+static const uint16_t clausec_350_pos[] = { 60 };
+
+static const uint16_t clausec_350_data[] = {  };
+
+static const uint16_t clausec_351_pos[] = { 3734, 1176, 1428, 2180, 4842 };
+
+static const uint16_t clausec_351_data[] = {  };
+
+static const uint16_t clausec_352_pos[] = { 5432 };
+
+static const uint16_t clausec_352_data[] = {  };
+
+static const uint16_t clausec_353_pos[] = { 3680, 3898, 4112, 1330, 5712 };
+
+static const uint16_t clausec_353_data[] = {  };
+
+static const uint16_t clausec_354_pos[] = { 2128, 4424 };
+
+static const uint16_t clausec_354_data[] = {  };
+
+static const uint16_t clausec_355_pos[] = { 4136, 4168 };
+
+static const uint16_t clausec_355_data[] = {  };
+
+static const uint16_t clausec_356_pos[] = { 5411 };
+
+static const uint16_t clausec_356_data[] = {  };
+
+static const uint16_t clausec_357_pos[] = { 2976 };
+
+static const uint16_t clausec_357_data[] = {  };
+
+static const uint16_t clausec_358_pos[] = { 5034, 5232, 276, 2642 };
+
+static const uint16_t clausec_358_data[] = {  };
+
+static const uint16_t clausec_359_pos[] = { 3088 };
+
+static const uint16_t clausec_359_data[] = {  };
+
+static const uint16_t clausec_360_pos[] = { 4068 };
+
+static const uint16_t clausec_360_data[] = {  };
+
+static const uint16_t clausec_361_pos[] = { 3660, 3880 };
+
+static const uint16_t clausec_361_data[] = {  };
+
+static const uint16_t clausec_362_pos[] = { 164 };
+
+static const uint16_t clausec_362_data[] = {  };
+
+static const uint16_t clausec_363_pos[] = { 2104, 2125, 3913, 3969, 1408, 3908, 4524 };
+
+static const uint16_t clausec_363_data[] = {  };
+
+static const uint16_t clausec_364_pos[] = { 4728 };
+
+static const uint16_t clausec_364_data[] = {  };
+
+static const uint16_t clausec_365_pos[] = { 3192 };
+
+static const uint16_t clausec_365_data[] = {  };
+
+static const uint16_t clausec_366_pos[] = { 4624, 2332, 2972, 4122 };
+
+static const uint16_t clausec_366_data[] = {  };
+
+static const uint16_t clausec_367_pos[] = { 4090, 2600 };
+
+static const uint16_t clausec_367_data[] = {  };
+
+static const uint16_t clausec_368_pos[] = { 198, 382, 389, 390, 449, 845, 849, 1059, 1075, 1301, 1531, 2009, 2513, 2683, 4009, 5971, 6165, 279, 663, 1980, 1988, 2084, 2100, 2200, 3672, 3882, 3920, 5368, 5584, 5834 };
+
+static const uint16_t clausec_368_data[] = {  };
+
+static const uint16_t clausec_369_pos[] = { 1659, 4584, 607, 4296, 5220 };
+
+static const uint16_t clausec_369_data[] = {  };
+
+static const uint16_t clausec_370_pos[] = { 2810, 3603, 3962, 4470, 263, 2488, 2532, 2700, 3471, 5324 };
+
+static const uint16_t clausec_370_data[] = {  };
+
+static const uint16_t clausec_371_pos[] = { 3510, 4290, 5032, 5260, 5464 };
+
+static const uint16_t clausec_371_data[] = {  };
+
+static const uint16_t clausec_372_pos[] = {  };
+
+static const uint16_t clausec_372_data[] = {  };
+
+static const uint16_t clausec_373_pos[] = { 2536 };
+
+static const uint16_t clausec_373_data[] = {  };
+
+static const uint16_t clausec_374_pos[] = { 1396 };
+
+static const uint16_t clausec_374_data[] = {  };
+
+static const uint16_t clausec_375_pos[] = { 2348, 2800 };
+
+static const uint16_t clausec_375_data[] = {  };
+
+static const uint16_t clausec_376_pos[] = { 1163 };
+
+static const uint16_t clausec_376_data[] = {  };
+
+static const uint16_t clausec_377_pos[] = { 118, 257, 899, 3182, 3857, 4793, 6221, 444, 986, 1418, 1440, 1442, 3540, 3842, 4303, 4730, 5192, 5610, 6119 };
+
+static const uint16_t clausec_377_data[] = {  };
+
+static const uint16_t clausec_378_pos[] = { 4737 };
+
+static const uint16_t clausec_378_data[] = {  };
+
+static const uint16_t clausec_379_pos[] = { 2116, 2237, 2336, 5337, 5918, 762, 1196, 3748, 4252, 4516, 4640, 4871 };
+
+static const uint16_t clausec_379_data[] = {  };
+
+static const uint16_t clausec_380_pos[] = { 5248, 780, 1276, 3180, 3652, 4120, 4132, 4148 };
+
+static const uint16_t clausec_380_data[] = {  };
+
+static const uint16_t clausec_381_pos[] = { 2312, 2992 };
+
+static const uint16_t clausec_381_data[] = {  };
+
+static const uint16_t clausec_382_pos[] = { 2157 };
+
+static const uint16_t clausec_382_data[] = {  };
+
+static const uint16_t clausec_383_pos[] = { 3922, 4136, 4360, 5731, 5204, 5730 };
+
+static const uint16_t clausec_383_data[] = {  };
+
+static const uint16_t clausec_384_pos[] = { 230, 2370, 2808, 3837, 4792, 132, 3904 };
+
+static const uint16_t clausec_384_data[] = {  };
+
+static const uint16_t clausec_385_pos[] = { 449, 3648, 6257, 5476, 5796 };
+
+static const uint16_t clausec_385_data[] = {  };
+
+static const uint16_t clausec_386_pos[] = { 5146 };
+
+static const uint16_t clausec_386_data[] = {  };
+
+static const uint16_t clausec_387_pos[] = { 3906, 4568 };
+
+static const uint16_t clausec_387_data[] = {  };
+
+static const uint16_t clausec_388_pos[] = { 1424, 2352, 2776 };
+
+static const uint16_t clausec_388_data[] = {  };
+
+static const uint16_t clausec_389_pos[] = { 3286, 1418, 1940, 3944 };
+
+static const uint16_t clausec_389_data[] = {  };
+
+static const uint16_t clausec_390_pos[] = { 4512 };
+
+static const uint16_t clausec_390_data[] = {  };
+
+static const uint16_t clausec_391_pos[] = { 4336, 3728 };
+
+static const uint16_t clausec_391_data[] = {  };
+
+static const uint16_t clausec_392_pos[] = { 1176 };
+
+static const uint16_t clausec_392_data[] = {  };
+
+static const uint16_t clausec_393_pos[] = { 3672, 4114, 4560 };
+
+static const uint16_t clausec_393_data[] = {  };
+
+static const uint16_t clausec_394_pos[] = { 5682 };
+
+static const uint16_t clausec_394_data[] = {  };
+
+static const uint16_t clausec_395_pos[] = { 4941, 2792, 3240 };
+
+static const uint16_t clausec_395_data[] = {  };
+
+static const uint16_t clausec_396_pos[] = { 283, 933, 1569, 1656, 1682, 2907, 3240, 4022, 5795, 6097, 114, 767, 1794, 2544, 2748, 2920 };
+
+static const uint16_t clausec_396_data[] = {  };
+
+static const uint16_t clausec_397_pos[] = { 739, 761, 902, 1806, 2768, 2865, 3374, 3555, 3595, 4966, 5755, 218, 335, 376, 464, 764, 890, 1212, 1400, 1412, 2892, 3106, 3554, 3608, 4063, 4514, 4652, 5544, 6128 };
+
+static const uint16_t clausec_397_data[] = {  };
+
+static const uint16_t clausec_398_pos[] = {  };
+
+static const uint16_t clausec_398_data[] = {  };
+
+static const uint16_t clausec_399_pos[] = { 2580, 3476 };
+
+static const uint16_t clausec_399_data[] = {  };
+
+static const uint16_t clausec_400_pos[] = { 125, 350, 369, 603, 651, 739, 769, 923, 2259, 2449, 2977, 3158, 3217, 3257, 3266, 3553, 3989, 4203, 4405, 4555, 4669, 4681, 4771, 4931, 5177, 5547, 5622, 6115, 271, 322, 578, 623, 634, 772, 780, 908, 1020, 1036, 1044, 1159, 1396, 1615, 2450, 3556, 3815, 3824, 3994, 4180, 4538, 4628, 4752, 4856, 4866, 4932, 5103, 5698, 5708, 5746, 5900, 5936, 5992, 6192 };
+
+static const uint16_t clausec_400_data[] = {  };
+
+static const uint16_t clausec_401_pos[] = { 4564, 5233, 2980 };
+
+static const uint16_t clausec_401_data[] = {  };
+
+static const uint16_t clausec_402_pos[] = { 1386 };
+
+static const uint16_t clausec_402_data[] = {  };
+
+static const uint16_t clausec_403_pos[] = { 1682, 2560 };
+
+static const uint16_t clausec_403_data[] = {  };
+
+static const uint16_t clausec_404_pos[] = { 3740, 3948, 2300, 4564 };
+
+static const uint16_t clausec_404_data[] = {  };
+
+static const uint16_t clausec_405_pos[] = { 4760 };
+
+static const uint16_t clausec_405_data[] = {  };
+
+static const uint16_t clausec_406_pos[] = { 1450, 1900, 2354 };
+
+static const uint16_t clausec_406_data[] = {  };
+
+static const uint16_t clausec_407_pos[] = { 4568, 4602 };
+
+static const uint16_t clausec_407_data[] = {  };
+
+static const uint16_t clausec_408_pos[] = { 1322 };
+
+static const uint16_t clausec_408_data[] = {  };
+
+static const uint16_t clausec_409_pos[] = { 3000, 3208 };
+
+static const uint16_t clausec_409_data[] = {  };
+
+static const uint16_t clausec_410_pos[] = { 757, 781, 965, 1302, 1457, 1909, 2185, 2427, 3353, 5014, 5353, 5398, 5835, 6030, 4, 167, 375, 708, 1456, 2012, 2130, 2688, 3804, 4434, 4442, 5220, 5228, 5919, 6096 };
+
+static const uint16_t clausec_410_data[] = {  };
+
+static const uint16_t clausec_411_pos[] = { 2582, 4826, 3196, 3876 };
+
+static const uint16_t clausec_411_data[] = {  };
+
+static const uint16_t clausec_412_pos[] = { 81, 550, 1038, 1241, 2225, 2462, 4277, 4278, 4281, 4649, 4745, 4945, 5793, 5859, 5939, 6001, 6165, 55, 116, 324, 544, 570, 706, 746, 760, 784, 796, 967, 1248, 1252, 1474, 1698, 2360, 2458, 4503, 4528, 4687, 4968, 5594, 5732, 5847, 5892, 5962, 5978, 6239 };
+
+static const uint16_t clausec_412_data[] = {  };
+
+static const uint16_t clausec_413_pos[] = { 4608 };
+
+static const uint16_t clausec_413_data[] = {  };
+
+static const uint16_t clausec_414_pos[] = { 557, 933, 1177, 2261, 3349, 4749, 5337, 538, 576, 772, 980, 1010, 1250, 1336, 1700, 2031, 2136, 2362, 4263, 4738, 5583 };
+
+static const uint16_t clausec_414_data[] = {  };
+
+static const uint16_t clausec_415_pos[] = { 1313, 1493, 3002, 3634, 3876, 4060, 5538, 5652 };
+
+static const uint16_t clausec_415_data[] = {  };
+
+static const uint16_t clausec_416_pos[] = { 75, 465, 469, 579, 630, 725, 869, 878, 921, 925, 1037, 3211, 3432, 3574, 3721, 4513, 4662, 4729, 5401, 5573, 5625, 5661, 5681, 5781, 5809, 44, 162, 728, 784, 802, 815, 839, 1040, 1170, 1648, 2040, 2880, 4028, 4047, 4268, 4544, 5348, 5490, 5688, 5711, 5912 };
+
+static const uint16_t clausec_416_data[] = {  };
+
+static const uint16_t clausec_417_pos[] = { 465, 1129, 1739, 1888, 1898, 1912, 4049, 4513, 4667, 4718, 4985, 5173, 5201, 5369, 5374, 152, 498, 588, 1232, 1234, 1360, 3820, 4042, 4744, 5418, 6044, 6058 };
+
+static const uint16_t clausec_417_data[] = {  };
+
+static const uint16_t clausec_418_pos[] = { 3226, 3268, 1680 };
+
+static const uint16_t clausec_418_data[] = {  };
+
+static const uint16_t clausec_419_pos[] = { 560 };
+
+static const uint16_t clausec_419_data[] = {  };
+
+static const uint16_t clausec_420_pos[] = { 379, 427, 539, 657, 739, 806, 1189, 1297, 2249, 2661, 2961, 3817, 3851, 4470, 4497, 5438, 5581, 6145, 536, 540, 607, 624, 764, 772, 792, 800, 914, 962, 1136, 1242, 1688, 2128, 2239, 2448, 2919, 3111, 3564, 3784, 3808, 4722, 4906, 5122, 5136, 5162, 5375, 5440, 5775, 5898, 6072 };
+
+static const uint16_t clausec_420_data[] = {  };
+
+static const uint16_t clausec_421_pos[] = { 2816, 3200 };
+
+static const uint16_t clausec_421_data[] = {  };
+
+static const uint16_t clausec_422_pos[] = { 6059 };
+
+static const uint16_t clausec_422_data[] = {  };
+
+static const uint16_t clausec_423_pos[] = { 2764, 2786 };
+
+static const uint16_t clausec_423_data[] = {  };
+
+static const uint16_t clausec_424_pos[] = { 2552, 3698, 2096 };
+
+static const uint16_t clausec_424_data[] = {  };
+
+static const uint16_t clausec_425_pos[] = { 2980, 3002, 3004 };
+
+static const uint16_t clausec_425_data[] = {  };
+
+static const uint16_t clausec_426_pos[] = { 2065, 2257, 3272, 5393, 1890, 2434, 4778, 4812 };
+
+static const uint16_t clausec_426_data[] = {  };
+
+static const uint16_t clausec_427_pos[] = { 4412 };
+
+static const uint16_t clausec_427_data[] = {  };
+
+static const uint16_t clausec_428_pos[] = { 411, 805, 1121, 2778, 2820, 3216, 3539, 3696, 3833, 5587, 5909, 794, 1359, 5916, 5944, 6120 };
+
+static const uint16_t clausec_428_data[] = {  };
+
+static const uint16_t clausec_429_pos[] = {  };
+
+static const uint16_t clausec_429_data[] = {  };
+
+static const uint16_t clausec_430_pos[] = { 939, 2019, 3873, 4654, 778, 948, 1244, 1468, 1690, 2138, 2360, 3828, 5935, 5978, 5984, 6044, 6135 };
+
+static const uint16_t clausec_430_data[] = {  };
+
+static const uint16_t clausec_431_pos[] = { 1456, 1482 };
+
+static const uint16_t clausec_431_data[] = {  };
+
+static const uint16_t clausec_432_pos[] = { 867, 907, 1190, 1571, 1638, 2365, 3153, 3569, 3683, 4878, 5091, 5435, 5769, 5821, 5838, 55, 426, 575, 1018, 1482, 1588, 2148, 3104, 5504, 5520, 5730, 5748, 5912, 6068 };
+
+static const uint16_t clausec_432_data[] = {  };
+
+static const uint16_t clausec_433_pos[] = { 1676, 2328 };
+
+static const uint16_t clausec_433_data[] = {  };
+
+static const uint16_t clausec_434_pos[] = { 862 };
+
+static const uint16_t clausec_434_data[] = {  };
+
+static const uint16_t clausec_435_pos[] = { 788 };
+
+static const uint16_t clausec_435_data[] = {  };
+
+static const uint16_t clausec_436_pos[] = { 2186, 1490, 1712, 2146 };
+
+static const uint16_t clausec_436_data[] = {  };
+
+static const uint16_t clausec_437_pos[] = { 1924, 2168 };
+
+static const uint16_t clausec_437_data[] = {  };
+
+static const uint16_t clausec_438_pos[] = { 557, 769, 2229, 2729, 5342, 5437, 5565, 5613, 5637, 5643, 5798, 5953, 6190, 474, 612, 780, 800, 1464, 2004, 2138, 2354, 2578, 3106, 3815, 5215, 5660, 5943, 6032, 6047 };
+
+static const uint16_t clausec_438_data[] = {  };
+
+static const uint16_t clausec_439_pos[] = { 4171, 3448, 3664, 3896, 5823 };
+
+static const uint16_t clausec_439_data[] = {  };
+
+static const uint16_t clausec_440_pos[] = { 6084 };
+
+static const uint16_t clausec_440_data[] = {  };
+
+static const uint16_t clausec_441_pos[] = { 4560, 5577, 1506, 5228 };
+
+static const uint16_t clausec_441_data[] = {  };
+
+static const uint16_t clausec_442_pos[] = { 957, 3722, 3896, 3930, 3954, 5718, 324, 2079, 4784, 5732 };
+
+static const uint16_t clausec_442_data[] = {  };
+
+static const uint16_t clausec_443_pos[] = { 1664, 2564 };
+
+static const uint16_t clausec_443_data[] = {  };
+
+static const uint16_t clausec_444_pos[] = { 3224, 3264, 4485, 1208, 1258, 1706, 4184, 4543 };
+
+static const uint16_t clausec_444_data[] = {  };
+
+static const uint16_t clausec_445_pos[] = { 2992, 3194 };
+
+static const uint16_t clausec_445_data[] = {  };
+
+static const uint16_t clausec_446_pos[] = { 1006, 1361, 2365, 3056, 263, 994, 1018, 1026, 1704, 2146, 2372, 3554, 5984 };
+
+static const uint16_t clausec_446_data[] = {  };
+
+static const uint16_t clausec_447_pos[] = { 3712 };
+
+static const uint16_t clausec_447_data[] = {  };
+
+static const uint16_t clausec_448_pos[] = { 1566, 2957, 3004, 3040, 5433, 752, 1602, 4180, 4396, 4744 };
+
+static const uint16_t clausec_448_data[] = {  };
+
+static const uint16_t clausec_449_pos[] = { 1920, 1928, 1936, 2128, 3565, 5558, 440, 1066, 1266, 1404, 3752, 4210, 4879, 6074, 6164 };
+
+static const uint16_t clausec_449_data[] = {  };
+
+static const uint16_t clausec_450_pos[] = { 809, 2366, 3944, 4798, 4805, 5977, 1824, 4578, 4768, 4810, 5468, 5472, 5712, 5743 };
+
+static const uint16_t clausec_450_data[] = {  };
+
+static const uint16_t clausec_451_pos[] = { 789, 795, 1283, 1896, 1914, 1928, 4689, 4966, 191, 538, 1248, 1319, 2260, 2492, 3322, 3400, 3628, 6002, 6050, 6196 };
+
+static const uint16_t clausec_451_data[] = {  };
+
+static const uint16_t clausec_452_pos[] = { 2992, 3266, 3704, 4011, 4713, 5921, 1714, 4394, 5744, 5906, 6220 };
+
+static const uint16_t clausec_452_data[] = {  };
+
+static const uint16_t clausec_453_pos[] = { 3480, 3698 };
+
+static const uint16_t clausec_453_data[] = {  };
+
+static const uint16_t clausec_454_pos[] = { 1714, 3272, 1236, 1680 };
+
+static const uint16_t clausec_454_data[] = {  };
+
+static const uint16_t clausec_455_pos[] = { 1216 };
+
+static const uint16_t clausec_455_data[] = {  };
+
+static const uint16_t clausec_456_pos[] = { 1898, 4352 };
+
+static const uint16_t clausec_456_data[] = {  };
+
+static const uint16_t clausec_457_pos[] = { 1690, 2096, 3306, 5559 };
+
+static const uint16_t clausec_457_data[] = {  };
+
+static const uint16_t clausec_458_pos[] = { 341, 486, 665, 1830, 1869, 2780, 3355, 3366, 3688, 4286, 4493, 4497, 5425, 5782, 5949, 26, 180, 500, 1010, 1338, 1420, 1586, 2468, 2522, 2927, 4184, 4319, 4410, 4532, 4656, 4671, 5400, 5428, 5906 };
+
+static const uint16_t clausec_458_data[] = {  };
+
+static const uint16_t clausec_459_pos[] = { 1672, 1692, 1232, 3352 };
+
+static const uint16_t clausec_459_data[] = {  };
+
+static const uint16_t clausec_460_pos[] = { 3408, 3696, 2292 };
+
+static const uint16_t clausec_460_data[] = {  };
+
+static const uint16_t clausec_461_pos[] = { 3712 };
+
+static const uint16_t clausec_461_data[] = {  };
+
+static const uint16_t clausec_462_pos[] = { 195, 397, 539, 569, 1182, 1601, 1837, 2902, 3774, 3789, 4709, 5731, 5763, 722, 1151, 1240, 1472, 1912, 2578, 3780, 4696, 5407, 5640, 5858, 6250 };
+
+static const uint16_t clausec_462_data[] = {  };
+
+static const uint16_t clausec_463_pos[] = { 4576, 4616 };
+
+static const uint16_t clausec_463_data[] = {  };
+
+static const uint16_t clausec_464_pos[] = { 2168, 1482, 1930, 2144 };
+
+static const uint16_t clausec_464_data[] = {  };
+
+static const uint16_t clausec_465_pos[] = { 784 };
+
+static const uint16_t clausec_465_data[] = {  };
+
+static const uint16_t clausec_466_pos[] = { 368 };
+
+static const uint16_t clausec_466_data[] = {  };
+
+static const uint16_t clausec_467_pos[] = { 802 };
+
+static const uint16_t clausec_467_data[] = {  };
+
+static const uint16_t clausec_468_pos[] = { 35, 193, 221, 1549, 3107, 3993, 4411, 4569, 5115, 5414, 5977, 6129, 6165, 320, 527, 695, 768, 776, 1468, 1912, 2032, 2248, 2576, 4536, 4764 };
+
+static const uint16_t clausec_468_data[] = {  };
+
+static const uint16_t clausec_469_pos[] = { 2338, 2976 };
+
+static const uint16_t clausec_469_data[] = {  };
+
+static const uint16_t clausec_470_pos[] = { 817, 819, 2406, 3946, 4953, 5805, 6206, 112, 642, 735, 1884, 2919, 3351, 4516, 4572, 4968, 5000, 5692, 5698, 5712 };
+
+static const uint16_t clausec_470_data[] = {  };
+
+static const uint16_t clausec_471_pos[] = { 5956 };
+
+static const uint16_t clausec_471_data[] = {  };
+
+static const uint16_t clausec_472_pos[] = { 157, 333, 382, 461, 525, 541, 630, 654, 905, 939, 963, 989, 997, 1014, 1397, 1846, 1990, 2041, 2451, 2675, 2768, 2961, 3373, 3480, 3611, 4014, 4198, 4222, 4485, 4981, 5081, 5113, 5173, 5323, 5353, 5358, 5365, 5662, 5705, 5749, 5966, 6061, 6241, 6269, 42, 160, 162, 252, 255, 383, 399, 407, 524, 528, 600, 735, 1122, 1816, 2034, 2228, 2716, 4020, 4039, 4207, 4324, 4400, 4412, 4450, 4634, 4636, 4932, 5170, 5184, 5423, 5690, 5714, 5716, 5776, 5890, 5896, 5959, 5964, 6074, 6148, 6216 };
+
+static const uint16_t clausec_472_data[] = {  };
+
+static const uint16_t clausec_473_pos[] = { 3704 };
+
+static const uint16_t clausec_473_data[] = {  };
+
+static const uint16_t clausec_474_pos[] = { 57, 1339, 1662, 1758, 2221, 2422, 3496, 4057, 4891, 5670, 6075, 6225, 114, 727, 3583, 4804, 5432, 5456, 5696, 5722 };
+
+static const uint16_t clausec_474_data[] = {  };
+
+static const uint16_t clausec_475_pos[] = { 2994, 3004, 3188 };
+
+static const uint16_t clausec_475_data[] = {  };
+
+static const uint16_t clausec_476_pos[] = { 345, 409, 537, 598, 985, 1798, 2419, 2499, 2715, 2820, 3704, 4585, 4897, 5006, 5566, 5819, 72, 328, 760, 1736, 1984, 2504, 2620, 3356, 4506, 5012, 5642, 5672, 5700, 5744, 5944 };
+
+static const uint16_t clausec_476_data[] = {  };
+
+static const uint16_t clausec_477_pos[] = { 1920, 3424, 3436 };
+
+static const uint16_t clausec_477_data[] = {  };
+
+static const uint16_t clausec_478_pos[] = { 19, 75, 1286, 1571, 1653, 2069, 2233, 3141, 3504, 3747, 4062, 4233, 4249, 4933, 4941, 5198, 5449, 5737, 5749, 5765, 5885, 5901, 6037, 6057, 6189, 607, 760, 808, 820, 1119, 1132, 1332, 1424, 1874, 2002, 3356, 4535, 5176, 5199, 5634, 5684, 5704, 5980, 6088, 6208 };
+
+static const uint16_t clausec_478_data[] = {  };
+
+static const uint16_t clausec_479_pos[] = { 4560, 3418 };
+
+static const uint16_t clausec_479_data[] = {  };
+
+static const uint16_t clausec_480_pos[] = { 94, 649, 1667, 1806, 2213, 2563, 3496, 3553, 4497, 5029, 5947, 528, 602, 754, 1090, 1666, 4064, 4552, 4799, 5580, 5666, 5863 };
+
+static const uint16_t clausec_480_data[] = {  };
+
+static const uint16_t clausec_481_pos[] = { 1696, 1308, 1839, 2370 };
+
+static const uint16_t clausec_481_data[] = {  };
+
+static const uint16_t clausec_482_pos[] = { 6, 19, 249, 389, 470, 529, 753, 821, 953, 1005, 1035, 1357, 1390, 1393, 1555, 1793, 2030, 2662, 3573, 3601, 3829, 4265, 4731, 5099, 5629, 20, 106, 138, 276, 440, 500, 506, 528, 616, 684, 804, 914, 956, 1036, 1252, 1688, 1690, 2002, 2352, 2668, 2696, 3138, 3338, 3791, 4223, 4232, 4511, 4912, 5192, 5596, 5612, 5756, 5970 };
+
+static const uint16_t clausec_482_data[] = {  };
+
+static const uint16_t clausec_483_pos[] = { 1666, 2554 };
+
+static const uint16_t clausec_483_data[] = {  };
+
+static const uint16_t clausec_484_pos[] = { 3428, 3512, 4576 };
+
+static const uint16_t clausec_484_data[] = {  };
+
+static const uint16_t clausec_485_pos[] = { 3248, 4330 };
+
+static const uint16_t clausec_485_data[] = {  };
+
+static const uint16_t clausec_486_pos[] = { 29, 299, 417, 539, 571, 771, 773, 891, 893, 1270, 1398, 1571, 1646, 2009, 3126, 3777, 4241, 4445, 4489, 5173, 5366, 6265, 544, 652, 776, 784, 808, 1026, 1055, 1196, 1256, 1362, 1484, 1922, 2584, 2588, 3108, 5354, 5391, 5791, 5874 };
+
+static const uint16_t clausec_486_data[] = {  };
+
+static const uint16_t clausec_487_pos[] = { 3932 };
+
+static const uint16_t clausec_487_data[] = {  };
+
+static const uint16_t clausec_488_pos[] = { 393, 403, 405, 534, 905, 1374, 1809, 2085, 2641, 3565, 3574, 4449, 4579, 5003, 5227, 5446, 5683, 5750, 5905, 6233, 6257, 671, 784, 920, 936, 1132, 1810, 2084, 2412, 2647, 3088, 3130, 3156, 3834, 4010, 4274, 4724, 4800, 4930, 5250, 5448, 5580, 5674, 5714, 5930, 6167 };
+
+static const uint16_t clausec_488_data[] = {  };
+
+static const uint16_t clausec_489_pos[] = { 5024, 3914 };
+
+static const uint16_t clausec_489_data[] = {  };
+
+static const uint16_t clausec_490_pos[] = { 3000, 3472, 4411, 5107, 2728, 4384, 4978 };
+
+static const uint16_t clausec_490_data[] = {  };
+
+static const uint16_t clausec_491_pos[] = { 4768 };
+
+static const uint16_t clausec_491_data[] = {  };
+
+static const uint16_t clausec_492_pos[] = { 1067, 1451, 2181, 3355, 1448, 1672, 4588 };
+
+static const uint16_t clausec_492_data[] = {  };
+
+static const uint16_t clausec_493_pos[] = { 1041, 1706, 1906, 3524, 3775 };
+
+static const uint16_t clausec_493_data[] = {  };
+
+static const uint16_t clausec_494_pos[] = { 437, 619, 5606, 1676, 4002, 4804, 6128 };
+
+static const uint16_t clausec_494_data[] = {  };
+
+static const uint16_t clausec_495_pos[] = { 3048, 3516 };
+
+static const uint16_t clausec_495_data[] = {  };
+
+static const uint16_t clausec_496_pos[] = { 373, 534, 1302, 2437, 5745, 6019, 388, 840, 996, 1896, 2484, 3372, 3386, 3562, 4568, 5916, 5936, 6116 };
+
+static const uint16_t clausec_496_data[] = {  };
+
+static const uint16_t clausec_497_pos[] = { 3440, 3652 };
+
+static const uint16_t clausec_497_data[] = {  };
+
+static const uint16_t clausec_498_pos[] = { 3178 };
+
+static const uint16_t clausec_498_data[] = {  };
+
+static const uint16_t clausec_499_pos[] = { 5016, 5034 };
+
+static const uint16_t clausec_499_data[] = {  };
+
+static const uint16_t clausec_500_pos[] = { 365, 1553, 1741, 5057, 6019, 714, 946, 951, 1732, 1912, 1922, 1946, 2272, 3568, 3920, 4464 };
+
+static const uint16_t clausec_500_data[] = {  };
+
+static const uint16_t clausec_501_pos[] = { 2168, 2608, 4013, 2202, 2426, 3335, 3572 };
+
+static const uint16_t clausec_501_data[] = {  };
+
+static const uint16_t clausec_502_pos[] = {  };
+
+static const uint16_t clausec_502_data[] = {  };
+
+static const uint16_t clausec_503_pos[] = { 926, 1195, 1349, 1534, 3480, 1306, 1354, 1975, 2220, 2632, 4048, 4314, 5215, 5234 };
+
+static const uint16_t clausec_503_data[] = {  };
+
+static const uint16_t clausec_504_pos[] = { 398, 621, 1466, 1997, 2137, 5774, 5945, 6257, 144, 648, 1972, 2136, 2156, 2164, 2402, 2418, 2487, 2698, 3588, 4159 };
+
+static const uint16_t clausec_504_data[] = {  };
+
+static const uint16_t clausec_505_pos[] = { 2178, 2840 };
+
+static const uint16_t clausec_505_data[] = {  };
+
+static const uint16_t clausec_506_pos[] = { 1033, 1928, 388, 1236, 2012, 2602, 2626, 2636, 2872 };
+
+static const uint16_t clausec_506_data[] = {  };
+
+static const uint16_t clausec_507_pos[] = { 3680, 4120, 2212 };
+
+static const uint16_t clausec_507_data[] = {  };
+
+static const uint16_t clausec_508_pos[] = { 83, 238, 253, 366, 949, 1133, 1339, 1561, 1998, 4478, 5347, 5822, 6246, 10, 106, 450, 1098, 1143, 2136, 2143, 2160, 2176, 2180, 2196, 2668, 2895, 3135, 4146, 4370, 4500, 5664, 5784, 5911, 5935, 6183 };
+
+static const uint16_t clausec_508_data[] = {  };
+
+static const uint16_t clausec_509_pos[] = { 2154, 2370, 2818, 3091, 6070, 104, 1978, 2200, 2632 };
+
+static const uint16_t clausec_509_data[] = {  };
+
+static const uint16_t clausec_510_pos[] = { 1461, 5366, 1472, 1576, 1618, 3050, 3282, 3320, 3968, 5420, 5888 };
+
+static const uint16_t clausec_510_data[] = {  };
+
+static const uint16_t clausec_511_pos[] = { 2178, 2842 };
+
+static const uint16_t clausec_511_data[] = {  };
+
+static const uint16_t clausec_512_pos[] = { 2536, 4632, 5066, 2644, 4132 };
+
+static const uint16_t clausec_512_data[] = {  };
+
+static const uint16_t clausec_513_pos[] = {  };
+
+static const uint16_t clausec_513_data[] = {  };
+
+static const uint16_t clausec_514_pos[] = { 245, 469, 501, 1115, 1123, 1480, 1721, 1763, 2374, 2395, 3089, 5865, 42, 306, 492, 2002, 2188, 2240, 2372, 2402, 3108, 5343, 5879, 6156 };
+
+static const uint16_t clausec_514_data[] = {  };
+
+static const uint16_t clausec_515_pos[] = { 3888, 4104 };
+
+static const uint16_t clausec_515_data[] = {  };
+
+static const uint16_t clausec_516_pos[] = { 2669 };
+
+static const uint16_t clausec_516_data[] = {  };
+
+static const uint16_t clausec_517_pos[] = { 1805, 3656, 3872, 5139, 5413, 5643, 919, 5314, 5498 };
+
+static const uint16_t clausec_517_data[] = {  };
+
+static const uint16_t clausec_518_pos[] = { 6051 };
+
+static const uint16_t clausec_518_data[] = {  };
+
+static const uint16_t clausec_519_pos[] = { 849 };
+
+static const uint16_t clausec_519_data[] = {  };
+
+static const uint16_t clausec_520_pos[] = { 2208 };
+
+static const uint16_t clausec_520_data[] = {  };
+
+static const uint16_t clausec_521_pos[] = { 2840, 3706 };
+
+static const uint16_t clausec_521_data[] = {  };
+
+static const uint16_t clausec_522_pos[] = { 1316 };
+
+static const uint16_t clausec_522_data[] = {  };
+
+static const uint16_t clausec_523_pos[] = { 2408, 2370 };
+
+static const uint16_t clausec_523_data[] = {  };
+
+static const uint16_t clausec_524_pos[] = { 2184, 2362, 2850 };
+
+static const uint16_t clausec_524_data[] = {  };
+
+static const uint16_t clausec_525_pos[] = { 2616, 2576 };
+
+static const uint16_t clausec_525_data[] = {  };
+
+static const uint16_t clausec_526_pos[] = { 637, 893, 1798, 4697, 5145, 5779, 5989, 1188, 2152, 2172, 2204, 2407, 3656, 3680, 3700, 4471, 5724, 5890, 6140 };
+
+static const uint16_t clausec_526_data[] = {  };
+
+static const uint16_t clausec_527_pos[] = { 3672, 3890, 2970, 3368 };
+
+static const uint16_t clausec_527_data[] = {  };
+
+static const uint16_t clausec_528_pos[] = { 1472 };
+
+static const uint16_t clausec_528_data[] = {  };
+
+static const uint16_t clausec_529_pos[] = { 715, 2193, 2213, 4997, 1026, 1752, 3004, 4082, 4874 };
+
+static const uint16_t clausec_529_data[] = {  };
+
+static const uint16_t clausec_530_pos[] = { 1728, 3374, 2608, 2656, 2864, 2868, 4263, 5380, 5975 };
+
+static const uint16_t clausec_530_data[] = {  };
+
+static const uint16_t clausec_531_pos[] = { 3532, 3640 };
+
+static const uint16_t clausec_531_data[] = {  };
+
+static const uint16_t clausec_532_pos[] = { 1564 };
+
+static const uint16_t clausec_532_data[] = {  };
+
+static const uint16_t clausec_533_pos[] = { 97 };
+
+static const uint16_t clausec_533_data[] = {  };
+
+static const uint16_t clausec_534_pos[] = { 472 };
+
+static const uint16_t clausec_534_data[] = {  };
+
+static const uint16_t clausec_535_pos[] = { 6172 };
+
+static const uint16_t clausec_535_data[] = {  };
+
+static const uint16_t clausec_536_pos[] = { 281, 621, 627, 870, 1971, 2382, 2707, 4475, 4923, 388, 602, 2364, 2372, 2384, 2628, 2652, 2679, 4116, 4138, 5392 };
+
+static const uint16_t clausec_536_data[] = {  };
+
+static const uint16_t clausec_537_pos[] = { 1728, 2624 };
+
+static const uint16_t clausec_537_data[] = {  };
+
+static const uint16_t clausec_538_pos[] = { 317, 3000, 5126, 5598, 5893, 636, 1242, 1272, 1482, 2031, 3066, 4192, 5556, 5607 };
+
+static const uint16_t clausec_538_data[] = {  };
+
+static const uint16_t clausec_539_pos[] = { 1928, 1760, 2116 };
+
+static const uint16_t clausec_539_data[] = {  };
+
+static const uint16_t clausec_540_pos[] = { 2088, 2536, 5050, 2192 };
+
+static const uint16_t clausec_540_data[] = {  };
+
+static const uint16_t clausec_541_pos[] = { 265, 891, 1930, 2152, 4907, 5731, 5893, 359, 415, 820, 1736, 1968, 2194, 2922, 4300 };
+
+static const uint16_t clausec_541_data[] = {  };
+
+static const uint16_t clausec_542_pos[] = { 25, 2265, 2713, 4222, 4707, 5433, 5662, 620, 863, 2578, 2594, 2610, 3072, 3532, 3760, 4479, 5428 };
+
+static const uint16_t clausec_542_data[] = {  };
+
+static const uint16_t clausec_543_pos[] = { 2874 };
+
+static const uint16_t clausec_543_data[] = {  };
+
+static const uint16_t clausec_544_pos[] = { 333, 923, 1361, 1382, 1969, 2153, 4907, 5883, 26, 554, 1095, 1602, 2042, 2130, 2154, 2392, 2420, 3370, 3636, 4130 };
+
+static const uint16_t clausec_544_data[] = {  };
+
+static const uint16_t clausec_545_pos[] = { 510, 3198, 3347, 3565, 4289, 4773, 4881, 4981, 5073, 5217, 5277, 5358, 856, 951, 1280, 1303, 1311, 1964, 2192, 2416, 2863, 4236, 4544, 4680, 4778, 4884, 5335, 5906, 6095 };
+
+static const uint16_t clausec_545_data[] = {  };
+
+static const uint16_t clausec_546_pos[] = { 6027 };
+
+static const uint16_t clausec_546_data[] = {  };
+
+static const uint16_t clausec_547_pos[] = { 51, 91, 165, 238, 683, 1513, 1525, 1803, 2213, 3579, 3638, 4769, 5445, 5557, 5809, 6217, 674, 1056, 1514, 1527, 1736, 1754, 1962, 2200, 2410, 2536, 2543, 2976, 5348, 5775 };
+
+static const uint16_t clausec_547_data[] = {  };
+
+static const uint16_t clausec_548_pos[] = { 2368, 1488, 1696 };
+
+static const uint16_t clausec_548_data[] = {  };
+
+static const uint16_t clausec_549_pos[] = { 1400, 2608, 2808, 2816, 3236 };
+
+static const uint16_t clausec_549_data[] = {  };
+
+static const uint16_t clausec_550_pos[] = { 2184, 2832, 2860, 3320 };
+
+static const uint16_t clausec_550_data[] = {  };
+
+static const uint16_t clausec_551_pos[] = { 3369, 5237, 6182, 408, 1532, 1720, 2170, 2408, 4736, 5004, 5016, 6008 };
+
+static const uint16_t clausec_551_data[] = {  };
+
+static const uint16_t clausec_552_pos[] = { 2446 };
+
+static const uint16_t clausec_552_data[] = {  };
+
+static const uint16_t clausec_553_pos[] = { 97, 193, 213, 237, 403, 502, 558, 611, 614, 835, 1117, 1129, 1326, 1681, 1803, 1813, 1979, 2037, 2043, 2662, 2878, 2931, 3118, 3182, 3366, 3379, 3389, 3609, 3833, 3851, 4019, 4169, 4222, 4261, 4262, 4449, 4491, 4981, 4987, 5329, 5553, 5590, 5609, 5614, 5753, 5771, 5782, 5893, 6177, 6269, 7, 40, 92, 340, 408, 410, 479, 514, 522, 544, 860, 898, 1154, 1199, 1215, 1288, 1300, 1351, 1520, 1536, 1748, 1818, 1831, 1984, 1996, 2052, 2455, 2464, 2484, 2490, 2644, 2722, 3132, 3162, 3839, 3848, 3868, 4127, 4450, 5082, 5330, 5346, 5852, 5959, 5975, 5996, 6020, 6048, 6058, 6216 };
+
+static const uint16_t clausec_553_data[] = {  };
+
+static const uint16_t clausec_554_pos[] = { 2104, 2776, 5028, 2396, 2642 };
+
+static const uint16_t clausec_554_data[] = {  };
+
+static const uint16_t clausec_555_pos[] = { 2136, 2137, 4541, 1728, 1968, 1980, 2394 };
+
+static const uint16_t clausec_555_data[] = {  };
+
+static const uint16_t clausec_556_pos[] = { 53, 574, 865, 2429, 2907, 3137, 3611, 3811, 6203, 31, 456, 522, 663, 2228, 2362, 2376, 2415, 2624, 2648, 3367, 3824, 4122, 4148, 5127, 5762, 5816, 6216 };
+
+static const uint16_t clausec_556_data[] = {  };
+
+static const uint16_t clausec_557_pos[] = { 2864 };
+
+static const uint16_t clausec_557_data[] = {  };
+
+static const uint16_t clausec_558_pos[] = { 4888 };
+
+static const uint16_t clausec_558_data[] = {  };
+
+static const uint16_t clausec_559_pos[] = { 1984, 2120 };
+
+static const uint16_t clausec_559_data[] = {  };
+
+static const uint16_t clausec_560_pos[] = { 1762 };
+
+static const uint16_t clausec_560_data[] = {  };
+
+static const uint16_t clausec_561_pos[] = { 2384, 3040, 3873, 2434, 2903 };
+
+static const uint16_t clausec_561_data[] = {  };
+
+static const uint16_t clausec_562_pos[] = { 1736, 1928, 2866 };
+
+static const uint16_t clausec_562_data[] = {  };
+
+static const uint16_t clausec_563_pos[] = { 75, 430, 717, 1270, 1525, 2093, 3897, 4057, 4481, 4734, 4957, 5369, 6094, 6221, 687, 767, 1276, 1319, 1356, 1492, 1720, 1946, 1951, 2426, 2432, 2924, 2936, 4314, 4448, 4538, 4896, 5644, 5719 };
+
+static const uint16_t clausec_563_data[] = {  };
+
+static const uint16_t clausec_564_pos[] = { 2210 };
+
+static const uint16_t clausec_564_data[] = {  };
+
+static const uint16_t clausec_565_pos[] = { 2640 };
+
+static const uint16_t clausec_565_data[] = {  };
+
+static const uint16_t clausec_566_pos[] = { 1528 };
+
+static const uint16_t clausec_566_data[] = {  };
+
+static const uint16_t clausec_567_pos[] = { 2634, 2794 };
+
+static const uint16_t clausec_567_data[] = {  };
+
+static const uint16_t clausec_568_pos[] = { 3008, 2584, 2602, 2624, 4120 };
+
+static const uint16_t clausec_568_data[] = {  };
+
+static const uint16_t clausec_569_pos[] = { 381, 5985, 2784, 3000, 3226, 3344 };
+
+static const uint16_t clausec_569_data[] = {  };
+
+static const uint16_t clausec_570_pos[] = { 254, 265, 382, 699, 731, 1158, 1323, 1389, 1557, 1829, 1995, 2038, 2467, 2485, 2593, 2651, 2661, 3574, 3619, 4291, 4739, 5333, 5845, 5857, 5918, 260, 375, 416, 527, 543, 680, 866, 882, 1159, 1160, 1607, 2144, 2152, 2199, 2420, 3100, 3896, 3912, 4508, 6008, 6040, 6080, 6175 };
+
+static const uint16_t clausec_570_data[] = {  };
+
+static const uint16_t clausec_571_pos[] = { 3032, 3468 };
+
+static const uint16_t clausec_571_data[] = {  };
+
+static const uint16_t clausec_572_pos[] = { 3226, 3034, 3272, 3884 };
+
+static const uint16_t clausec_572_data[] = {  };
+
+static const uint16_t clausec_573_pos[] = { 2388, 2360 };
+
+static const uint16_t clausec_573_data[] = {  };
+
+static const uint16_t clausec_574_pos[] = { 1498, 6190, 2376, 2408, 2424, 5583 };
+
+static const uint16_t clausec_574_data[] = {  };
+
+static const uint16_t clausec_575_pos[] = { 2640 };
+
+static const uint16_t clausec_575_data[] = {  };
+
+static const uint16_t clausec_576_pos[] = { 911 };
+
+static const uint16_t clausec_576_data[] = {  };
+
+static const uint16_t clausec_577_pos[] = { 3028, 2780, 4082 };
+
+static const uint16_t clausec_577_data[] = {  };
+
+static const uint16_t clausec_578_pos[] = { 4879 };
+
+static const uint16_t clausec_578_data[] = {  };
+
+static const uint16_t clausec_579_pos[] = { 3426, 3866 };
+
+static const uint16_t clausec_579_data[] = {  };
+
+static const uint16_t clausec_580_pos[] = { 1952, 3094, 1042, 2610, 2636, 3076 };
+
+static const uint16_t clausec_580_data[] = {  };
+
+static const uint16_t clausec_581_pos[] = { 5339, 5846, 6182, 184, 1520, 1972, 2106, 2116, 2426, 2752, 3807, 5648 };
+
+static const uint16_t clausec_581_data[] = {  };
+
+static const uint16_t clausec_582_pos[] = { 35, 422, 877, 974, 1062, 2269, 3517, 6181, 2, 15, 1016, 1028, 1208, 1442, 2927, 3048, 3100, 3516, 3831, 3960, 5658, 5980, 6264 };
+
+static const uint16_t clausec_582_data[] = {  };
+
+static const uint16_t clausec_583_pos[] = { 926, 1281, 3803, 4277, 5037, 5573, 964, 1084, 1770, 1784, 1976, 2194, 2204, 2679, 4308, 4314, 4440, 4538, 4778, 4992, 4994, 5008, 5103, 5440, 5564, 5844, 6042 };
+
+static const uint16_t clausec_583_data[] = {  };
+
+static const uint16_t clausec_584_pos[] = { 2516 };
+
+static const uint16_t clausec_584_data[] = {  };
+
+static const uint16_t clausec_585_pos[] = { 705, 1737, 2277, 4267, 4353, 5141, 114, 298, 1327, 1532, 1762, 1960, 2434, 3578, 4090, 5010, 5248 };
+
+static const uint16_t clausec_585_data[] = {  };
+
+static const uint16_t clausec_586_pos[] = { 1504, 2172, 2864 };
+
+static const uint16_t clausec_586_data[] = {  };
+
+static const uint16_t clausec_587_pos[] = { 2856 };
+
+static const uint16_t clausec_587_data[] = {  };
+
+static const uint16_t clausec_588_pos[] = { 30, 177, 643, 941, 1833, 2027, 2641, 3705, 3926, 4313, 4673, 4945, 5382, 5773, 5933, 10, 220, 288, 2154, 2159, 2196, 2258, 2260, 2402, 2408, 3456, 3700, 4232, 5351 };
+
+static const uint16_t clausec_588_data[] = {  };
+
+static const uint16_t clausec_589_pos[] = { 3480, 3916, 2204 };
+
+static const uint16_t clausec_589_data[] = {  };
+
+static const uint16_t clausec_590_pos[] = { 397, 483, 582, 715, 739, 846, 921, 939, 1627, 2011, 2299, 4213, 4545, 5091, 5163, 5398, 84, 498, 984, 1000, 1028, 1204, 1618, 1800, 1840, 2271, 2498, 2816, 2824, 3076, 3296, 3540, 3551, 3584, 3626, 3984, 4264, 4932, 5111, 5402, 5944 };
+
+static const uint16_t clausec_590_data[] = {  };
+
+static const uint16_t clausec_591_pos[] = { 173, 939, 1365, 2019, 2198, 2213, 2499, 2755, 3347, 3638, 3862, 4454, 4941, 5389, 5529, 5697, 5789, 159, 160, 1290, 1504, 1514, 1759, 1975, 1978, 2028, 2186, 2263, 2322, 2536, 2624, 2632, 3386, 3396, 3584, 3852, 5108, 5172, 5791, 5903, 6156, 6210 };
+
+static const uint16_t clausec_591_data[] = {  };
+
+static const uint16_t clausec_592_pos[] = { 1034, 3034, 3500, 3508, 3746 };
+
+static const uint16_t clausec_592_data[] = {  };
+
+static const uint16_t clausec_593_pos[] = { 4964 };
+
+static const uint16_t clausec_593_data[] = {  };
+
+static const uint16_t clausec_594_pos[] = { 957, 1093, 2546, 1818, 3640, 4354 };
+
+static const uint16_t clausec_594_data[] = {  };
+
+static const uint16_t clausec_595_pos[] = { 2396, 3050 };
+
+static const uint16_t clausec_595_data[] = {  };
+
+static const uint16_t clausec_596_pos[] = { 45, 157, 187, 349, 579, 717, 771, 1349, 1611, 1827, 2427, 3129, 3353, 3369, 4225, 4897, 5109, 5805, 55, 202, 250, 444, 492, 530, 552, 624, 784, 804, 868, 964, 1119, 1146, 1383, 1824, 2360, 2368, 2380, 2396, 2402, 2408, 2412, 2511, 3106, 3780, 4290, 4944, 5655, 5772, 5778, 5818, 5823, 5892, 6036, 6204 };
+
+static const uint16_t clausec_596_data[] = {  };
+
+static const uint16_t clausec_597_pos[] = { 893, 2229, 2816, 3472, 5638, 2432, 6162 };
+
+static const uint16_t clausec_597_data[] = {  };
+
+static const uint16_t clausec_598_pos[] = { 1994 };
+
+static const uint16_t clausec_598_data[] = {  };
+
+static const uint16_t clausec_599_pos[] = { 2616, 3272 };
+
+static const uint16_t clausec_599_data[] = {  };
+
+static const uint16_t clausec_600_pos[] = { 11, 110, 265, 353, 726, 877, 945, 961, 1017, 1589, 1758, 2013, 2486, 2931, 2992, 3210, 4051, 4451, 4677, 4818, 4886, 5166, 5315, 5497, 5861, 6166, 340, 1375, 1748, 1815, 1970, 1976, 2007, 2218, 2447, 2476, 3572, 3832, 4728, 4732, 4743, 4932, 5154, 5202, 5207, 5208, 5476, 5500, 5600, 5620, 5727, 5828, 5872, 5912, 5972 };
+
+static const uint16_t clausec_600_data[] = {  };
+
+static const uint16_t clausec_601_pos[] = { 5232 };
+
+static const uint16_t clausec_601_data[] = {  };
+
+static const uint16_t clausec_602_pos[] = { 553, 625, 1266, 1801, 1982, 1997, 2177, 2934, 3043, 6187, 536, 676, 1210, 1423, 2248, 2378, 2384, 2416, 2420, 2468, 2604, 3116, 4744, 5543, 5783, 5876, 5887, 6103 };
+
+static const uint16_t clausec_602_data[] = {  };
+
+static const uint16_t clausec_603_pos[] = { 659, 1169, 1278, 3963, 4027, 4315, 4566, 4721, 4921, 5542, 5846, 6171, 6193, 135, 538, 764, 778, 792, 802, 831, 1023, 1048, 1056, 1060, 1084, 2271, 3087, 5944, 6167, 6176 };
+
+static const uint16_t clausec_603_data[] = {  };
+
+static const uint16_t clausec_604_pos[] = { 1272, 1912, 4792, 1216 };
+
+static const uint16_t clausec_604_data[] = {  };
+
+static const uint16_t clausec_605_pos[] = { 363, 4717, 634, 4348, 4560, 4922 };
+
+static const uint16_t clausec_605_data[] = {  };
+
+static const uint16_t clausec_606_pos[] = { 2786, 1202, 1872, 2168, 5258, 5276 };
+
+static const uint16_t clausec_606_data[] = {  };
+
+static const uint16_t clausec_607_pos[] = { 2624, 2808 };
+
+static const uint16_t clausec_607_data[] = {  };
+
+static const uint16_t clausec_608_pos[] = { 3194, 3760 };
+
+static const uint16_t clausec_608_data[] = {  };
+
+static const uint16_t clausec_609_pos[] = { 3928, 4116, 4136 };
+
+static const uint16_t clausec_609_data[] = {  };
+
+static const uint16_t clausec_610_pos[] = { 70, 509, 1829, 2211, 2572, 3664, 3825, 4659, 4713, 4792, 4794, 6265, 1866, 2208, 3578, 4650, 5426 };
+
+static const uint16_t clausec_610_data[] = {  };
+
+static const uint16_t clausec_611_pos[] = { 3478, 6093, 3098, 3184, 3436, 3442 };
+
+static const uint16_t clausec_611_data[] = {  };
+
+static const uint16_t clausec_612_pos[] = { 6, 69, 77, 94, 139, 206, 355, 393, 430, 459, 509, 513, 529, 533, 641, 661, 693, 737, 907, 939, 949, 950, 1187, 1195, 1289, 1387, 1389, 1598, 1777, 1993, 2009, 2395, 2473, 2491, 2654, 2931, 2933, 2947, 3001, 3331, 3385, 3457, 3597, 3617, 3641, 3785, 3838, 4062, 4069, 4560, 4749, 5145, 5325, 5401, 5413, 5633, 5758, 5781, 5941, 5966, 6094, 6123, 6249, 100, 164, 308, 338, 356, 388, 420, 504, 640, 884, 908, 940, 946, 960, 991, 1144, 1367, 1418, 1535, 1607, 1624, 1808, 1823, 1832, 1836, 2036, 2215, 2231, 2303, 2392, 2412, 2423, 2520, 2644, 3140, 3356, 3392, 3551, 3568, 3831, 4250, 4484, 4488, 4496, 4511, 4904, 5144, 5348, 5490, 5544, 5580, 5610, 5632, 5730, 5754, 5850, 5864, 5876, 5904, 5954, 5960, 6008, 6024, 6047, 6128, 6271 };
+
+static const uint16_t clausec_612_data[] = {  };
+
+static const uint16_t clausec_613_pos[] = { 2194 };
+
+static const uint16_t clausec_613_data[] = {  };
+
+static const uint16_t clausec_614_pos[] = { 3088, 1680 };
+
+static const uint16_t clausec_614_data[] = {  };
+
+static const uint16_t clausec_615_pos[] = { 2136, 1268, 1504, 2848 };
+
+static const uint16_t clausec_615_data[] = {  };
+
+static const uint16_t clausec_616_pos[] = { 3002, 3004, 3672, 3898, 5339, 2402, 2632, 4071, 4434, 4450 };
+
+static const uint16_t clausec_616_data[] = {  };
+
+static const uint16_t clausec_617_pos[] = { 3896, 3920, 4112 };
+
+static const uint16_t clausec_617_data[] = {  };
+
+static const uint16_t clausec_618_pos[] = { 5, 145, 189, 509, 537, 595, 734, 870, 1131, 1301, 1619, 1833, 1998, 2929, 2934, 4246, 4665, 4907, 5099, 5166, 5181, 5254, 5297, 5299, 5326, 5449, 5523, 5611, 5643, 5653, 5869, 6013, 6209, 6217, 90, 287, 608, 908, 1380, 1490, 1504, 1744, 1920, 1924, 1943, 2136, 3146, 4250, 4290, 4904, 4948, 5447, 5608, 5668, 5762, 5767 };
+
+static const uint16_t clausec_618_data[] = {  };
+
+static const uint16_t clausec_619_pos[] = { 2608, 3048, 3309, 530, 2000, 2511, 3304 };
+
+static const uint16_t clausec_619_data[] = {  };
+
+static const uint16_t clausec_620_pos[] = { 21, 35, 2734, 3224, 3641, 1218, 2180, 2408, 2532, 2600, 3544, 3996, 4960, 5607, 5978 };
+
+static const uint16_t clausec_620_data[] = {  };
+
+static const uint16_t clausec_621_pos[] = { 555, 2368, 2592, 850, 1304, 2752 };
+
+static const uint16_t clausec_621_data[] = {  };
+
+static const uint16_t clausec_622_pos[] = { 1373, 1446, 2352, 2788, 3666, 4049, 4112, 4227, 1208 };
+
+static const uint16_t clausec_622_data[] = {  };
+
+static const uint16_t clausec_623_pos[] = { 1045, 1706, 1928, 2462, 4893, 952, 1064, 2319 };
+
+static const uint16_t clausec_623_data[] = {  };
+
+static const uint16_t clausec_624_pos[] = { 1056, 3208, 2408 };
+
+static const uint16_t clausec_624_data[] = {  };
+
+static const uint16_t clausec_625_pos[] = { 1466, 2360 };
+
+static const uint16_t clausec_625_data[] = {  };
+
+static const uint16_t clausec_626_pos[] = { 581, 598, 4057, 4610, 5235, 1250, 1914, 2120, 5568 };
+
+static const uint16_t clausec_626_data[] = {  };
+
+static const uint16_t clausec_627_pos[] = { 4568, 4780 };
+
+static const uint16_t clausec_627_data[] = {  };
+
+static const uint16_t clausec_628_pos[] = { 4592, 5238, 1290, 1303, 1402, 1720, 1938, 1968, 2252, 5252, 5560 };
+
+static const uint16_t clausec_628_data[] = {  };
+
+static const uint16_t clausec_629_pos[] = { 145, 179, 2955, 3032, 3206, 3373, 3379, 3621, 3630, 4963, 5337, 2714, 3192, 3360, 3436, 3442, 3604, 5908, 6156, 6218 };
+
+static const uint16_t clausec_629_data[] = {  };
+
+static const uint16_t clausec_630_pos[] = { 2321, 4602, 5539, 1010, 1674, 1759, 2544, 4488, 5224, 5898 };
+
+static const uint16_t clausec_630_data[] = {  };
+
+static const uint16_t clausec_631_pos[] = { 1928, 2600 };
+
+static const uint16_t clausec_631_data[] = {  };
+
+static const uint16_t clausec_632_pos[] = { 214, 425, 459, 721, 969, 1329, 1461, 1582, 1641, 2070, 2267, 2395, 2421, 2454, 3147, 3765, 3777, 3896, 4254, 4513, 4886, 4905, 5161, 5457, 5749, 5953, 364, 402, 768, 975, 1127, 1138, 1162, 1208, 1212, 1396, 1408, 2202, 2386, 2392, 2428, 2600, 3087, 3148, 3367, 3383, 3394, 4224, 4234, 5384, 5431 };
+
+static const uint16_t clausec_632_data[] = {  };
+
+static const uint16_t clausec_633_pos[] = { 777, 3275, 4859, 6057, 6259, 1088, 4388, 4824 };
+
+static const uint16_t clausec_633_data[] = {  };
+
+static const uint16_t clausec_634_pos[] = { 2738 };
+
+static const uint16_t clausec_634_data[] = {  };
+
+static const uint16_t clausec_635_pos[] = { 1456, 2156 };
+
+static const uint16_t clausec_635_data[] = {  };
+
+static const uint16_t clausec_636_pos[] = { 17, 38, 61, 67, 118, 157, 219, 277, 318, 323, 379, 395, 401, 502, 507, 589, 619, 654, 662, 725, 758, 849, 867, 941, 990, 1134, 1201, 1357, 1555, 1589, 1790, 2147, 2163, 2219, 2229, 2261, 2286, 2419, 2601, 2603, 2661, 2867, 2926, 2949, 3174, 3413, 3993, 4062, 4073, 4230, 4254, 4293, 4425, 4731, 4750, 4758, 4982, 5109, 5198, 5441, 5491, 5501, 5565, 5622, 5651, 5681, 5837, 5878, 5891, 5933, 5965, 6038, 6105, 6107, 6155, 6219, 6241, 6262, 6267, 95, 180, 280, 314, 346, 351, 376, 423, 508, 607, 671, 682, 744, 751, 868, 912, 972, 986, 1127, 1344, 1394, 1551, 1591, 1620, 1767, 1815, 1860, 2024, 2295, 2396, 2479, 2592, 2600, 2604, 2612, 2644, 2671, 2695, 2916, 2959, 3108, 3136, 3354, 3399, 3407, 3567, 3570, 3783, 3847, 4016, 4056, 4264, 4268, 4300, 4452, 4932, 5122, 5130, 5188, 5212, 5223, 5360, 5367, 5386, 5388, 5556, 5588, 5656, 5664, 5764, 5831, 5888, 5924, 6026, 6096, 6114 };
+
+static const uint16_t clausec_636_data[] = {  };
+
+static const uint16_t clausec_637_pos[] = { 1720, 2392 };
+
+static const uint16_t clausec_637_data[] = {  };
+
+static const uint16_t clausec_638_pos[] = { 99, 843, 2014, 4483, 4592, 584, 695, 1264, 1480, 1520, 1698, 1764, 1919, 1984, 2348, 2450, 3122, 5200, 5255, 5314, 5360, 5519, 6194 };
+
+static const uint16_t clausec_638_data[] = {  };
+
+static const uint16_t clausec_639_pos[] = { 4354, 4804 };
+
+static const uint16_t clausec_639_data[] = {  };
+
+static const uint16_t clausec_640_pos[] = { 4120, 1848, 2152, 3866, 5474, 5732 };
+
+static const uint16_t clausec_640_data[] = {  };
+
+static const uint16_t clausec_641_pos[] = { 3634, 3888 };
+
+static const uint16_t clausec_641_data[] = {  };
+
+static const uint16_t clausec_642_pos[] = { 718, 1137, 1353, 2213, 2784, 2854, 3224, 3366, 3888, 4022, 4539, 5173, 5385, 5597, 5885, 716, 728, 1146, 1212, 1648, 2410, 2434, 2520, 3096, 3354, 5744 };
+
+static const uint16_t clausec_642_data[] = {  };
+
+static const uint16_t clausec_643_pos[] = { 3658 };
+
+static const uint16_t clausec_643_data[] = {  };
+
+static const uint16_t clausec_644_pos[] = { 353, 979, 4491, 4510, 4971, 5425, 5918, 5990, 128, 175, 690, 871, 1119, 1290, 1744, 1928, 1936, 1944, 1984, 1988, 2136, 2482, 3818, 5167, 5264, 5292, 5306 };
+
+static const uint16_t clausec_644_data[] = {  };
+
+static const uint16_t clausec_645_pos[] = { 539, 5465, 820, 828, 970, 1018, 1314, 4116 };
+
+static const uint16_t clausec_645_data[] = {  };
+
+static const uint16_t clausec_646_pos[] = { 3324 };
+
+static const uint16_t clausec_646_data[] = {  };
+
+static const uint16_t clausec_647_pos[] = { 1960 };
+
+static const uint16_t clausec_647_data[] = {  };
+
+static const uint16_t clausec_648_pos[] = { 744 };
+
+static const uint16_t clausec_648_data[] = {  };
+
+static const uint16_t clausec_649_pos[] = { 155, 209, 405, 541, 550, 621, 653, 1011, 1041, 1110, 1965, 2459, 2713, 3477, 4337, 4505, 5038, 5878, 5937, 6037, 608, 764, 770, 810, 818, 1024, 1058, 2232, 2948, 5130, 5407, 5704, 5828 };
+
+static const uint16_t clausec_649_data[] = {  };
+
+static const uint16_t clausec_650_pos[] = { 6086 };
+
+static const uint16_t clausec_650_data[] = {  };
+
+static const uint16_t clausec_651_pos[] = { 2410, 2816 };
+
+static const uint16_t clausec_651_data[] = {  };
+
+static const uint16_t clausec_652_pos[] = { 1794 };
+
+static const uint16_t clausec_652_data[] = {  };
+
+static const uint16_t clausec_653_pos[] = { 4064 };
+
+static const uint16_t clausec_653_data[] = {  };
+
+static const uint16_t clausec_654_pos[] = { 3312 };
+
+static const uint16_t clausec_654_data[] = {  };
+
+static const uint16_t clausec_655_pos[] = { 4298 };
+
+static const uint16_t clausec_655_data[] = {  };
+
+static const uint16_t clausec_656_pos[] = { 499, 915, 953, 1353, 1715, 2445, 3126, 3406, 5243, 6035, 31, 1482, 1484, 1498, 2136, 2352, 4994, 5192, 5295, 5583, 5831 };
+
+static const uint16_t clausec_656_data[] = {  };
+
+static const uint16_t clausec_657_pos[] = { 317, 377, 419, 1987, 4110, 4181, 5301, 834, 1112, 1544, 4168, 4176, 5951 };
+
+static const uint16_t clausec_657_data[] = {  };
+
+static const uint16_t clausec_658_pos[] = { 342, 358, 499, 523, 661, 1299, 1349, 1363, 1403, 2905, 3125, 3126, 3129, 3563, 3611, 4246, 5150, 5243, 5262, 5361, 5899, 1090, 1712, 1724, 1968, 2144, 2492, 2584, 4023, 4492, 5512, 5727, 5748, 5916, 6135 };
+
+static const uint16_t clausec_658_data[] = {  };
+
+static const uint16_t clausec_659_pos[] = { 2154 };
+
+static const uint16_t clausec_659_data[] = {  };
+
+static const uint16_t clausec_660_pos[] = { 2138, 2568, 3550, 1232, 1440, 1450, 1452, 2194 };
+
+static const uint16_t clausec_660_data[] = {  };
+
+static const uint16_t clausec_661_pos[] = { 781, 1718, 2659, 4627, 4769, 764, 964, 4354, 5132, 6002 };
+
+static const uint16_t clausec_661_data[] = {  };
+
+static const uint16_t clausec_662_pos[] = { 1011, 2454, 4592, 5521, 1276, 1732, 2144 };
+
+static const uint16_t clausec_662_data[] = {  };
+
+static const uint16_t clausec_663_pos[] = { 357, 1333, 2376, 3849, 631, 1311, 1316, 1970, 2192, 2464, 2858, 5322 };
+
+static const uint16_t clausec_663_data[] = {  };
+
+static const uint16_t clausec_664_pos[] = { 694, 1097, 1649, 2165, 4211, 4323, 4352, 5269, 5621, 5878, 6249, 154, 290, 444, 1156, 1540, 1944, 2370, 3612, 4752, 5192, 5484, 5530 };
+
+static const uint16_t clausec_664_data[] = {  };
+
+static const uint16_t clausec_665_pos[] = { 5310 };
+
+static const uint16_t clausec_665_data[] = {  };
+
+static const uint16_t clausec_666_pos[] = { 414, 1405, 1755, 3153, 3200, 5230, 5889, 210, 1720, 1728, 2716, 2938, 4896, 5192, 5380 };
+
+static const uint16_t clausec_666_data[] = {  };
+
+static const uint16_t clausec_667_pos[] = { 241, 2118, 5077, 820, 3495, 4600 };
+
+static const uint16_t clausec_667_data[] = {  };
+
+static const uint16_t clausec_668_pos[] = { 21, 129, 301, 619, 654, 918, 1147, 1149, 1270, 1733, 1765, 1785, 2270, 2485, 2923, 3377, 4069, 4693, 4985, 5049, 5265, 5283, 5481, 5589, 6021, 348, 480, 671, 1280, 1359, 1362, 1480, 1506, 1594, 1600, 1748, 1920, 1930, 1984, 2216, 2356, 3576, 3802, 4039, 4290, 4482, 4954, 5314, 5620, 5642, 5655, 5824, 6058, 6119 };
+
+static const uint16_t clausec_668_data[] = {  };
+
+static const uint16_t clausec_669_pos[] = { 781, 1914, 4003, 816, 976, 1060 };
+
+static const uint16_t clausec_669_data[] = {  };
+
+static const uint16_t clausec_670_pos[] = { 65, 205, 219, 1973, 2285, 2560, 2933, 3137, 4253, 4739, 5313, 5323, 5358, 5395, 5667, 5821, 5917, 258, 276, 504, 784, 892, 994, 1584, 1656, 1980, 2016, 2080, 2164, 2168, 2436, 4970, 5095, 5300, 5596, 5855 };
+
+static const uint16_t clausec_670_data[] = {  };
+
+static const uint16_t clausec_671_pos[] = { 3016, 3026 };
+
+static const uint16_t clausec_671_data[] = {  };
+
+static const uint16_t clausec_672_pos[] = { 41, 469, 1198, 1225, 1581, 1630, 2277, 2473, 2670, 3417, 4030, 4869, 5321, 5702, 5987, 396, 506, 664, 740, 924, 978, 1199, 1759, 1946, 1972, 1996, 2154, 2236, 2432, 2482, 4464, 4735, 5260, 5284, 5503, 5504, 5695, 5919, 6028, 6100 };
+
+static const uint16_t clausec_672_data[] = {  };
+
+static const uint16_t clausec_673_pos[] = { 3640, 3896 };
+
+static const uint16_t clausec_673_data[] = {  };
+
+static const uint16_t clausec_674_pos[] = { 1651, 4352, 103, 1970, 2164, 2588, 4655 };
+
+static const uint16_t clausec_674_data[] = {  };
+
+static const uint16_t clausec_675_pos[] = { 2850 };
+
+static const uint16_t clausec_675_data[] = {  };
+
+static const uint16_t clausec_676_pos[] = { 2237, 5267, 84, 492, 1528, 1944, 2148, 2578, 4748, 5280, 5290 };
+
+static const uint16_t clausec_676_data[] = {  };
+
+static const uint16_t clausec_677_pos[] = { 4592 };
+
+static const uint16_t clausec_677_data[] = {  };
+
+static const uint16_t clausec_678_pos[] = { 889, 2764, 3434, 4338, 4800, 5091, 5470, 6051, 468, 488, 922, 1338, 2066, 2458, 2882, 2896, 2959, 4716, 5220, 5455, 5482, 5599, 5784 };
+
+static const uint16_t clausec_678_data[] = {  };
+
+static const uint16_t clausec_679_pos[] = { 1906, 2499, 716, 1042, 1052, 5666 };
+
+static const uint16_t clausec_679_data[] = {  };
+
+static const uint16_t clausec_680_pos[] = { 4704 };
+
+static const uint16_t clausec_680_data[] = {  };
+
+static const uint16_t clausec_681_pos[] = { 2384, 2810 };
+
+static const uint16_t clausec_681_data[] = {  };
+
+static const uint16_t clausec_682_pos[] = { 2486, 3393, 4594, 1712, 2356, 4512, 5216, 5487, 5498 };
+
+static const uint16_t clausec_682_data[] = {  };
+
+static const uint16_t clausec_683_pos[] = { 4120, 4328 };
+
+static const uint16_t clausec_683_data[] = {  };
+
+static const uint16_t clausec_684_pos[] = { 3316, 1498 };
+
+static const uint16_t clausec_684_data[] = {  };
+
+static const uint16_t clausec_685_pos[] = { 5250, 3666 };
+
+static const uint16_t clausec_685_data[] = {  };
+
+static const uint16_t clausec_686_pos[] = { 321, 342, 1817, 2661, 2994, 5139, 5713, 6141, 87, 992, 1572, 1628, 2168, 2410, 2428, 4511, 5552 };
+
+static const uint16_t clausec_686_data[] = {  };
+
+static const uint16_t clausec_687_pos[] = { 4752 };
+
+static const uint16_t clausec_687_data[] = {  };
+
+static const uint16_t clausec_688_pos[] = { 1179, 2984, 4618, 5457, 708, 1300, 1604, 4680, 5284, 5522, 5844, 5912, 6063 };
+
+static const uint16_t clausec_688_data[] = {  };
+
+static const uint16_t clausec_689_pos[] = { 4769, 524, 4800 };
+
+static const uint16_t clausec_689_data[] = {  };
+
+static const uint16_t clausec_690_pos[] = { 1074 };
+
+static const uint16_t clausec_690_data[] = {  };
+
+static const uint16_t clausec_691_pos[] = { 1704, 3109, 3517, 3694, 5153, 5289, 640, 1052, 4048, 6186, 6207 };
+
+static const uint16_t clausec_691_data[] = {  };
+
+static const uint16_t clausec_692_pos[] = { 61, 701, 835, 1323, 1497, 1917, 2201, 2485, 2723, 2781, 3125, 3622, 3798, 4029, 4262, 4997, 5461, 5774, 5779, 5931, 6126, 6185, 6197, 258, 324, 916, 1172, 1298, 1330, 1344, 1511, 1703, 1912, 2487, 2932, 3823, 3832, 4978, 5100, 5135, 5167, 5248, 5288, 5519, 5687, 5852, 6090 };
+
+static const uint16_t clausec_692_data[] = {  };
+
+static const uint16_t clausec_693_pos[] = { 1928, 2576 };
+
+static const uint16_t clausec_693_data[] = {  };
+
+static const uint16_t clausec_694_pos[] = { 189, 485, 638, 721, 899, 1179, 1577, 1605, 1817, 1990, 2267, 3208, 3587, 3656, 3779, 4437, 4507, 4568, 4763, 5033, 5123, 5189, 5326, 5477, 5505, 5606, 5697, 5713, 5803, 5841, 5977, 6006, 6021, 6043, 6123, 6214, 98, 140, 176, 394, 471, 492, 567, 847, 930, 983, 1180, 1196, 1388, 1552, 1554, 1556, 1618, 2028, 2063, 2218, 2687, 2706, 2722, 2887, 3359, 3396, 3564, 3588, 4516, 4744, 4903, 4930, 4952, 5114, 5226, 5482, 5514, 5560, 5642, 5839 };
+
+static const uint16_t clausec_694_data[] = {  };
+
+static const uint16_t clausec_695_pos[] = { 5228 };
+
+static const uint16_t clausec_695_data[] = {  };
+
+static const uint16_t clausec_696_pos[] = { 37, 70, 206, 307, 397, 489, 542, 553, 909, 941, 961, 1777, 1869, 2065, 2281, 2403, 2918, 3137, 3153, 3185, 3345, 3374, 3448, 3672, 3861, 3998, 4489, 4510, 4894, 4973, 5091, 5214, 5611, 5801, 5817, 6219, 24, 42, 152, 260, 384, 386, 440, 536, 744, 976, 1200, 1340, 1428, 1842, 1988, 2042, 2066, 2092, 2224, 2392, 2408, 2615, 2642, 2751, 3100, 3103, 3322, 3370, 3786, 3984, 4239, 4687, 4754, 4876, 4983, 5698, 5720, 5748, 5784, 6004 };
+
+static const uint16_t clausec_696_data[] = {  };
+
+static const uint16_t clausec_697_pos[] = { 3864, 4106, 4122 };
+
+static const uint16_t clausec_697_data[] = {  };
+
+static const uint16_t clausec_698_pos[] = { 14, 225, 267, 603, 630, 947, 1069, 1085, 1086, 1155, 1565, 1974, 1987, 2462, 2669, 2725, 2891, 3435, 4041, 4251, 4286, 4694, 5073, 5145, 5205, 6061, 6243, 100, 1199, 1396, 1839, 1944, 1960, 1962, 2172, 2234, 2432, 2680, 3122, 3356, 3794, 4242, 4892, 4896, 4952, 5111, 5218, 5264, 5282, 5306, 5410, 5503, 5560, 5588, 5736, 5778, 6188 };
+
+static const uint16_t clausec_698_data[] = {  };
+
+static const uint16_t clausec_699_pos[] = { 1952, 2850 };
+
+static const uint16_t clausec_699_data[] = {  };
+
+static const uint16_t clausec_700_pos[] = { 5648 };
+
+static const uint16_t clausec_700_data[] = {  };
+
+static const uint16_t clausec_701_pos[] = { 4429 };
+
+static const uint16_t clausec_701_data[] = {  };
+
+static const uint16_t clausec_702_pos[] = { 4579, 1464, 3476, 3904, 4568 };
+
+static const uint16_t clausec_702_data[] = {  };
+
+static const uint16_t clausec_703_pos[] = { 3218, 3456, 3528 };
+
+static const uint16_t clausec_703_data[] = {  };
+
+static const uint16_t clausec_704_pos[] = { 1864, 3928, 2964, 2980, 4560 };
+
+static const uint16_t clausec_704_data[] = {  };
+
+static const uint16_t clausec_705_pos[] = { 1280 };
+
+static const uint16_t clausec_705_data[] = {  };
+
+static const uint16_t clausec_706_pos[] = { 1278, 3058, 5141, 3016, 3242, 3674 };
+
+static const uint16_t clausec_706_data[] = {  };
+
+static const uint16_t clausec_707_pos[] = { 4856 };
+
+static const uint16_t clausec_707_data[] = {  };
+
+static const uint16_t clausec_708_pos[] = { 1876, 1912, 2438, 5377, 2754, 4634, 4848 };
+
+static const uint16_t clausec_708_data[] = {  };
+
+static const uint16_t clausec_709_pos[] = { 3234, 3298 };
+
+static const uint16_t clausec_709_data[] = {  };
+
+static const uint16_t clausec_710_pos[] = { 739, 851, 1241, 1347, 1523, 1664, 3313, 4201, 5534, 2762, 2784, 3583, 4012, 4247, 4424, 4618, 5088 };
+
+static const uint16_t clausec_710_data[] = {  };
+
+static const uint16_t clausec_711_pos[] = { 4104, 5208 };
+
+static const uint16_t clausec_711_data[] = {  };
+
+static const uint16_t clausec_712_pos[] = { 1656, 2507, 3105, 3912, 1036, 2536, 4418, 4628, 4674, 4882, 5522, 5914 };
+
+static const uint16_t clausec_712_data[] = {  };
+
+static const uint16_t clausec_713_pos[] = { 4858 };
+
+static const uint16_t clausec_713_data[] = {  };
+
+static const uint16_t clausec_714_pos[] = { 5720 };
+
+static const uint16_t clausec_714_data[] = {  };
+
+static const uint16_t clausec_715_pos[] = { 1224 };
+
+static const uint16_t clausec_715_data[] = {  };
+
+static const uint16_t clausec_716_pos[] = { 1640, 3182, 3488, 5405, 696, 2252, 4008, 4624 };
+
+static const uint16_t clausec_716_data[] = {  };
+
+static const uint16_t clausec_717_pos[] = { 3464, 3924 };
+
+static const uint16_t clausec_717_data[] = {  };
+
+static const uint16_t clausec_718_pos[] = { 5648 };
+
+static const uint16_t clausec_718_data[] = {  };
+
+static const uint16_t clausec_719_pos[] = { 4768 };
+
+static const uint16_t clausec_719_data[] = {  };
+
+static const uint16_t clausec_720_pos[] = { 2080, 2112, 1448 };
+
+static const uint16_t clausec_720_data[] = {  };
+
+static const uint16_t clausec_721_pos[] = { 1664, 2336 };
+
+static const uint16_t clausec_721_data[] = {  };
+
+static const uint16_t clausec_722_pos[] = { 177, 365, 933, 1086, 1157, 1358, 2187, 2393, 3382, 5155, 5381, 162, 388, 504, 887, 978, 986, 1066, 1279, 2460, 2874, 3016, 3212, 4199, 4231, 4402, 4535, 4631, 4728, 4775, 4896, 5840 };
+
+static const uint16_t clausec_722_data[] = {  };
+
+static const uint16_t clausec_723_pos[] = { 4640 };
+
+static const uint16_t clausec_723_data[] = {  };
+
+static const uint16_t clausec_724_pos[] = { 5672 };
+
+static const uint16_t clausec_724_data[] = {  };
+
+static const uint16_t clausec_725_pos[] = { 166, 241, 413, 457, 1027, 1173, 1213, 1438, 1571, 1605, 1619, 1651, 1661, 1787, 2003, 2259, 2267, 2453, 2517, 3075, 3189, 3225, 3374, 3398, 3557, 3649, 4285, 4542, 5645, 92, 111, 168, 412, 522, 944, 1178, 1362, 1368, 1600, 1648, 2066, 2080, 2282, 2496, 2520, 3092, 3112, 3168, 3328, 4039, 4276, 4439, 4488, 4866, 4898, 4952, 5332, 5426, 5572, 5976, 6012, 6018 };
+
+static const uint16_t clausec_725_data[] = {  };
+
+static const uint16_t clausec_726_pos[] = { 5963 };
+
+static const uint16_t clausec_726_data[] = {  };
+
+static const uint16_t clausec_727_pos[] = { 3440 };
+
+static const uint16_t clausec_727_data[] = {  };
+
+static const uint16_t clausec_728_pos[] = { 2262 };
+
+static const uint16_t clausec_728_data[] = {  };
+
+static const uint16_t clausec_729_pos[] = { 3018, 3517, 2871, 3514, 4506 };
+
+static const uint16_t clausec_729_data[] = {  };
+
+static const uint16_t clausec_730_pos[] = { 25, 117, 125, 209, 323, 390, 1217, 1890, 2233, 2593, 3042, 3350, 4235, 4262, 4843, 5313, 5389, 6246, 79, 772, 2743, 2772, 3192, 4896, 5146 };
+
+static const uint16_t clausec_730_data[] = {  };
+
+static const uint16_t clausec_731_pos[] = { 62, 179, 1741, 2878, 2961, 3302, 3990, 220, 2148, 2908, 2948, 4130 };
+
+static const uint16_t clausec_731_data[] = {  };
+
+static const uint16_t clausec_732_pos[] = { 1936, 2114, 3914, 4138 };
+
+static const uint16_t clausec_732_data[] = {  };
+
+static const uint16_t clausec_733_pos[] = { 515, 5805, 783, 2368, 2946, 5200, 5210, 5416, 5426, 5458, 5466, 5828, 5900 };
+
+static const uint16_t clausec_733_data[] = {  };
+
+static const uint16_t clausec_734_pos[] = { 5954 };
+
+static const uint16_t clausec_734_data[] = {  };
+
+static const uint16_t clausec_735_pos[] = { 4618 };
+
+static const uint16_t clausec_735_data[] = {  };
+
+static const uint16_t clausec_736_pos[] = { 134, 715, 1129, 1277, 1549, 3331, 3797, 5405, 5582, 1256, 3248, 3680, 3818, 4122, 4524, 4556 };
+
+static const uint16_t clausec_736_data[] = {  };
+
+static const uint16_t clausec_737_pos[] = { 1854, 138, 1922, 2360 };
+
+static const uint16_t clausec_737_data[] = {  };
+
+static const uint16_t clausec_738_pos[] = { 550, 822, 869, 987, 1361, 1629, 3334, 4873, 5413, 5766, 5797, 5870, 6265, 135, 207, 583, 623, 631, 1076, 1236, 1602, 3242, 3548, 3672, 3896, 3988, 4026, 4324, 4544, 4752, 4951, 4959, 5552, 6031 };
+
+static const uint16_t clausec_738_data[] = {  };
+
+static const uint16_t clausec_739_pos[] = {  };
+
+static const uint16_t clausec_739_data[] = {  };
+
+static const uint16_t clausec_740_pos[] = { 3149 };
+
+static const uint16_t clausec_740_data[] = {  };
+
+static const uint16_t clausec_741_pos[] = { 2760, 3680 };
+
+static const uint16_t clausec_741_data[] = {  };
+
+static const uint16_t clausec_742_pos[] = { 2688 };
+
+static const uint16_t clausec_742_data[] = {  };
+
+static const uint16_t clausec_743_pos[] = { 3008, 3066 };
+
+static const uint16_t clausec_743_data[] = {  };
+
+static const uint16_t clausec_744_pos[] = { 107, 193, 493, 523, 625, 725, 979, 1321, 1790, 2013, 3107, 3153, 3574, 3854, 4054, 4307, 4459, 4659, 4681, 4917, 5115, 5969, 148, 280, 511, 666, 1071, 1104, 1224, 1250, 1264, 1266, 1316, 1554, 2234, 2240, 2740, 2762, 2775, 2794, 2970, 2976, 3564, 3616, 4044, 4415, 4514, 4959, 5080, 5116, 5402, 5407, 5852, 6236 };
+
+static const uint16_t clausec_744_data[] = {  };
+
+static const uint16_t clausec_745_pos[] = { 4552, 5432 };
+
+static const uint16_t clausec_745_data[] = {  };
+
+static const uint16_t clausec_746_pos[] = { 5656 };
+
+static const uint16_t clausec_746_data[] = {  };
+
+static const uint16_t clausec_747_pos[] = { 3248, 2360 };
+
+static const uint16_t clausec_747_data[] = {  };
+
+static const uint16_t clausec_748_pos[] = { 841, 1437, 3253, 4753, 5181, 5222, 5779, 2448, 3336, 3460, 3474, 3680, 4700, 4786, 4895 };
+
+static const uint16_t clausec_748_data[] = {  };
+
+static const uint16_t clausec_749_pos[] = { 1266 };
+
+static const uint16_t clausec_749_data[] = {  };
+
+static const uint16_t clausec_750_pos[] = { 1232, 3250, 4136, 4578 };
+
+static const uint16_t clausec_750_data[] = {  };
+
+static const uint16_t clausec_751_pos[] = { 646, 867, 1521, 2461, 2665, 3240, 3518, 5677, 239, 848, 1599, 2064, 3306, 3972 };
+
+static const uint16_t clausec_751_data[] = {  };
+
+static const uint16_t clausec_752_pos[] = { 374, 731, 1077, 1254, 1914, 3187, 3264, 4253, 4403, 4437, 4637, 4925, 5779, 330, 968, 2768, 2866, 3202, 3412, 4444, 4655, 5314, 5778, 6255 };
+
+static const uint16_t clausec_752_data[] = {  };
+
+static const uint16_t clausec_753_pos[] = { 2766, 3217, 3240, 3285, 3510, 391, 3536, 5644, 5656 };
+
+static const uint16_t clausec_753_data[] = {  };
+
+static const uint16_t clausec_754_pos[] = { 2336, 1692 };
+
+static const uint16_t clausec_754_data[] = {  };
+
+static const uint16_t clausec_755_pos[] = { 4528 };
+
+static const uint16_t clausec_755_data[] = {  };
+
+static const uint16_t clausec_756_pos[] = { 1672, 1690, 2369, 2550, 3912, 4528, 4608 };
+
+static const uint16_t clausec_756_data[] = {  };
+
+static const uint16_t clausec_757_pos[] = { 4306 };
+
+static const uint16_t clausec_757_data[] = {  };
+
+static const uint16_t clausec_758_pos[] = { 2380, 2562, 1472 };
+
+static const uint16_t clausec_758_data[] = {  };
+
+static const uint16_t clausec_759_pos[] = { 1616, 1632, 2164, 3279, 3312, 3844 };
+
+static const uint16_t clausec_759_data[] = {  };
+
+static const uint16_t clausec_760_pos[] = { 1658, 1969, 4427, 2760, 4392, 5287, 5304 };
+
+static const uint16_t clausec_760_data[] = {  };
+
+static const uint16_t clausec_761_pos[] = { 1419, 1853, 4824, 5734, 5902, 2280, 2498, 5482 };
+
+static const uint16_t clausec_761_data[] = {  };
+
+static const uint16_t clausec_762_pos[] = { 2140, 3274, 1234, 1466, 4316 };
+
+static const uint16_t clausec_762_data[] = {  };
+
+static const uint16_t clausec_763_pos[] = { 1107, 4562, 2720, 5426, 5456, 5676 };
+
+static const uint16_t clausec_763_data[] = {  };
+
+static const uint16_t clausec_764_pos[] = { 1310, 4254, 4965, 5625, 104, 1068, 1258, 1999, 2800, 3458, 3900, 4114, 4312, 4504 };
+
+static const uint16_t clausec_764_data[] = {  };
+
+static const uint16_t clausec_765_pos[] = { 3200, 3684 };
+
+static const uint16_t clausec_765_data[] = {  };
+
+static const uint16_t clausec_766_pos[] = { 846, 3266, 3401, 3566, 3688, 4934, 5318, 812, 818, 1012, 2474, 2791, 2992, 3020, 3196, 3202, 4412, 4420, 4634, 5652, 6064 };
+
+static const uint16_t clausec_766_data[] = {  };
+
+static const uint16_t clausec_767_pos[] = { 1220 };
+
+static const uint16_t clausec_767_data[] = {  };
+
+static const uint16_t clausec_768_pos[] = { 1, 301, 910, 2489, 3585, 3827, 4649, 4965, 5819, 600, 1236, 1304, 1820, 2218, 2460, 3240, 3464, 4034, 4122, 4559, 4959, 4994 };
+
+static const uint16_t clausec_768_data[] = {  };
+
+static const uint16_t clausec_769_pos[] = { 4597, 2144, 2580 };
+
+static const uint16_t clausec_769_data[] = {  };
+
+static const uint16_t clausec_770_pos[] = { 2832, 1444, 1472, 3460, 3674, 4312 };
+
+static const uint16_t clausec_770_data[] = {  };
+
+static const uint16_t clausec_771_pos[] = { 3194 };
+
+static const uint16_t clausec_771_data[] = {  };
+
+static const uint16_t clausec_772_pos[] = { 3830 };
+
+static const uint16_t clausec_772_data[] = {  };
+
+static const uint16_t clausec_773_pos[] = { 2760, 3240 };
+
+static const uint16_t clausec_773_data[] = {  };
+
+static const uint16_t clausec_774_pos[] = { 2272 };
+
+static const uint16_t clausec_774_data[] = {  };
+
+static const uint16_t clausec_775_pos[] = { 293, 446, 773, 774, 1366, 2265, 2553, 3782, 5349, 5675, 5686, 5691, 5902, 6182, 416, 754, 1442, 1656, 1856, 2018, 2087, 2242, 2296, 2479, 2738, 3788, 5434, 5872 };
+
+static const uint16_t clausec_775_data[] = {  };
+
+static const uint16_t clausec_776_pos[] = { 557 };
+
+static const uint16_t clausec_776_data[] = {  };
+
+static const uint16_t clausec_777_pos[] = { 2994 };
+
+static const uint16_t clausec_777_data[] = {  };
+
+static const uint16_t clausec_778_pos[] = { 1464, 3250, 3900, 4340, 4540 };
+
+static const uint16_t clausec_778_data[] = {  };
+
+static const uint16_t clausec_779_pos[] = { 3048, 3728 };
+
+static const uint16_t clausec_779_data[] = {  };
+
+static const uint16_t clausec_780_pos[] = { 25, 123, 139, 174, 254, 275, 409, 419, 435, 497, 517, 617, 669, 694, 705, 757, 769, 795, 811, 817, 950, 1001, 1005, 1022, 1061, 1069, 1163, 1371, 1381, 1597, 1617, 2029, 2237, 2238, 2281, 2677, 2686, 2753, 2979, 3197, 3382, 3409, 3585, 3603, 4073, 4078, 4230, 4315, 4453, 4505, 4601, 4635, 4649, 4651, 4723, 4747, 4785, 4857, 5086, 5150, 5219, 5318, 5422, 5573, 5590, 5691, 5761, 5790, 5837, 5869, 5977, 6030, 6043, 6173, 8, 100, 159, 178, 287, 328, 332, 396, 402, 455, 514, 538, 658, 680, 730, 756, 882, 903, 1002, 1024, 1088, 1104, 1288, 1532, 1770, 1776, 1808, 1828, 1984, 2463, 2784, 2788, 2896, 2900, 2936, 2975, 2984, 3184, 3352, 3364, 3388, 3580, 3583, 3596, 3608, 3788, 3832, 3996, 4028, 4031, 4036, 4248, 4276, 4436, 4511, 4540, 4719, 4722, 4888, 5092, 5138, 5170, 5175, 5391, 5530, 5551, 5586, 5788, 5952, 5972, 6031, 6079, 6106, 6196 };
+
+static const uint16_t clausec_780_data[] = {  };
+
+static const uint16_t clausec_781_pos[] = { 1024 };
+
+static const uint16_t clausec_781_data[] = {  };
+
+static const uint16_t clausec_782_pos[] = { 2312, 2346, 1672 };
+
+static const uint16_t clausec_782_data[] = {  };
+
+static const uint16_t clausec_783_pos[] = { 1896 };
+
+static const uint16_t clausec_783_data[] = {  };
+
+static const uint16_t clausec_784_pos[] = { 302, 4230, 4685, 5389, 5835, 6105, 786, 1432, 1450, 1476, 1780, 3456, 3692, 4544, 4728, 4762 };
+
+static const uint16_t clausec_784_data[] = {  };
+
+static const uint16_t clausec_785_pos[] = { 4432 };
+
+static const uint16_t clausec_785_data[] = {  };
+
+static const uint16_t clausec_786_pos[] = { 433, 622, 715, 813, 1126, 1182, 1254, 1382, 1987, 2419, 5781, 799, 1103, 1248, 1276, 3016, 3028, 3672, 3986, 4106, 6223 };
+
+static const uint16_t clausec_786_data[] = {  };
+
+static const uint16_t clausec_787_pos[] = { 1248 };
+
+static const uint16_t clausec_787_data[] = {  };
+
+static const uint16_t clausec_788_pos[] = { 2104, 2120, 3000, 3010, 3194, 4044, 4656, 4754, 5095 };
+
+static const uint16_t clausec_788_data[] = {  };
+
+static const uint16_t clausec_789_pos[] = { 1545, 3008, 3026, 1344, 3080, 6020 };
+
+static const uint16_t clausec_789_data[] = {  };
+
+static const uint16_t clausec_790_pos[] = { 499, 501, 1347, 2926, 6089, 79, 752, 898, 972, 2895, 3026, 3463, 3674, 4007, 4108, 4756, 4968, 5071, 5095, 6138 };
+
+static const uint16_t clausec_790_data[] = {  };
+
+static const uint16_t clausec_791_pos[] = { 2544, 3232 };
+
+static const uint16_t clausec_791_data[] = {  };
+
+static const uint16_t clausec_792_pos[] = { 497, 545, 929, 1181, 1350, 2259, 2905, 3488, 3547, 3821, 3837, 4670, 5851, 6070, 272, 311, 431, 1032, 1084, 2994, 3008, 3104, 3346, 3428, 3586, 3626, 3844, 4252, 4480, 4484, 4616, 4671, 4872, 5524, 5844, 6092 };
+
+static const uint16_t clausec_792_data[] = {  };
+
+static const uint16_t clausec_793_pos[] = { 3523, 2610, 2848, 3724, 5740 };
+
+static const uint16_t clausec_793_data[] = {  };
+
+static const uint16_t clausec_794_pos[] = { 139, 585, 685, 689, 723, 765, 1285, 1377, 2675, 3022, 3862, 5369, 5894, 12, 176, 343, 362, 1232, 1242, 1274, 1772, 1794, 1994, 3018, 3234, 3666, 3978, 4864, 4876, 4936, 5554 };
+
+static const uint16_t clausec_794_data[] = {  };
+
+static const uint16_t clausec_795_pos[] = { 2784, 2931, 2626 };
+
+static const uint16_t clausec_795_data[] = {  };
+
+static const uint16_t clausec_796_pos[] = { 75, 78, 769, 1022, 1105, 1113, 1141, 1254, 1289, 1385, 2253, 2670, 3171, 3785, 4195, 4641, 4691, 4905, 5165, 5365, 5539, 5597, 6193, 6265, 87, 215, 276, 300, 303, 623, 746, 976, 1071, 1135, 1263, 1282, 1290, 1298, 1778, 3018, 3168, 3458, 3666, 3778, 3824, 3874, 4015, 4060, 4092, 4296, 4856, 5600, 5628, 5791, 6008, 6015, 6242 };
+
+static const uint16_t clausec_796_data[] = {  };
+
+static const uint16_t clausec_797_pos[] = { 3202 };
+
+static const uint16_t clausec_797_data[] = {  };
+
+static const uint16_t clausec_798_pos[] = { 2064, 1408, 1458 };
+
+static const uint16_t clausec_798_data[] = {  };
+
+static const uint16_t clausec_799_pos[] = { 2976 };
+
+static const uint16_t clausec_799_data[] = {  };
+
+static const uint16_t clausec_800_pos[] = { 3024, 1462 };
+
+static const uint16_t clausec_800_data[] = {  };
+
+static const uint16_t clausec_801_pos[] = { 3418, 4218 };
+
+static const uint16_t clausec_801_data[] = {  };
+
+static const uint16_t clausec_802_pos[] = { 369, 2246, 3877, 4054, 4749, 5110, 5264, 346, 1296, 1327, 2138, 3520, 4463, 4890, 5208, 6028, 6252 };
+
+static const uint16_t clausec_802_data[] = {  };
+
+static const uint16_t clausec_803_pos[] = { 1957, 3059, 5037, 3719, 4730, 5258, 5460 };
+
+static const uint16_t clausec_803_data[] = {  };
+
+static const uint16_t clausec_804_pos[] = { 1250, 2554, 3288 };
+
+static const uint16_t clausec_804_data[] = {  };
+
+static const uint16_t clausec_805_pos[] = { 5049, 2568, 3000 };
+
+static const uint16_t clausec_805_data[] = {  };
+
+static const uint16_t clausec_806_pos[] = { 228 };
+
+static const uint16_t clausec_806_data[] = {  };
+
+static const uint16_t clausec_807_pos[] = { 2128, 1488, 2492, 5314 };
+
+static const uint16_t clausec_807_data[] = {  };
+
+static const uint16_t clausec_808_pos[] = { 2912 };
+
+static const uint16_t clausec_808_data[] = {  };
+
+static const uint16_t clausec_809_pos[] = { 235, 657, 717, 1651, 2587, 3065, 3470, 4057, 4230, 5843, 6198, 148, 1364, 2224, 3244, 5396 };
+
+static const uint16_t clausec_809_data[] = {  };
+
+static const uint16_t clausec_810_pos[] = { 4136, 5282 };
+
+static const uint16_t clausec_810_data[] = {  };
+
+static const uint16_t clausec_811_pos[] = { 1991, 5032, 5274 };
+
+static const uint16_t clausec_811_data[] = {  };
+
+static const uint16_t clausec_812_pos[] = { 6262 };
+
+static const uint16_t clausec_812_data[] = {  };
+
+static const uint16_t clausec_813_pos[] = { 1161, 2926, 3083, 4550, 592, 890, 1850, 1858, 2663, 4002, 4088, 4112, 4232, 4663, 4698, 5072 };
+
+static const uint16_t clausec_813_data[] = {  };
+
+static const uint16_t clausec_814_pos[] = { 2226 };
+
+static const uint16_t clausec_814_data[] = {  };
+
+static const uint16_t clausec_815_pos[] = { 653, 886, 1281, 2739, 3730, 4384, 5371, 5377, 1338, 1770, 3175, 3380, 5082, 5671, 6056 };
+
+static const uint16_t clausec_815_data[] = {  };
+
+static const uint16_t clausec_816_pos[] = { 3480, 4344, 5272 };
+
+static const uint16_t clausec_816_data[] = {  };
+
+static const uint16_t clausec_817_pos[] = { 2328, 2346, 2634, 2754 };
+
+static const uint16_t clausec_817_data[] = {  };
+
+static const uint16_t clausec_818_pos[] = { 5845 };
+
+static const uint16_t clausec_818_data[] = {  };
+
+static const uint16_t clausec_819_pos[] = { 1085 };
+
+static const uint16_t clausec_819_data[] = {  };
+
+static const uint16_t clausec_820_pos[] = { 2493 };
+
+static const uint16_t clausec_820_data[] = {  };
+
+static const uint16_t clausec_821_pos[] = { 3880, 4136 };
+
+static const uint16_t clausec_821_data[] = {  };
+
+static const uint16_t clausec_822_pos[] = { 5566 };
+
+static const uint16_t clausec_822_data[] = {  };
+
+static const uint16_t clausec_823_pos[] = { 1793, 2562, 2570, 2786, 2992, 4946 };
+
+static const uint16_t clausec_823_data[] = {  };
+
+static const uint16_t clausec_824_pos[] = { 2192 };
+
+static const uint16_t clausec_824_data[] = {  };
+
+static const uint16_t clausec_825_pos[] = { 171, 1755, 2435, 1856, 1888, 2096, 2632 };
+
+static const uint16_t clausec_825_data[] = {  };
+
+static const uint16_t clausec_826_pos[] = { 4899 };
+
+static const uint16_t clausec_826_data[] = {  };
+
+static const uint16_t clausec_827_pos[] = { 3450, 3466 };
+
+static const uint16_t clausec_827_data[] = {  };
+
+static const uint16_t clausec_828_pos[] = { 109, 253, 827, 883, 1861, 2003, 2229, 3163, 3190, 4114, 4747, 4945, 5240, 5339, 5710, 5753, 5849, 5997, 7, 402, 503, 1618, 2250, 2503, 3586, 4920 };
+
+static const uint16_t clausec_828_data[] = {  };
+
+static const uint16_t clausec_829_pos[] = { 3024, 3460 };
+
+static const uint16_t clausec_829_data[] = {  };
+
+static const uint16_t clausec_830_pos[] = { 2470 };
+
+static const uint16_t clausec_830_data[] = {  };
+
+static const uint16_t clausec_831_pos[] = { 1203, 3050, 1759, 2436, 3343, 4536, 4556, 4968 };
+
+static const uint16_t clausec_831_data[] = {  };
+
+static const uint16_t clausec_832_pos[] = { 4042 };
+
+static const uint16_t clausec_832_data[] = {  };
+
+static const uint16_t clausec_833_pos[] = { 230, 582, 899, 1099, 2277, 3273, 3421, 5161, 5585, 24, 244, 488, 516, 2896, 3826, 3879, 3880, 3903, 4124, 4132, 5736 };
+
+static const uint16_t clausec_833_data[] = {  };
+
+static const uint16_t clausec_834_pos[] = { 2336, 2784, 2994 };
+
+static const uint16_t clausec_834_data[] = {  };
+
+static const uint16_t clausec_835_pos[] = { 3192 };
+
+static const uint16_t clausec_835_data[] = {  };
+
+static const uint16_t clausec_836_pos[] = { 5514 };
+
+static const uint16_t clausec_836_data[] = {  };
+
+static const uint16_t clausec_837_pos[] = { 3458, 3688 };
+
+static const uint16_t clausec_837_data[] = {  };
+
+static const uint16_t clausec_838_pos[] = { 1481 };
+
+static const uint16_t clausec_838_data[] = {  };
+
+static const uint16_t clausec_839_pos[] = { 5718, 3040, 3684 };
+
+static const uint16_t clausec_839_data[] = {  };
+
+static const uint16_t clausec_840_pos[] = { 3898, 4235, 4328, 5616, 6023 };
+
+static const uint16_t clausec_840_data[] = {  };
+
+static const uint16_t clausec_841_pos[] = { 141, 1982, 2077, 2286, 2622, 4133, 4195, 4574, 4725, 1588, 2384, 2639, 6202 };
+
+static const uint16_t clausec_841_data[] = {  };
+
+static const uint16_t clausec_842_pos[] = { 2432 };
+
+static const uint16_t clausec_842_data[] = {  };
+
+static const uint16_t clausec_843_pos[] = { 3428, 4178 };
+
+static const uint16_t clausec_843_data[] = {  };
+
+static const uint16_t clausec_844_pos[] = { 4352, 5282 };
+
+static const uint16_t clausec_844_data[] = {  };
+
+static const uint16_t clausec_845_pos[] = { 3874, 4168 };
+
+static const uint16_t clausec_845_data[] = {  };
+
+static const uint16_t clausec_846_pos[] = { 4344, 5272 };
+
+static const uint16_t clausec_846_data[] = {  };
+
+static const uint16_t clausec_847_pos[] = { 945, 1829, 2113, 2429, 3793, 4518, 6083, 74, 696, 1978, 2416, 2432, 2524, 4984, 5264, 5580, 5588 };
+
+static const uint16_t clausec_847_data[] = {  };
+
+static const uint16_t clausec_848_pos[] = { 3890, 4572 };
+
+static const uint16_t clausec_848_data[] = {  };
+
+static const uint16_t clausec_849_pos[] = { 6059, 780, 2570, 3008, 3226, 5612, 5776 };
+
+static const uint16_t clausec_849_data[] = {  };
+
+static const uint16_t clausec_850_pos[] = { 278, 1094, 1110, 1258, 2693, 4417, 4693, 5705, 6163, 168, 448, 506, 551, 1184, 1610, 2040, 2695, 3292, 3296, 3392, 3964, 4034, 4727, 4976, 5576, 5642, 5682, 5935, 6124 };
+
+static const uint16_t clausec_850_data[] = {  };
+
+static const uint16_t clausec_851_pos[] = { 4579, 2796, 3226 };
+
+static const uint16_t clausec_851_data[] = {  };
+
+static const uint16_t clausec_852_pos[] = { 4322 };
+
+static const uint16_t clausec_852_data[] = {  };
+
+static const uint16_t clausec_853_pos[] = { 3888, 3906 };
+
+static const uint16_t clausec_853_data[] = {  };
+
+static const uint16_t clausec_854_pos[] = { 4104, 3200, 4400, 5068 };
+
+static const uint16_t clausec_854_data[] = {  };
+
+static const uint16_t clausec_855_pos[] = { 3248, 3268 };
+
+static const uint16_t clausec_855_data[] = {  };
+
+static const uint16_t clausec_856_pos[] = { 4116 };
+
+static const uint16_t clausec_856_data[] = {  };
+
+static const uint16_t clausec_857_pos[] = { 2102, 2869, 5142, 1888, 2186, 2199, 2312 };
+
+static const uint16_t clausec_857_data[] = {  };
+
+static const uint16_t clausec_858_pos[] = { 5479 };
+
+static const uint16_t clausec_858_data[] = {  };
+
+static const uint16_t clausec_859_pos[] = { 3914, 4114, 4132 };
+
+static const uint16_t clausec_859_data[] = {  };
+
+static const uint16_t clausec_860_pos[] = { 2174 };
+
+static const uint16_t clausec_860_data[] = {  };
+
+static const uint16_t clausec_861_pos[] = { 361, 502, 870, 1534, 2251, 2657, 3161, 3501, 4974, 5238, 5581, 5925, 6158, 400, 2676, 5210, 5258, 5304 };
+
+static const uint16_t clausec_861_data[] = {  };
+
+static const uint16_t clausec_862_pos[] = { 2320, 5056 };
+
+static const uint16_t clausec_862_data[] = {  };
+
+static const uint16_t clausec_863_pos[] = { 3866, 4098, 4114, 4128, 4138 };
+
+static const uint16_t clausec_863_data[] = {  };
+
+static const uint16_t clausec_864_pos[] = { 117, 401, 445, 485, 782, 963, 1406, 2085, 3755, 3830, 3904, 4061, 4190, 4225, 4246, 5240, 5427, 5526, 6027, 64, 220, 420, 472, 620, 1375, 1412, 1620, 1628, 2034, 3207, 3415, 3535, 3596, 4023, 4031, 4248, 4252, 4280, 4943, 5111, 5127, 5372, 5570, 5576, 5663, 5703, 5823, 5882 };
+
+static const uint16_t clausec_864_data[] = {  };
+
+static const uint16_t clausec_865_pos[] = { 622, 1054, 2435, 4227, 4678, 516, 2680, 2864, 4096, 4330, 4346, 4352, 4938, 5400 };
+
+static const uint16_t clausec_865_data[] = {  };
+
+static const uint16_t clausec_866_pos[] = { 2768, 572, 3656 };
+
+static const uint16_t clausec_866_data[] = {  };
+
+static const uint16_t clausec_867_pos[] = { 2802, 3232 };
+
+static const uint16_t clausec_867_data[] = {  };
+
+static const uint16_t clausec_868_pos[] = { 422 };
+
+static const uint16_t clausec_868_data[] = {  };
+
+static const uint16_t clausec_869_pos[] = { 5627, 6051, 3860, 4098, 4104, 4114, 4120, 4132, 5314, 6026 };
+
+static const uint16_t clausec_869_data[] = {  };
+
+static const uint16_t clausec_870_pos[] = { 4576, 5288, 3298 };
+
+static const uint16_t clausec_870_data[] = {  };
+
+static const uint16_t clausec_871_pos[] = { 1813, 3046, 4176, 4600, 847 };
+
+static const uint16_t clausec_871_data[] = {  };
+
+static const uint16_t clausec_872_pos[] = { 2237 };
+
+static const uint16_t clausec_872_data[] = {  };
+
+static const uint16_t clausec_873_pos[] = { 2640, 5040, 5490 };
+
+static const uint16_t clausec_873_data[] = {  };
+
+static const uint16_t clausec_874_pos[] = { 2562, 3026, 3977, 5925, 2986, 3754, 4279 };
+
+static const uint16_t clausec_874_data[] = {  };
+
+static const uint16_t clausec_875_pos[] = { 305, 4253, 5053, 447, 2652, 3162, 4754, 5256, 5258 };
+
+static const uint16_t clausec_875_data[] = {  };
+
+static const uint16_t clausec_876_pos[] = { 2880 };
+
+static const uint16_t clausec_876_data[] = {  };
+
+static const uint16_t clausec_877_pos[] = { 3896, 3912 };
+
+static const uint16_t clausec_877_data[] = {  };
+
+static const uint16_t clausec_878_pos[] = {  };
+
+static const uint16_t clausec_878_data[] = {  };
+
+static const uint16_t clausec_879_pos[] = { 163, 382, 454, 1102, 2598, 2645, 2846, 3131, 3675, 5262, 5523, 394, 1976, 1991, 1999, 2288, 2312, 3088, 3124, 5504, 5631 };
+
+static const uint16_t clausec_879_data[] = {  };
+
+static const uint16_t clausec_880_pos[] = {  };
+
+static const uint16_t clausec_880_data[] = {  };
+
+static const uint16_t clausec_881_pos[] = { 3036, 3240 };
+
+static const uint16_t clausec_881_data[] = {  };
+
+static const uint16_t clausec_882_pos[] = { 5582 };
+
+static const uint16_t clausec_882_data[] = {  };
+
+static const uint16_t clausec_883_pos[] = { 3874, 3880, 4120, 4354 };
+
+static const uint16_t clausec_883_data[] = {  };
+
+static const uint16_t clausec_884_pos[] = { 565, 661, 1019, 1129, 1450, 1542, 3373, 4225, 4230, 5179, 5685, 322, 1000, 3508, 3836, 4194, 5679 };
+
+static const uint16_t clausec_884_data[] = {  };
+
+static const uint16_t clausec_885_pos[] = { 53, 718, 853, 878, 1139, 1289, 1291, 1717, 2078, 2269, 2377, 2945, 4254, 4667, 4795, 4953, 5177, 5437, 5553, 5723, 6043, 202, 268, 922, 1575, 2472, 2664, 3156, 3584, 4567, 4690, 4767, 4903, 4983, 5143, 5296, 5300, 5384, 5472, 5732, 5800, 5951, 5984, 6098, 6170, 6186, 6226, 6271 };
+
+static const uint16_t clausec_885_data[] = {  };
+
+static const uint16_t clausec_886_pos[] = { 1990 };
+
+static const uint16_t clausec_886_data[] = {  };
+
+static const uint16_t clausec_887_pos[] = { 1245, 2693, 5040, 5266, 5300, 5480 };
+
+static const uint16_t clausec_887_data[] = {  };
+
+static const uint16_t clausec_888_pos[] = { 1125 };
+
+static const uint16_t clausec_888_data[] = {  };
+
+static const uint16_t clausec_889_pos[] = { 2438, 2654, 2723, 3827, 4029, 4362, 4593, 4958, 5441, 5769, 378, 476, 1508, 3144, 3564, 4751, 5060, 5288, 5391, 5423, 5770, 6159 };
+
+static const uint16_t clausec_889_data[] = {  };
+
+static const uint16_t clausec_890_pos[] = { 4336, 5260 };
+
+static const uint16_t clausec_890_data[] = {  };
+
+static const uint16_t clausec_891_pos[] = { 6, 222, 342, 681, 1539, 2209, 2219, 2947, 4942, 5157, 5198, 5622, 239, 852, 872, 2432, 3180, 4351, 4500, 4575, 5242, 5290, 5448, 6024 };
+
+static const uint16_t clausec_891_data[] = {  };
+
+static const uint16_t clausec_892_pos[] = {  };
+
+static const uint16_t clausec_892_data[] = {  };
+
+static const uint16_t clausec_893_pos[] = { 2104, 2298, 2304, 2400, 2624, 2644, 3447, 4938, 5122 };
+
+static const uint16_t clausec_893_data[] = {  };
+
+static const uint16_t clausec_894_pos[] = { 3578 };
+
+static const uint16_t clausec_894_data[] = {  };
+
+static const uint16_t clausec_895_pos[] = { 1233, 2755, 586, 2560, 2652, 2783, 3002 };
+
+static const uint16_t clausec_895_data[] = {  };
+
+static const uint16_t clausec_896_pos[] = { 3128 };
+
+static const uint16_t clausec_896_data[] = {  };
+
+static const uint16_t clausec_897_pos[] = { 3780, 3872, 4112, 4128, 4140 };
+
+static const uint16_t clausec_897_data[] = {  };
+
+static const uint16_t clausec_898_pos[] = { 2400, 3730 };
+
+static const uint16_t clausec_898_data[] = {  };
+
+static const uint16_t clausec_899_pos[] = { 3989 };
+
+static const uint16_t clausec_899_data[] = {  };
+
+static const uint16_t clausec_900_pos[] = { 1254, 1614, 1712, 1896, 3068, 5883, 1120, 1640, 5178 };
+
+static const uint16_t clausec_900_data[] = {  };
+
+static const uint16_t clausec_901_pos[] = { 3754 };
+
+static const uint16_t clausec_901_data[] = {  };
+
+static const uint16_t clausec_902_pos[] = { 2740 };
+
+static const uint16_t clausec_902_data[] = {  };
+
+static const uint16_t clausec_903_pos[] = { 4562 };
+
+static const uint16_t clausec_903_data[] = {  };
+
+static const uint16_t clausec_904_pos[] = { 6, 206, 267, 395, 574, 613, 1003, 1062, 1377, 1617, 1629, 1633, 1665, 1755, 1989, 1990, 2227, 2283, 2969, 3040, 3117, 3141, 3265, 3366, 3593, 3601, 4067, 4089, 4483, 4747, 5134, 5414, 5790, 5901, 5987, 6169, 116, 196, 220, 480, 696, 951, 1028, 1039, 1308, 1424, 1506, 1736, 1756, 1848, 2060, 2516, 3151, 3364, 3388, 3754, 3810, 3975, 4250, 4306, 4346, 4546, 4679, 4730, 4744, 5554, 5784, 5788, 6156 };
+
+static const uint16_t clausec_904_data[] = {  };
+
+static const uint16_t clausec_905_pos[] = {  };
+
+static const uint16_t clausec_905_data[] = {  };
+
+static const uint16_t clausec_906_pos[] = { 1765, 3010, 3268, 5411, 5827, 1002, 1744, 4410 };
+
+static const uint16_t clausec_906_data[] = {  };
+
+static const uint16_t clausec_907_pos[] = { 3902, 648, 2800, 3456, 3852, 3888 };
+
+static const uint16_t clausec_907_data[] = {  };
+
+static const uint16_t clausec_908_pos[] = { 5760 };
+
+static const uint16_t clausec_908_data[] = {  };
+
+static const uint16_t clausec_909_pos[] = { 4552 };
+
+static const uint16_t clausec_909_data[] = {  };
+
+static const uint16_t clausec_910_pos[] = { 94, 438, 441, 449, 646, 1005, 1057, 1101, 1115, 1385, 1405, 1771, 1990, 2112, 2824, 2899, 3315, 3353, 3373, 3499, 4193, 4715, 4741, 4905, 5333, 5577, 5801, 5833, 5942, 6073, 6113, 112, 336, 428, 527, 644, 674, 1024, 1060, 1074, 1202, 1367, 1434, 1866, 2042, 2288, 4008, 4202, 4479, 4648, 4728, 4919, 4920, 4991, 5103, 5116, 5136, 5892, 6018, 6060, 6087 };
+
+static const uint16_t clausec_910_data[] = {  };
+
+static const uint16_t clausec_911_pos[] = { 1073, 2758, 4086, 3034, 3658 };
+
+static const uint16_t clausec_911_data[] = {  };
+
+static const uint16_t clausec_912_pos[] = { 5684 };
+
+static const uint16_t clausec_912_data[] = {  };
+
+static const uint16_t clausec_913_pos[] = { 5206 };
+
+static const uint16_t clausec_913_data[] = {  };
+
+static const uint16_t clausec_914_pos[] = {  };
+
+static const uint16_t clausec_914_data[] = {  };
+
+static const uint16_t clausec_915_pos[] = {  };
+
+static const uint16_t clausec_915_data[] = {  };
+
+static const uint16_t clausec_916_pos[] = { 5760 };
+
+static const uint16_t clausec_916_data[] = {  };
+
+static const uint16_t clausec_917_pos[] = { 5012, 3714 };
+
+static const uint16_t clausec_917_data[] = {  };
+
+static const uint16_t clausec_918_pos[] = { 173, 723, 846, 974, 1912, 3442, 3590, 4982, 5659, 472, 696, 800, 850, 1223, 1232, 1304, 1628, 3564, 4328, 4682, 4738, 4748, 5639 };
+
+static const uint16_t clausec_918_data[] = {  };
+
+static const uint16_t clausec_919_pos[] = { 3664 };
+
+static const uint16_t clausec_919_data[] = {  };
+
+static const uint16_t clausec_920_pos[] = {  };
+
+static const uint16_t clausec_920_data[] = {  };
+
+static const uint16_t clausec_921_pos[] = { 1371, 1577, 1811, 2734, 5982, 452, 1096, 2471, 2744, 2760, 2768, 2954 };
+
+static const uint16_t clausec_921_data[] = {  };
+
+static const uint16_t clausec_922_pos[] = { 69, 117, 155, 214, 315, 579, 589, 894, 1053, 1229, 1267, 1696, 2057, 2083, 2449, 2713, 3126, 3582, 3712, 4441, 4646, 4693, 4993, 5213, 5659, 6035, 151, 175, 274, 500, 506, 604, 610, 984, 1208, 1367, 1418, 1632, 1852, 2064, 3759, 3991, 4284, 4559, 4572, 4760, 4903, 4952, 5388, 5616, 5767, 5932, 6103 };
+
+static const uint16_t clausec_922_data[] = {  };
+
+static const uint16_t clausec_923_pos[] = { 4370, 1688 };
+
+static const uint16_t clausec_923_data[] = {  };
+
+static const uint16_t clausec_924_pos[] = { 2744, 5040 };
+
+static const uint16_t clausec_924_data[] = {  };
+
+static const uint16_t clausec_925_pos[] = { 4160, 1680 };
+
+static const uint16_t clausec_925_data[] = {  };
+
+static const uint16_t clausec_926_pos[] = { 6233 };
+
+static const uint16_t clausec_926_data[] = {  };
+
+static const uint16_t clausec_927_pos[] = { 4761, 5749, 112, 1482, 1698, 2508 };
+
+static const uint16_t clausec_927_data[] = {  };
+
+static const uint16_t clausec_928_pos[] = { 1700, 3060, 3666, 28, 4212 };
+
+static const uint16_t clausec_928_data[] = {  };
+
+static const uint16_t clausec_929_pos[] = { 909, 2394, 2608, 2612, 2618, 2628, 2832, 5748 };
+
+static const uint16_t clausec_929_data[] = {  };
+
+static const uint16_t clausec_930_pos[] = { 1013, 1690, 3048, 6270, 880, 1636, 1746, 1848, 3295, 3538, 4431, 4560 };
+
+static const uint16_t clausec_930_data[] = {  };
+
+static const uint16_t clausec_931_pos[] = { 1476, 1914 };
+
+static const uint16_t clausec_931_data[] = {  };
+
+static const uint16_t clausec_932_pos[] = { 379, 414, 689, 710, 1294, 1299, 1363, 1574, 1579, 1761, 2950, 3250, 3579, 3589, 3590, 3843, 3995, 4109, 4521, 5089, 5355, 5589, 5785, 6193, 6198, 6241, 39, 58, 360, 500, 896, 944, 1143, 1192, 1204, 1226, 1239, 1248, 1272, 1431, 1992, 2696, 2944, 3148, 3314, 3546, 3855, 4023, 4210, 4340, 4508, 4522, 5338, 5584, 5607, 5776, 6032, 6152 };
+
+static const uint16_t clausec_932_data[] = {  };
+
+static const uint16_t clausec_933_pos[] = { 1460, 1904 };
+
+static const uint16_t clausec_933_data[] = {  };
+
+static const uint16_t clausec_934_pos[] = { 189, 283, 689, 897, 1521, 1542, 2651, 3589, 3763, 4270, 4309, 4497, 4523, 6069, 335, 546, 847, 927, 964, 1124, 1159, 1232, 1266, 1520, 1620, 1656, 1783, 1815, 1848, 1996, 2082, 2215, 2292, 2512, 3359, 3388, 4052, 4055, 4300, 4460, 4544, 5064, 5344, 5356, 6183 };
+
+static const uint16_t clausec_934_data[] = {  };
+
+static const uint16_t clausec_935_pos[] = { 1192 };
+
+static const uint16_t clausec_935_data[] = {  };
+
+static const uint16_t clausec_936_pos[] = { 1674, 2316, 2976, 4560 };
+
+static const uint16_t clausec_936_data[] = {  };
+
+static const uint16_t clausec_937_pos[] = { 1571, 1595, 2993, 3326, 3379, 3585, 3645, 4037, 4217, 4318, 4493, 5105, 5326, 5550, 6137, 32, 1120, 1340, 1780, 2026, 2992, 3130, 3200, 3404, 3575, 3580, 4522, 4696, 4780, 5175, 6114, 6120, 6220 };
+
+static const uint16_t clausec_937_data[] = {  };
+
+static const uint16_t clausec_938_pos[] = { 1672, 2744, 3284 };
+
+static const uint16_t clausec_938_data[] = {  };
+
+static const uint16_t clausec_939_pos[] = { 1456, 1916 };
+
+static const uint16_t clausec_939_data[] = {  };
+
+static const uint16_t clausec_940_pos[] = { 11, 243, 699, 937, 953, 1267, 1385, 1397, 1577, 1595, 1765, 2005, 2702, 3048, 3240, 3349, 3533, 3539, 4054, 4070, 4299, 4670, 4741, 5345, 5505, 5526, 5549, 5598, 6078, 6118, 212, 220, 256, 266, 335, 666, 900, 935, 986, 1010, 1048, 1303, 1420, 1530, 2280, 2284, 3143, 3154, 3626, 3775, 3776, 3992, 4076, 4536, 4767, 4920, 5132, 5588, 5612, 5752, 6052, 6124, 6248, 6266 };
+
+static const uint16_t clausec_940_data[] = {  };
+
+static const uint16_t clausec_941_pos[] = { 4344, 4800 };
+
+static const uint16_t clausec_941_data[] = {  };
+
+static const uint16_t clausec_942_pos[] = { 5538 };
+
+static const uint16_t clausec_942_data[] = {  };
+
+static const uint16_t clausec_943_pos[] = { 1914, 3218, 3640 };
+
+static const uint16_t clausec_943_data[] = {  };
+
+static const uint16_t clausec_944_pos[] = { 4243 };
+
+static const uint16_t clausec_944_data[] = {  };
+
+static const uint16_t clausec_945_pos[] = { 229, 1747, 3571, 4987, 5032, 5465, 5694, 490, 2034, 2167, 2856, 3671, 4948, 5727, 5940, 5944 };
+
+static const uint16_t clausec_945_data[] = {  };
+
+static const uint16_t clausec_946_pos[] = { 2944 };
+
+static const uint16_t clausec_946_data[] = {  };
+
+static const uint16_t clausec_947_pos[] = { 2826, 3064 };
+
+static const uint16_t clausec_947_data[] = {  };
+
+static const uint16_t clausec_948_pos[] = { 1872, 5262, 122, 191, 1616, 1944, 2428, 5474 };
+
+static const uint16_t clausec_948_data[] = {  };
+
+static const uint16_t clausec_949_pos[] = { 1026 };
+
+static const uint16_t clausec_949_data[] = {  };
+
+static const uint16_t clausec_950_pos[] = { 22, 451, 557, 758, 861, 963, 1011, 1251, 1680, 2001, 2043, 2261, 5113, 5181, 5347, 5997, 6230, 6237, 215, 431, 456, 800, 815, 1012, 1304, 1322, 1522, 1530, 1552, 1560, 2024, 2272, 4232, 4596, 4663, 4895, 4962, 5252, 5399, 5484, 5871 };
+
+static const uint16_t clausec_950_data[] = {  };
+
+static const uint16_t clausec_951_pos[] = { 1288 };
+
+static const uint16_t clausec_951_data[] = {  };
+
+static const uint16_t clausec_952_pos[] = { 182, 246, 307, 326, 542, 589, 598, 661, 667, 733, 867, 917, 961, 1189, 1225, 1291, 1331, 1401, 1574, 1625, 1643, 1688, 1766, 1774, 1795, 1798, 1869, 2013, 2041, 2294, 2505, 2697, 2910, 3153, 3342, 3547, 3565, 3589, 3598, 3614, 3749, 3763, 4006, 4253, 4277, 4289, 4414, 4518, 4662, 4681, 4950, 4955, 5065, 5113, 5205, 5297, 5361, 5371, 2, 192, 376, 436, 487, 530, 556, 560, 639, 640, 648, 688, 700, 722, 778, 815, 818, 874, 960, 992, 1023, 1319, 1376, 1431, 1551, 1570, 1642, 1655, 1807, 1864, 2004, 2084, 2296, 2471, 2479, 3160, 3162, 3356, 3564, 3740, 3756, 3783, 3820, 4060, 4418, 4490, 4538, 4711, 4724, 4738, 4762, 4876, 4956, 5082, 5122, 5319, 5616, 5812, 5823, 5991, 6024, 6095, 6212 };
+
+static const uint16_t clausec_952_data[] = {  };
+
+static const uint16_t clausec_953_pos[] = { 3708, 1696 };
+
+static const uint16_t clausec_953_data[] = {  };
+
+static const uint16_t clausec_954_pos[] = { 1668, 2528, 1264, 2336 };
+
+static const uint16_t clausec_954_data[] = {  };
+
+static const uint16_t clausec_955_pos[] = { 4536 };
+
+static const uint16_t clausec_955_data[] = {  };
+
+static const uint16_t clausec_956_pos[] = { 5675 };
+
+static const uint16_t clausec_956_data[] = {  };
+
+static const uint16_t clausec_957_pos[] = { 5240, 3500 };
+
+static const uint16_t clausec_957_data[] = {  };
+
+static const uint16_t clausec_958_pos[] = { 3021 };
+
+static const uint16_t clausec_958_data[] = {  };
+
+static const uint16_t clausec_959_pos[] = { 2776, 2984, 3194 };
+
+static const uint16_t clausec_959_data[] = {  };
+
+static const uint16_t clausec_960_pos[] = { 5538 };
+
+static const uint16_t clausec_960_data[] = {  };
+
+static const uint16_t clausec_961_pos[] = { 267, 3593, 3821, 1351, 2552, 2976, 3096, 3408, 5119, 5151 };
+
+static const uint16_t clausec_961_data[] = {  };
+
+static const uint16_t clausec_962_pos[] = { 96 };
+
+static const uint16_t clausec_962_data[] = {  };
+
+static const uint16_t clausec_963_pos[] = { 4626, 3420 };
+
+static const uint16_t clausec_963_data[] = {  };
+
+static const uint16_t clausec_964_pos[] = { 705 };
+
+static const uint16_t clausec_964_data[] = {  };
+
+static const uint16_t clausec_965_pos[] = { 1008 };
+
+static const uint16_t clausec_965_data[] = {  };
+
+static const uint16_t clausec_966_pos[] = {  };
+
+static const uint16_t clausec_966_data[] = {  };
+
+static const uint16_t clausec_967_pos[] = { 1256 };
+
+static const uint16_t clausec_967_data[] = {  };
+
+static const uint16_t clausec_968_pos[] = { 3175 };
+
+static const uint16_t clausec_968_data[] = {  };
+
+static const uint16_t clausec_969_pos[] = { 5276, 2834 };
+
+static const uint16_t clausec_969_data[] = {  };
+
+static const uint16_t clausec_970_pos[] = { 1656, 2736 };
+
+static const uint16_t clausec_970_data[] = {  };
+
+static const uint16_t clausec_971_pos[] = { 1258 };
+
+static const uint16_t clausec_971_data[] = {  };
+
+static const uint16_t clausec_972_pos[] = { 5658 };
+
+static const uint16_t clausec_972_data[] = {  };
+
+static const uint16_t clausec_973_pos[] = {  };
+
+static const uint16_t clausec_973_data[] = {  };
+
+static const uint16_t clausec_974_pos[] = { 5903 };
+
+static const uint16_t clausec_974_data[] = {  };
+
+static const uint16_t clausec_975_pos[] = { 1746 };
+
+static const uint16_t clausec_975_data[] = {  };
+
+static const uint16_t clausec_976_pos[] = { 757, 934, 2477, 2824, 2886, 2893, 3240, 4313, 4325, 4845, 876, 1040, 1154, 1432, 1828, 4288, 4864, 5567, 5828, 6095, 6111 };
+
+static const uint16_t clausec_976_data[] = {  };
+
+static const uint16_t clausec_977_pos[] = { 4570, 186, 2732, 5432, 5668 };
+
+static const uint16_t clausec_977_data[] = {  };
+
+static const uint16_t clausec_978_pos[] = { 779, 997, 1672, 1773, 2217, 2429, 2877, 4293, 4755, 4926, 5494, 1018, 1020, 1616, 3980, 4282, 4887, 5464, 5692, 5922 };
+
+static const uint16_t clausec_978_data[] = {  };
+
+static const uint16_t clausec_979_pos[] = { 1618 };
+
+static const uint16_t clausec_979_data[] = {  };
+
+static const uint16_t clausec_980_pos[] = { 881 };
+
+static const uint16_t clausec_980_data[] = {  };
+
+static const uint16_t clausec_981_pos[] = { 1250, 3504 };
+
+static const uint16_t clausec_981_data[] = {  };
+
+static const uint16_t clausec_982_pos[] = { 417, 2061, 3024, 3032, 3488, 4619, 4899, 6217, 552, 1124, 1607, 1842, 3522, 4082, 4632, 4976, 5778 };
+
+static const uint16_t clausec_982_data[] = {  };
+
+static const uint16_t clausec_983_pos[] = {  };
+
+static const uint16_t clausec_983_data[] = {  };
+
+static const uint16_t clausec_984_pos[] = { 1147 };
+
+static const uint16_t clausec_984_data[] = {  };
+
+static const uint16_t clausec_985_pos[] = { 1464, 1912 };
+
+static const uint16_t clausec_985_data[] = {  };
+
+static const uint16_t clausec_986_pos[] = { 93, 126, 158, 195, 275, 294, 373, 374, 382, 406, 470, 507, 587, 646, 701, 795, 915, 923, 987, 993, 1014, 1029, 1155, 1233, 1374, 1682, 2014, 2206, 2273, 2445, 3379, 3539, 3545, 3573, 3590, 3606, 3755, 4025, 4153, 4243, 4269, 4350, 4867, 4885, 5189, 5265, 5550, 5638, 5685, 5787, 5795, 5798, 5811, 5870, 5902, 5909, 6021, 6038, 6046, 6065, 6091, 6139, 6150, 6166, 6213, 6233, 31, 76, 111, 188, 279, 362, 410, 444, 474, 546, 554, 578, 592, 664, 778, 882, 1042, 1063, 1087, 1119, 1188, 1210, 1370, 1418, 1520, 1618, 1978, 2020, 2226, 2274, 2280, 2424, 2428, 2906, 2924, 3111, 3132, 3367, 3368, 3372, 3383, 3538, 3562, 3578, 3602, 3767, 3776, 3783, 3794, 3840, 4068, 4074, 4244, 4252, 4434, 4519, 4676, 4767, 4778, 4791, 4984, 5164, 5212, 5314, 5330, 5570, 5584, 5812, 5834, 5836, 5904, 5914, 6042, 6103, 6120, 6154, 6172, 6194 };
+
+static const uint16_t clausec_986_data[] = {  };
+
+static const uint16_t clausec_987_pos[] = { 1184 };
+
+static const uint16_t clausec_987_data[] = {  };
+
+static const uint16_t clausec_988_pos[] = { 65, 102, 225, 281, 342, 350, 605, 651, 918, 971, 1123, 1285, 1672, 1733, 1745, 1766, 1825, 1989, 2096, 2270, 3165, 3382, 3782, 4541, 4753, 4789, 5217, 5241, 5387, 5953, 6133, 6206, 6230, 192, 204, 266, 320, 418, 426, 463, 586, 610, 632, 743, 834, 871, 1271, 1608, 1754, 1796, 1815, 1818, 2028, 2060, 2064, 2439, 2928, 3762, 3836, 4258, 4288, 4490, 4800, 4903, 4970, 5448, 5570, 5999, 6247, 6252 };
+
+static const uint16_t clausec_988_data[] = {  };
+
+static const uint16_t clausec_989_pos[] = { 2786 };
+
+static const uint16_t clausec_989_data[] = {  };
+
+static const uint16_t clausec_990_pos[] = { 292 };
+
+static const uint16_t clausec_990_data[] = {  };
+
+static const uint16_t clausec_991_pos[] = { 1680, 1904 };
+
+static const uint16_t clausec_991_data[] = {  };
+
+static const uint16_t clausec_992_pos[] = { 307, 1051, 1395, 1630, 1666, 2673, 4501, 5190, 5353, 399, 532, 820, 1314, 1754, 3332, 4004, 4480, 4578, 4808, 4940, 5160, 5200, 5258 };
+
+static const uint16_t clausec_992_data[] = {  };
+
+static const uint16_t clausec_993_pos[] = { 755, 1130, 3000, 3084, 3186, 3196, 3212, 6004 };
+
+static const uint16_t clausec_993_data[] = {  };
+
+static const uint16_t clausec_994_pos[] = { 91, 169, 550, 579, 979, 1110, 1205, 1230, 1245, 1638, 1758, 1846, 2253, 2510, 2870, 2889, 3264, 4217, 4221, 4237, 4707, 4958, 5126, 5326, 5613, 6107, 6157, 6173, 44, 84, 172, 490, 492, 778, 1098, 1111, 1127, 1132, 1220, 1242, 1256, 1258, 1290, 1504, 1538, 1568, 1740, 1994, 2076, 3087, 4434, 4530, 4535, 5008, 5156, 5596, 5647, 5652, 6184, 6266 };
+
+static const uint16_t clausec_994_data[] = {  };
+
+static const uint16_t clausec_995_pos[] = { 4556 };
+
+static const uint16_t clausec_995_data[] = {  };
+
+static const uint16_t clausec_996_pos[] = { 3032, 3857, 1231, 1650, 1858, 2296, 3738, 4108, 4176, 5068 };
+
+static const uint16_t clausec_996_data[] = {  };
+
+static const uint16_t clausec_997_pos[] = { 2768, 2776, 3200, 3416 };
+
+static const uint16_t clausec_997_data[] = {  };
+
+static const uint16_t clausec_998_pos[] = { 125, 171, 307, 341, 457, 470, 526, 726, 733, 873, 897, 977, 989, 997, 1021, 1109, 1129, 1141, 1153, 1187, 1333, 1374, 1417, 1438, 1627, 1630, 1867, 2014, 2027, 2059, 2069, 2222, 2275, 2278, 2502, 2691, 2945, 3110, 3534, 3549, 3613, 3758, 3771, 3814, 3998, 4061, 4069, 4238, 4453, 4454, 4539, 4547, 4685, 4862, 4937, 4985, 5323, 5347, 5355, 5757, 5814, 5998, 6013, 6213, 76, 232, 258, 367, 408, 456, 472, 511, 632, 866, 936, 956, 986, 1224, 1266, 1290, 1296, 1308, 1378, 1752, 1778, 1864, 2002, 2274, 2276, 2650, 3175, 3370, 3576, 3767, 3786, 3828, 3842, 3847, 3852, 4079, 4220, 4247, 4410, 4456, 4460, 4472, 4492, 4503, 4524, 4848, 4948, 5135, 5348, 5362, 5388, 5431, 5527, 5576, 5583, 5732, 5759, 5952, 6122, 6144, 6264 };
+
+static const uint16_t clausec_998_data[] = {  };
+
+static const uint16_t clausec_999_pos[] = {  };
+
+static const uint16_t clausec_999_data[] = {  };
+
+static ClauseCompressed clauses_compressed[] = {
+    { 2, 2, clausec_0_pos, clausec_0_data },
+    { 1, 1, clausec_1_pos, clausec_1_data },
+    { 0, 1, clausec_2_pos, clausec_2_data },
+    { 1, 0, clausec_3_pos, clausec_3_data },
+    { 0, 1, clausec_4_pos, clausec_4_data },
+    { 15, 10, clausec_5_pos, clausec_5_data },
+    { 0, 1, clausec_6_pos, clausec_6_data },
+    { 1, 1, clausec_7_pos, clausec_7_data },
+    { 46, 53, clausec_8_pos, clausec_8_data },
+    { 2, 7, clausec_9_pos, clausec_9_data },
+    { 4, 1, clausec_10_pos, clausec_10_data },
+    { 1, 2, clausec_11_pos, clausec_11_data },
+    { 1, 2, clausec_12_pos, clausec_12_data },
+    { 1, 1, clausec_13_pos, clausec_13_data },
+    { 19, 23, clausec_14_pos, clausec_14_data },
+    { 2, 9, clausec_15_pos, clausec_15_data },
+    { 2, 0, clausec_16_pos, clausec_16_data },
+    { 20, 14, clausec_17_pos, clausec_17_data },
+    { 1, 0, clausec_18_pos, clausec_18_data },
+    { 2, 5, clausec_19_pos, clausec_19_data },
+    { 0, 4, clausec_20_pos, clausec_20_data },
+    { 0, 4, clausec_21_pos, clausec_21_data },
+    { 8, 7, clausec_22_pos, clausec_22_data },
+    { 4, 2, clausec_23_pos, clausec_23_data },
+    { 4, 3, clausec_24_pos, clausec_24_data },
+    { 1, 2, clausec_25_pos, clausec_25_data },
+    { 1, 1, clausec_26_pos, clausec_26_data },
+    { 2, 0, clausec_27_pos, clausec_27_data },
+    { 2, 0, clausec_28_pos, clausec_28_data },
+    { 1, 5, clausec_29_pos, clausec_29_data },
+    { 35, 37, clausec_30_pos, clausec_30_data },
+    { 3, 2, clausec_31_pos, clausec_31_data },
+    { 0, 2, clausec_32_pos, clausec_32_data },
+    { 1, 1, clausec_33_pos, clausec_33_data },
+    { 2, 0, clausec_34_pos, clausec_34_data },
+    { 2, 0, clausec_35_pos, clausec_35_data },
+    { 1, 2, clausec_36_pos, clausec_36_data },
+    { 0, 3, clausec_37_pos, clausec_37_data },
+    { 16, 15, clausec_38_pos, clausec_38_data },
+    { 3, 4, clausec_39_pos, clausec_39_data },
+    { 1, 0, clausec_40_pos, clausec_40_data },
+    { 1, 0, clausec_41_pos, clausec_41_data },
+    { 1, 1, clausec_42_pos, clausec_42_data },
+    { 0, 3, clausec_43_pos, clausec_43_data },
+    { 7, 14, clausec_44_pos, clausec_44_data },
+    { 2, 2, clausec_45_pos, clausec_45_data },
+    { 4, 9, clausec_46_pos, clausec_46_data },
+    { 1, 3, clausec_47_pos, clausec_47_data },
+    { 0, 1, clausec_48_pos, clausec_48_data },
+    { 2, 3, clausec_49_pos, clausec_49_data },
+    { 1, 0, clausec_50_pos, clausec_50_data },
+    { 0, 0, clausec_51_pos, clausec_51_data },
+    { 5, 4, clausec_52_pos, clausec_52_data },
+    { 5, 0, clausec_53_pos, clausec_53_data },
+    { 1, 8, clausec_54_pos, clausec_54_data },
+    { 1, 0, clausec_55_pos, clausec_55_data },
+    { 5, 3, clausec_56_pos, clausec_56_data },
+    { 3, 0, clausec_57_pos, clausec_57_data },
+    { 3, 1, clausec_58_pos, clausec_58_data },
+    { 5, 12, clausec_59_pos, clausec_59_data },
+    { 5, 4, clausec_60_pos, clausec_60_data },
+    { 0, 3, clausec_61_pos, clausec_61_data },
+    { 4, 0, clausec_62_pos, clausec_62_data },
+    { 1, 1, clausec_63_pos, clausec_63_data },
+    { 30, 34, clausec_64_pos, clausec_64_data },
+    { 1, 0, clausec_65_pos, clausec_65_data },
+    { 1, 1, clausec_66_pos, clausec_66_data },
+    { 1, 1, clausec_67_pos, clausec_67_data },
+    { 0, 1, clausec_68_pos, clausec_68_data },
+    { 1, 1, clausec_69_pos, clausec_69_data },
+    { 13, 11, clausec_70_pos, clausec_70_data },
+    { 2, 1, clausec_71_pos, clausec_71_data },
+    { 3, 0, clausec_72_pos, clausec_72_data },
+    { 1, 3, clausec_73_pos, clausec_73_data },
+    { 6, 16, clausec_74_pos, clausec_74_data },
+    { 1, 2, clausec_75_pos, clausec_75_data },
+    { 3, 0, clausec_76_pos, clausec_76_data },
+    { 1, 0, clausec_77_pos, clausec_77_data },
+    { 0, 0, clausec_78_pos, clausec_78_data },
+    { 1, 3, clausec_79_pos, clausec_79_data },
+    { 1, 6, clausec_80_pos, clausec_80_data },
+    { 0, 2, clausec_81_pos, clausec_81_data },
+    { 4, 0, clausec_82_pos, clausec_82_data },
+    { 1, 5, clausec_83_pos, clausec_83_data },
+    { 1, 0, clausec_84_pos, clausec_84_data },
+    { 1, 1, clausec_85_pos, clausec_85_data },
+    { 11, 21, clausec_86_pos, clausec_86_data },
+    { 4, 7, clausec_87_pos, clausec_87_data },
+    { 9, 4, clausec_88_pos, clausec_88_data },
+    { 0, 2, clausec_89_pos, clausec_89_data },
+    { 5, 8, clausec_90_pos, clausec_90_data },
+    { 4, 8, clausec_91_pos, clausec_91_data },
+    { 23, 23, clausec_92_pos, clausec_92_data },
+    { 1, 2, clausec_93_pos, clausec_93_data },
+    { 3, 0, clausec_94_pos, clausec_94_data },
+    { 1, 0, clausec_95_pos, clausec_95_data },
+    { 1, 4, clausec_96_pos, clausec_96_data },
+    { 3, 1, clausec_97_pos, clausec_97_data },
+    { 10, 5, clausec_98_pos, clausec_98_data },
+    { 9, 5, clausec_99_pos, clausec_99_data },
+    { 73, 68, clausec_100_pos, clausec_100_data },
+    { 1, 0, clausec_101_pos, clausec_101_data },
+    { 34, 34, clausec_102_pos, clausec_102_data },
+    { 1, 0, clausec_103_pos, clausec_103_data },
+    { 9, 17, clausec_104_pos, clausec_104_data },
+    { 1, 0, clausec_105_pos, clausec_105_data },
+    { 0, 1, clausec_106_pos, clausec_106_data },
+    { 1, 0, clausec_107_pos, clausec_107_data },
+    { 1, 0, clausec_108_pos, clausec_108_data },
+    { 3, 3, clausec_109_pos, clausec_109_data },
+    { 1, 0, clausec_110_pos, clausec_110_data },
+    { 1, 0, clausec_111_pos, clausec_111_data },
+    { 96, 91, clausec_112_pos, clausec_112_data },
+    { 1, 0, clausec_113_pos, clausec_113_data },
+    { 30, 42, clausec_114_pos, clausec_114_data },
+    { 1, 0, clausec_115_pos, clausec_115_data },
+    { 107, 83, clausec_116_pos, clausec_116_data },
+    { 3, 1, clausec_117_pos, clausec_117_data },
+    { 12, 13, clausec_118_pos, clausec_118_data },
+    { 8, 5, clausec_119_pos, clausec_119_data },
+    { 7, 4, clausec_120_pos, clausec_120_data },
+    { 0, 1, clausec_121_pos, clausec_121_data },
+    { 0, 1, clausec_122_pos, clausec_122_data },
+    { 1, 0, clausec_123_pos, clausec_123_data },
+    { 21, 20, clausec_124_pos, clausec_124_data },
+    { 0, 2, clausec_125_pos, clausec_125_data },
+    { 0, 1, clausec_126_pos, clausec_126_data },
+    { 1, 0, clausec_127_pos, clausec_127_data },
+    { 25, 32, clausec_128_pos, clausec_128_data },
+    { 0, 1, clausec_129_pos, clausec_129_data },
+    { 0, 1, clausec_130_pos, clausec_130_data },
+    { 1, 1, clausec_131_pos, clausec_131_data },
+    { 0, 0, clausec_132_pos, clausec_132_data },
+    { 5, 9, clausec_133_pos, clausec_133_data },
+    { 2, 3, clausec_134_pos, clausec_134_data },
+    { 1, 0, clausec_135_pos, clausec_135_data },
+    { 19, 35, clausec_136_pos, clausec_136_data },
+    { 3, 1, clausec_137_pos, clausec_137_data },
+    { 1, 0, clausec_138_pos, clausec_138_data },
+    { 1, 0, clausec_139_pos, clausec_139_data },
+    { 40, 32, clausec_140_pos, clausec_140_data },
+    { 1, 1, clausec_141_pos, clausec_141_data },
+    { 1, 0, clausec_142_pos, clausec_142_data },
+    { 2, 0, clausec_143_pos, clausec_143_data },
+    { 11, 14, clausec_144_pos, clausec_144_data },
+    { 1, 0, clausec_145_pos, clausec_145_data },
+    { 15, 21, clausec_146_pos, clausec_146_data },
+    { 2, 1, clausec_147_pos, clausec_147_data },
+    { 68, 94, clausec_148_pos, clausec_148_data },
+    { 0, 2, clausec_149_pos, clausec_149_data },
+    { 38, 46, clausec_150_pos, clausec_150_data },
+    { 2, 0, clausec_151_pos, clausec_151_data },
+    { 0, 1, clausec_152_pos, clausec_152_data },
+    { 1, 1, clausec_153_pos, clausec_153_data },
+    { 31, 26, clausec_154_pos, clausec_154_data },
+    { 1, 1, clausec_155_pos, clausec_155_data },
+    { 2, 7, clausec_156_pos, clausec_156_data },
+    { 1, 0, clausec_157_pos, clausec_157_data },
+    { 6, 10, clausec_158_pos, clausec_158_data },
+    { 2, 3, clausec_159_pos, clausec_159_data },
+    { 0, 1, clausec_160_pos, clausec_160_data },
+    { 1, 0, clausec_161_pos, clausec_161_data },
+    { 8, 14, clausec_162_pos, clausec_162_data },
+    { 2, 7, clausec_163_pos, clausec_163_data },
+    { 0, 0, clausec_164_pos, clausec_164_data },
+    { 1, 1, clausec_165_pos, clausec_165_data },
+    { 60, 50, clausec_166_pos, clausec_166_data },
+    { 3, 1, clausec_167_pos, clausec_167_data },
+    { 0, 0, clausec_168_pos, clausec_168_data },
+    { 2, 4, clausec_169_pos, clausec_169_data },
+    { 0, 9, clausec_170_pos, clausec_170_data },
+    { 1, 0, clausec_171_pos, clausec_171_data },
+    { 1, 0, clausec_172_pos, clausec_172_data },
+    { 2, 0, clausec_173_pos, clausec_173_data },
+    { 0, 1, clausec_174_pos, clausec_174_data },
+    { 1, 1, clausec_175_pos, clausec_175_data },
+    { 3, 4, clausec_176_pos, clausec_176_data },
+    { 2, 1, clausec_177_pos, clausec_177_data },
+    { 47, 55, clausec_178_pos, clausec_178_data },
+    { 1, 0, clausec_179_pos, clausec_179_data },
+    { 125, 105, clausec_180_pos, clausec_180_data },
+    { 2, 0, clausec_181_pos, clausec_181_data },
+    { 73, 63, clausec_182_pos, clausec_182_data },
+    { 1, 1, clausec_183_pos, clausec_183_data },
+    { 0, 6, clausec_184_pos, clausec_184_data },
+    { 0, 6, clausec_185_pos, clausec_185_data },
+    { 1, 0, clausec_186_pos, clausec_186_data },
+    { 1, 0, clausec_187_pos, clausec_187_data },
+    { 65, 62, clausec_188_pos, clausec_188_data },
+    { 2, 0, clausec_189_pos, clausec_189_data },
+    { 10, 20, clausec_190_pos, clausec_190_data },
+    { 2, 2, clausec_191_pos, clausec_191_data },
+    { 0, 1, clausec_192_pos, clausec_192_data },
+    { 1, 0, clausec_193_pos, clausec_193_data },
+    { 0, 1, clausec_194_pos, clausec_194_data },
+    { 1, 0, clausec_195_pos, clausec_195_data },
+    { 19, 19, clausec_196_pos, clausec_196_data },
+    { 1, 1, clausec_197_pos, clausec_197_data },
+    { 29, 26, clausec_198_pos, clausec_198_data },
+    { 1, 1, clausec_199_pos, clausec_199_data },
+    { 27, 25, clausec_200_pos, clausec_200_data },
+    { 1, 0, clausec_201_pos, clausec_201_data },
+    { 24, 24, clausec_202_pos, clausec_202_data },
+    { 24, 20, clausec_203_pos, clausec_203_data },
+    { 0, 3, clausec_204_pos, clausec_204_data },
+    { 12, 10, clausec_205_pos, clausec_205_data },
+    { 1, 0, clausec_206_pos, clausec_206_data },
+    { 2, 0, clausec_207_pos, clausec_207_data },
+    { 1, 1, clausec_208_pos, clausec_208_data },
+    { 11, 20, clausec_209_pos, clausec_209_data },
+    { 0, 1, clausec_210_pos, clausec_210_data },
+    { 2, 0, clausec_211_pos, clausec_211_data },
+    { 2, 1, clausec_212_pos, clausec_212_data },
+    { 1, 1, clausec_213_pos, clausec_213_data },
+    { 1, 0, clausec_214_pos, clausec_214_data },
+    { 17, 24, clausec_215_pos, clausec_215_data },
+    { 17, 14, clausec_216_pos, clausec_216_data },
+    { 2, 0, clausec_217_pos, clausec_217_data },
+    { 0, 1, clausec_218_pos, clausec_218_data },
+    { 3, 1, clausec_219_pos, clausec_219_data },
+    { 12, 19, clausec_220_pos, clausec_220_data },
+    { 1, 0, clausec_221_pos, clausec_221_data },
+    { 1, 1, clausec_222_pos, clausec_222_data },
+    { 5, 11, clausec_223_pos, clausec_223_data },
+    { 1, 0, clausec_224_pos, clausec_224_data },
+    { 5, 8, clausec_225_pos, clausec_225_data },
+    { 1, 6, clausec_226_pos, clausec_226_data },
+    { 5, 4, clausec_227_pos, clausec_227_data },
+    { 1, 0, clausec_228_pos, clausec_228_data },
+    { 15, 19, clausec_229_pos, clausec_229_data },
+    { 2, 7, clausec_230_pos, clausec_230_data },
+    { 4, 6, clausec_231_pos, clausec_231_data },
+    { 2, 4, clausec_232_pos, clausec_232_data },
+    { 4, 8, clausec_233_pos, clausec_233_data },
+    { 1, 7, clausec_234_pos, clausec_234_data },
+    { 1, 3, clausec_235_pos, clausec_235_data },
+    { 0, 0, clausec_236_pos, clausec_236_data },
+    { 1, 2, clausec_237_pos, clausec_237_data },
+    { 0, 1, clausec_238_pos, clausec_238_data },
+    { 1, 0, clausec_239_pos, clausec_239_data },
+    { 1, 0, clausec_240_pos, clausec_240_data },
+    { 2, 4, clausec_241_pos, clausec_241_data },
+    { 1, 3, clausec_242_pos, clausec_242_data },
+    { 3, 8, clausec_243_pos, clausec_243_data },
+    { 1, 0, clausec_244_pos, clausec_244_data },
+    { 18, 25, clausec_245_pos, clausec_245_data },
+    { 2, 4, clausec_246_pos, clausec_246_data },
+    { 1, 1, clausec_247_pos, clausec_247_data },
+    { 2, 2, clausec_248_pos, clausec_248_data },
+    { 0, 1, clausec_249_pos, clausec_249_data },
+    { 4, 5, clausec_250_pos, clausec_250_data },
+    { 1, 1, clausec_251_pos, clausec_251_data },
+    { 2, 1, clausec_252_pos, clausec_252_data },
+    { 2, 3, clausec_253_pos, clausec_253_data },
+    { 4, 3, clausec_254_pos, clausec_254_data },
+    { 2, 1, clausec_255_pos, clausec_255_data },
+    { 1, 0, clausec_256_pos, clausec_256_data },
+    { 21, 17, clausec_257_pos, clausec_257_data },
+    { 1, 0, clausec_258_pos, clausec_258_data },
+    { 2, 0, clausec_259_pos, clausec_259_data },
+    { 1, 3, clausec_260_pos, clausec_260_data },
+    { 2, 0, clausec_261_pos, clausec_261_data },
+    { 19, 22, clausec_262_pos, clausec_262_data },
+    { 0, 2, clausec_263_pos, clausec_263_data },
+    { 3, 6, clausec_264_pos, clausec_264_data },
+    { 5, 9, clausec_265_pos, clausec_265_data },
+    { 1, 0, clausec_266_pos, clausec_266_data },
+    { 5, 9, clausec_267_pos, clausec_267_data },
+    { 9, 23, clausec_268_pos, clausec_268_data },
+    { 4, 11, clausec_269_pos, clausec_269_data },
+    { 1, 0, clausec_270_pos, clausec_270_data },
+    { 1, 4, clausec_271_pos, clausec_271_data },
+    { 1, 1, clausec_272_pos, clausec_272_data },
+    { 7, 15, clausec_273_pos, clausec_273_data },
+    { 1, 1, clausec_274_pos, clausec_274_data },
+    { 2, 4, clausec_275_pos, clausec_275_data },
+    { 33, 44, clausec_276_pos, clausec_276_data },
+    { 2, 1, clausec_277_pos, clausec_277_data },
+    { 0, 1, clausec_278_pos, clausec_278_data },
+    { 1, 0, clausec_279_pos, clausec_279_data },
+    { 1, 0, clausec_280_pos, clausec_280_data },
+    { 2, 6, clausec_281_pos, clausec_281_data },
+    { 1, 0, clausec_282_pos, clausec_282_data },
+    { 36, 46, clausec_283_pos, clausec_283_data },
+    { 2, 1, clausec_284_pos, clausec_284_data },
+    { 2, 1, clausec_285_pos, clausec_285_data },
+    { 1, 1, clausec_286_pos, clausec_286_data },
+    { 3, 12, clausec_287_pos, clausec_287_data },
+    { 1, 0, clausec_288_pos, clausec_288_data },
+    { 17, 18, clausec_289_pos, clausec_289_data },
+    { 2, 5, clausec_290_pos, clausec_290_data },
+    { 5, 7, clausec_291_pos, clausec_291_data },
+    { 0, 0, clausec_292_pos, clausec_292_data },
+    { 0, 3, clausec_293_pos, clausec_293_data },
+    { 0, 1, clausec_294_pos, clausec_294_data },
+    { 28, 28, clausec_295_pos, clausec_295_data },
+    { 2, 0, clausec_296_pos, clausec_296_data },
+    { 2, 0, clausec_297_pos, clausec_297_data },
+    { 1, 0, clausec_298_pos, clausec_298_data },
+    { 1, 4, clausec_299_pos, clausec_299_data },
+    { 3, 0, clausec_300_pos, clausec_300_data },
+    { 2, 0, clausec_301_pos, clausec_301_data },
+    { 4, 4, clausec_302_pos, clausec_302_data },
+    { 4, 1, clausec_303_pos, clausec_303_data },
+    { 2, 8, clausec_304_pos, clausec_304_data },
+    { 5, 5, clausec_305_pos, clausec_305_data },
+    { 0, 1, clausec_306_pos, clausec_306_data },
+    { 0, 2, clausec_307_pos, clausec_307_data },
+    { 19, 23, clausec_308_pos, clausec_308_data },
+    { 1, 0, clausec_309_pos, clausec_309_data },
+    { 1, 4, clausec_310_pos, clausec_310_data },
+    { 4, 7, clausec_311_pos, clausec_311_data },
+    { 0, 1, clausec_312_pos, clausec_312_data },
+    { 3, 0, clausec_313_pos, clausec_313_data },
+    { 1, 0, clausec_314_pos, clausec_314_data },
+    { 1, 1, clausec_315_pos, clausec_315_data },
+    { 1, 0, clausec_316_pos, clausec_316_data },
+    { 4, 10, clausec_317_pos, clausec_317_data },
+    { 1, 0, clausec_318_pos, clausec_318_data },
+    { 0, 0, clausec_319_pos, clausec_319_data },
+    { 3, 0, clausec_320_pos, clausec_320_data },
+    { 4, 4, clausec_321_pos, clausec_321_data },
+    { 4, 7, clausec_322_pos, clausec_322_data },
+    { 1, 0, clausec_323_pos, clausec_323_data },
+    { 10, 11, clausec_324_pos, clausec_324_data },
+    { 2, 3, clausec_325_pos, clausec_325_data },
+    { 10, 9, clausec_326_pos, clausec_326_data },
+    { 0, 2, clausec_327_pos, clausec_327_data },
+    { 2, 1, clausec_328_pos, clausec_328_data },
+    { 3, 3, clausec_329_pos, clausec_329_data },
+    { 2, 1, clausec_330_pos, clausec_330_data },
+    { 3, 1, clausec_331_pos, clausec_331_data },
+    { 2, 5, clausec_332_pos, clausec_332_data },
+    { 2, 5, clausec_333_pos, clausec_333_data },
+    { 2, 1, clausec_334_pos, clausec_334_data },
+    { 5, 8, clausec_335_pos, clausec_335_data },
+    { 0, 1, clausec_336_pos, clausec_336_data },
+    { 1, 1, clausec_337_pos, clausec_337_data },
+    { 2, 0, clausec_338_pos, clausec_338_data },
+    { 3, 0, clausec_339_pos, clausec_339_data },
+    { 0, 1, clausec_340_pos, clausec_340_data },
+    { 2, 2, clausec_341_pos, clausec_341_data },
+    { 2, 1, clausec_342_pos, clausec_342_data },
+    { 0, 1, clausec_343_pos, clausec_343_data },
+    { 2, 4, clausec_344_pos, clausec_344_data },
+    { 1, 6, clausec_345_pos, clausec_345_data },
+    { 1, 6, clausec_346_pos, clausec_346_data },
+    { 10, 12, clausec_347_pos, clausec_347_data },
+    { 3, 8, clausec_348_pos, clausec_348_data },
+    { 1, 3, clausec_349_pos, clausec_349_data },
+    { 1, 0, clausec_350_pos, clausec_350_data },
+    { 1, 4, clausec_351_pos, clausec_351_data },
+    { 1, 0, clausec_352_pos, clausec_352_data },
+    { 3, 2, clausec_353_pos, clausec_353_data },
+    { 2, 0, clausec_354_pos, clausec_354_data },
+    { 1, 1, clausec_355_pos, clausec_355_data },
+    { 0, 1, clausec_356_pos, clausec_356_data },
+    { 1, 0, clausec_357_pos, clausec_357_data },
+    { 2, 2, clausec_358_pos, clausec_358_data },
+    { 1, 0, clausec_359_pos, clausec_359_data },
+    { 1, 0, clausec_360_pos, clausec_360_data },
+    { 2, 0, clausec_361_pos, clausec_361_data },
+    { 1, 0, clausec_362_pos, clausec_362_data },
+    { 4, 3, clausec_363_pos, clausec_363_data },
+    { 1, 0, clausec_364_pos, clausec_364_data },
+    { 1, 0, clausec_365_pos, clausec_365_data },
+    { 1, 3, clausec_366_pos, clausec_366_data },
+    { 1, 1, clausec_367_pos, clausec_367_data },
+    { 17, 13, clausec_368_pos, clausec_368_data },
+    { 2, 3, clausec_369_pos, clausec_369_data },
+    { 4, 6, clausec_370_pos, clausec_370_data },
+    { 1, 4, clausec_371_pos, clausec_371_data },
+    { 0, 0, clausec_372_pos, clausec_372_data },
+    { 1, 0, clausec_373_pos, clausec_373_data },
+    { 1, 0, clausec_374_pos, clausec_374_data },
+    { 0, 2, clausec_375_pos, clausec_375_data },
+    { 0, 1, clausec_376_pos, clausec_376_data },
+    { 7, 12, clausec_377_pos, clausec_377_data },
+    { 0, 1, clausec_378_pos, clausec_378_data },
+    { 5, 7, clausec_379_pos, clausec_379_data },
+    { 1, 7, clausec_380_pos, clausec_380_data },
+    { 2, 0, clausec_381_pos, clausec_381_data },
+    { 0, 1, clausec_382_pos, clausec_382_data },
+    { 4, 2, clausec_383_pos, clausec_383_data },
+    { 5, 2, clausec_384_pos, clausec_384_data },
+    { 3, 2, clausec_385_pos, clausec_385_data },
+    { 1, 0, clausec_386_pos, clausec_386_data },
+    { 2, 0, clausec_387_pos, clausec_387_data },
+    { 3, 0, clausec_388_pos, clausec_388_data },
+    { 1, 3, clausec_389_pos, clausec_389_data },
+    { 1, 0, clausec_390_pos, clausec_390_data },
+    { 1, 1, clausec_391_pos, clausec_391_data },
+    { 1, 0, clausec_392_pos, clausec_392_data },
+    { 3, 0, clausec_393_pos, clausec_393_data },
+    { 1, 0, clausec_394_pos, clausec_394_data },
+    { 1, 2, clausec_395_pos, clausec_395_data },
+    { 10, 6, clausec_396_pos, clausec_396_data },
+    { 11, 18, clausec_397_pos, clausec_397_data },
+    { 0, 0, clausec_398_pos, clausec_398_data },
+    { 0, 2, clausec_399_pos, clausec_399_data },
+    { 28, 34, clausec_400_pos, clausec_400_data },
+    { 2, 1, clausec_401_pos, clausec_401_data },
+    { 1, 0, clausec_402_pos, clausec_402_data },
+    { 1, 1, clausec_403_pos, clausec_403_data },
+    { 2, 2, clausec_404_pos, clausec_404_data },
+    { 1, 0, clausec_405_pos, clausec_405_data },
+    { 0, 3, clausec_406_pos, clausec_406_data },
+    { 2, 0, clausec_407_pos, clausec_407_data },
+    { 1, 0, clausec_408_pos, clausec_408_data },
+    { 0, 2, clausec_409_pos, clausec_409_data },
+    { 14, 15, clausec_410_pos, clausec_410_data },
+    { 2, 2, clausec_411_pos, clausec_411_data },
+    { 17, 28, clausec_412_pos, clausec_412_data },
+    { 1, 0, clausec_413_pos, clausec_413_data },
+    { 7, 14, clausec_414_pos, clausec_414_data },
+    { 2, 6, clausec_415_pos, clausec_415_data },
+    { 25, 21, clausec_416_pos, clausec_416_data },
+    { 15, 12, clausec_417_pos, clausec_417_data },
+    { 2, 1, clausec_418_pos, clausec_418_data },
+    { 1, 0, clausec_419_pos, clausec_419_data },
+    { 18, 31, clausec_420_pos, clausec_420_data },
+    { 0, 2, clausec_421_pos, clausec_421_data },
+    { 0, 1, clausec_422_pos, clausec_422_data },
+    { 0, 2, clausec_423_pos, clausec_423_data },
+    { 2, 1, clausec_424_pos, clausec_424_data },
+    { 0, 3, clausec_425_pos, clausec_425_data },
+    { 4, 4, clausec_426_pos, clausec_426_data },
+    { 1, 0, clausec_427_pos, clausec_427_data },
+    { 11, 5, clausec_428_pos, clausec_428_data },
+    { 0, 0, clausec_429_pos, clausec_429_data },
+    { 4, 13, clausec_430_pos, clausec_430_data },
+    { 2, 0, clausec_431_pos, clausec_431_data },
+    { 15, 14, clausec_432_pos, clausec_432_data },
+    { 1, 1, clausec_433_pos, clausec_433_data },
+    { 0, 1, clausec_434_pos, clausec_434_data },
+    { 1, 0, clausec_435_pos, clausec_435_data },
+    { 1, 3, clausec_436_pos, clausec_436_data },
+    { 2, 0, clausec_437_pos, clausec_437_data },
+    { 13, 16, clausec_438_pos, clausec_438_data },
+    { 1, 4, clausec_439_pos, clausec_439_data },
+    { 1, 0, clausec_440_pos, clausec_440_data },
+    { 2, 2, clausec_441_pos, clausec_441_data },
+    { 6, 4, clausec_442_pos, clausec_442_data },
+    { 1, 1, clausec_443_pos, clausec_443_data },
+    { 3, 5, clausec_444_pos, clausec_444_data },
+    { 0, 2, clausec_445_pos, clausec_445_data },
+    { 4, 9, clausec_446_pos, clausec_446_data },
+    { 0, 1, clausec_447_pos, clausec_447_data },
+    { 5, 5, clausec_448_pos, clausec_448_data },
+    { 6, 9, clausec_449_pos, clausec_449_data },
+    { 6, 8, clausec_450_pos, clausec_450_data },
+    { 8, 12, clausec_451_pos, clausec_451_data },
+    { 6, 5, clausec_452_pos, clausec_452_data },
+    { 0, 2, clausec_453_pos, clausec_453_data },
+    { 2, 2, clausec_454_pos, clausec_454_data },
+    { 1, 0, clausec_455_pos, clausec_455_data },
+    { 0, 2, clausec_456_pos, clausec_456_data },
+    { 2, 2, clausec_457_pos, clausec_457_data },
+    { 15, 19, clausec_458_pos, clausec_458_data },
+    { 2, 2, clausec_459_pos, clausec_459_data },
+    { 2, 1, clausec_460_pos, clausec_460_data },
+    { 0, 1, clausec_461_pos, clausec_461_data },
+    { 13, 12, clausec_462_pos, clausec_462_data },
+    { 2, 0, clausec_463_pos, clausec_463_data },
+    { 1, 3, clausec_464_pos, clausec_464_data },
+    { 1, 0, clausec_465_pos, clausec_465_data },
+    { 1, 0, clausec_466_pos, clausec_466_data },
+    { 1, 0, clausec_467_pos, clausec_467_data },
+    { 13, 12, clausec_468_pos, clausec_468_data },
+    { 0, 2, clausec_469_pos, clausec_469_data },
+    { 7, 13, clausec_470_pos, clausec_470_data },
+    { 1, 0, clausec_471_pos, clausec_471_data },
+    { 44, 41, clausec_472_pos, clausec_472_data },
+    { 0, 1, clausec_473_pos, clausec_473_data },
+    { 12, 8, clausec_474_pos, clausec_474_data },
+    { 0, 3, clausec_475_pos, clausec_475_data },
+    { 16, 15, clausec_476_pos, clausec_476_data },
+    { 0, 3, clausec_477_pos, clausec_477_data },
+    { 25, 20, clausec_478_pos, clausec_478_data },
+    { 1, 1, clausec_479_pos, clausec_479_data },
+    { 11, 11, clausec_480_pos, clausec_480_data },
+    { 1, 3, clausec_481_pos, clausec_481_data },
+    { 25, 33, clausec_482_pos, clausec_482_data },
+    { 1, 1, clausec_483_pos, clausec_483_data },
+    { 2, 1, clausec_484_pos, clausec_484_data },
+    { 2, 0, clausec_485_pos, clausec_485_data },
+    { 22, 19, clausec_486_pos, clausec_486_data },
+    { 0, 1, clausec_487_pos, clausec_487_data },
+    { 21, 25, clausec_488_pos, clausec_488_data },
+    { 1, 1, clausec_489_pos, clausec_489_data },
+    { 4, 3, clausec_490_pos, clausec_490_data },
+    { 1, 0, clausec_491_pos, clausec_491_data },
+    { 4, 3, clausec_492_pos, clausec_492_data },
+    { 3, 2, clausec_493_pos, clausec_493_data },
+    { 3, 4, clausec_494_pos, clausec_494_data },
+    { 0, 2, clausec_495_pos, clausec_495_data },
+    { 6, 12, clausec_496_pos, clausec_496_data },
+    { 0, 2, clausec_497_pos, clausec_497_data },
+    { 1, 0, clausec_498_pos, clausec_498_data },
+    { 2, 0, clausec_499_pos, clausec_499_data },
+    { 5, 11, clausec_500_pos, clausec_500_data },
+    { 3, 4, clausec_501_pos, clausec_501_data },
+    { 0, 0, clausec_502_pos, clausec_502_data },
+    { 5, 9, clausec_503_pos, clausec_503_data },
+    { 8, 12, clausec_504_pos, clausec_504_data },
+    { 2, 0, clausec_505_pos, clausec_505_data },
+    { 2, 7, clausec_506_pos, clausec_506_data },
+    { 2, 1, clausec_507_pos, clausec_507_data },
+    { 13, 22, clausec_508_pos, clausec_508_data },
+    { 5, 4, clausec_509_pos, clausec_509_data },
+    { 2, 9, clausec_510_pos, clausec_510_data },
+    { 2, 0, clausec_511_pos, clausec_511_data },
+    { 3, 2, clausec_512_pos, clausec_512_data },
+    { 0, 0, clausec_513_pos, clausec_513_data },
+    { 12, 12, clausec_514_pos, clausec_514_data },
+    { 2, 0, clausec_515_pos, clausec_515_data },
+    { 0, 1, clausec_516_pos, clausec_516_data },
+    { 6, 3, clausec_517_pos, clausec_517_data },
+    { 0, 1, clausec_518_pos, clausec_518_data },
+    { 0, 1, clausec_519_pos, clausec_519_data },
+    { 1, 0, clausec_520_pos, clausec_520_data },
+    { 2, 0, clausec_521_pos, clausec_521_data },
+    { 1, 0, clausec_522_pos, clausec_522_data },
+    { 1, 1, clausec_523_pos, clausec_523_data },
+    { 2, 1, clausec_524_pos, clausec_524_data },
+    { 1, 1, clausec_525_pos, clausec_525_data },
+    { 7, 12, clausec_526_pos, clausec_526_data },
+    { 2, 2, clausec_527_pos, clausec_527_data },
+    { 0, 1, clausec_528_pos, clausec_528_data },
+    { 4, 5, clausec_529_pos, clausec_529_data },
+    { 2, 7, clausec_530_pos, clausec_530_data },
+    { 2, 0, clausec_531_pos, clausec_531_data },
+    { 1, 0, clausec_532_pos, clausec_532_data },
+    { 0, 1, clausec_533_pos, clausec_533_data },
+    { 1, 0, clausec_534_pos, clausec_534_data },
+    { 1, 0, clausec_535_pos, clausec_535_data },
+    { 9, 11, clausec_536_pos, clausec_536_data },
+    { 2, 0, clausec_537_pos, clausec_537_data },
+    { 5, 9, clausec_538_pos, clausec_538_data },
+    { 1, 2, clausec_539_pos, clausec_539_data },
+    { 3, 1, clausec_540_pos, clausec_540_data },
+    { 7, 8, clausec_541_pos, clausec_541_data },
+    { 7, 10, clausec_542_pos, clausec_542_data },
+    { 1, 0, clausec_543_pos, clausec_543_data },
+    { 8, 12, clausec_544_pos, clausec_544_data },
+    { 12, 17, clausec_545_pos, clausec_545_data },
+    { 0, 1, clausec_546_pos, clausec_546_data },
+    { 16, 14, clausec_547_pos, clausec_547_data },
+    { 1, 2, clausec_548_pos, clausec_548_data },
+    { 0, 5, clausec_549_pos, clausec_549_data },
+    { 1, 3, clausec_550_pos, clausec_550_data },
+    { 3, 9, clausec_551_pos, clausec_551_data },
+    { 0, 1, clausec_552_pos, clausec_552_data },
+    { 50, 50, clausec_553_pos, clausec_553_data },
+    { 3, 2, clausec_554_pos, clausec_554_data },
+    { 3, 4, clausec_555_pos, clausec_555_data },
+    { 9, 18, clausec_556_pos, clausec_556_data },
+    { 1, 0, clausec_557_pos, clausec_557_data },
+    { 1, 0, clausec_558_pos, clausec_558_data },
+    { 0, 2, clausec_559_pos, clausec_559_data },
+    { 1, 0, clausec_560_pos, clausec_560_data },
+    { 3, 2, clausec_561_pos, clausec_561_data },
+    { 2, 1, clausec_562_pos, clausec_562_data },
+    { 14, 19, clausec_563_pos, clausec_563_data },
+    { 1, 0, clausec_564_pos, clausec_564_data },
+    { 1, 0, clausec_565_pos, clausec_565_data },
+    { 1, 0, clausec_566_pos, clausec_566_data },
+    { 1, 1, clausec_567_pos, clausec_567_data },
+    { 1, 4, clausec_568_pos, clausec_568_data },
+    { 2, 4, clausec_569_pos, clausec_569_data },
+    { 25, 23, clausec_570_pos, clausec_570_data },
+    { 2, 0, clausec_571_pos, clausec_571_data },
+    { 1, 3, clausec_572_pos, clausec_572_data },
+    { 1, 1, clausec_573_pos, clausec_573_data },
+    { 2, 4, clausec_574_pos, clausec_574_data },
+    { 1, 0, clausec_575_pos, clausec_575_data },
+    { 1, 0, clausec_576_pos, clausec_576_data },
+    { 1, 2, clausec_577_pos, clausec_577_data },
+    { 1, 0, clausec_578_pos, clausec_578_data },
+    { 2, 0, clausec_579_pos, clausec_579_data },
+    { 2, 4, clausec_580_pos, clausec_580_data },
+    { 3, 9, clausec_581_pos, clausec_581_data },
+    { 8, 15, clausec_582_pos, clausec_582_data },
+    { 6, 21, clausec_583_pos, clausec_583_data },
+    { 1, 0, clausec_584_pos, clausec_584_data },
+    { 6, 11, clausec_585_pos, clausec_585_data },
+    { 1, 2, clausec_586_pos, clausec_586_data },
+    { 1, 0, clausec_587_pos, clausec_587_data },
+    { 15, 14, clausec_588_pos, clausec_588_data },
+    { 2, 1, clausec_589_pos, clausec_589_data },
+    { 16, 25, clausec_590_pos, clausec_590_data },
+    { 17, 25, clausec_591_pos, clausec_591_data },
+    { 0, 5, clausec_592_pos, clausec_592_data },
+    { 1, 0, clausec_593_pos, clausec_593_data },
+    { 3, 3, clausec_594_pos, clausec_594_data },
+    { 2, 0, clausec_595_pos, clausec_595_data },
+    { 18, 36, clausec_596_pos, clausec_596_data },
+    { 5, 2, clausec_597_pos, clausec_597_data },
+    { 1, 0, clausec_598_pos, clausec_598_data },
+    { 2, 0, clausec_599_pos, clausec_599_data },
+    { 26, 29, clausec_600_pos, clausec_600_data },
+    { 1, 0, clausec_601_pos, clausec_601_data },
+    { 10, 18, clausec_602_pos, clausec_602_data },
+    { 13, 17, clausec_603_pos, clausec_603_data },
+    { 3, 1, clausec_604_pos, clausec_604_data },
+    { 2, 4, clausec_605_pos, clausec_605_data },
+    { 1, 5, clausec_606_pos, clausec_606_data },
+    { 1, 1, clausec_607_pos, clausec_607_data },
+    { 2, 0, clausec_608_pos, clausec_608_data },
+    { 0, 3, clausec_609_pos, clausec_609_data },
+    { 12, 5, clausec_610_pos, clausec_610_data },
+    { 2, 4, clausec_611_pos, clausec_611_data },
+    { 63, 66, clausec_612_pos, clausec_612_data },
+    { 1, 0, clausec_613_pos, clausec_613_data },
+    { 1, 1, clausec_614_pos, clausec_614_data },
+    { 1, 3, clausec_615_pos, clausec_615_data },
+    { 5, 5, clausec_616_pos, clausec_616_data },
+    { 0, 3, clausec_617_pos, clausec_617_data },
+    { 34, 22, clausec_618_pos, clausec_618_data },
+    { 3, 4, clausec_619_pos, clausec_619_data },
+    { 5, 10, clausec_620_pos, clausec_620_data },
+    { 3, 3, clausec_621_pos, clausec_621_data },
+    { 8, 1, clausec_622_pos, clausec_622_data },
+    { 5, 3, clausec_623_pos, clausec_623_data },
+    { 2, 1, clausec_624_pos, clausec_624_data },
+    { 2, 0, clausec_625_pos, clausec_625_data },
+    { 5, 4, clausec_626_pos, clausec_626_data },
+    { 0, 2, clausec_627_pos, clausec_627_data },
+    { 2, 9, clausec_628_pos, clausec_628_data },
+    { 11, 9, clausec_629_pos, clausec_629_data },
+    { 3, 7, clausec_630_pos, clausec_630_data },
+    { 2, 0, clausec_631_pos, clausec_631_data },
+    { 26, 25, clausec_632_pos, clausec_632_data },
+    { 5, 3, clausec_633_pos, clausec_633_data },
+    { 1, 0, clausec_634_pos, clausec_634_data },
+    { 2, 0, clausec_635_pos, clausec_635_data },
+    { 79, 76, clausec_636_pos, clausec_636_data },
+    { 2, 0, clausec_637_pos, clausec_637_data },
+    { 5, 18, clausec_638_pos, clausec_638_data },
+    { 0, 2, clausec_639_pos, clausec_639_data },
+    { 1, 5, clausec_640_pos, clausec_640_data },
+    { 0, 2, clausec_641_pos, clausec_641_data },
+    { 15, 11, clausec_642_pos, clausec_642_data },
+    { 0, 1, clausec_643_pos, clausec_643_data },
+    { 8, 19, clausec_644_pos, clausec_644_data },
+    { 2, 6, clausec_645_pos, clausec_645_data },
+    { 1, 0, clausec_646_pos, clausec_646_data },
+    { 1, 0, clausec_647_pos, clausec_647_data },
+    { 1, 0, clausec_648_pos, clausec_648_data },
+    { 20, 13, clausec_649_pos, clausec_649_data },
+    { 0, 1, clausec_650_pos, clausec_650_data },
+    { 1, 1, clausec_651_pos, clausec_651_data },
+    { 1, 0, clausec_652_pos, clausec_652_data },
+    { 1, 0, clausec_653_pos, clausec_653_data },
+    { 1, 0, clausec_654_pos, clausec_654_data },
+    { 1, 0, clausec_655_pos, clausec_655_data },
+    { 10, 11, clausec_656_pos, clausec_656_data },
+    { 7, 6, clausec_657_pos, clausec_657_data },
+    { 21, 14, clausec_658_pos, clausec_658_data },
+    { 1, 0, clausec_659_pos, clausec_659_data },
+    { 3, 5, clausec_660_pos, clausec_660_data },
+    { 5, 5, clausec_661_pos, clausec_661_data },
+    { 4, 3, clausec_662_pos, clausec_662_data },
+    { 4, 8, clausec_663_pos, clausec_663_data },
+    { 11, 12, clausec_664_pos, clausec_664_data },
+    { 0, 1, clausec_665_pos, clausec_665_data },
+    { 7, 8, clausec_666_pos, clausec_666_data },
+    { 3, 3, clausec_667_pos, clausec_667_data },
+    { 25, 29, clausec_668_pos, clausec_668_data },
+    { 3, 3, clausec_669_pos, clausec_669_data },
+    { 17, 19, clausec_670_pos, clausec_670_data },
+    { 0, 2, clausec_671_pos, clausec_671_data },
+    { 15, 25, clausec_672_pos, clausec_672_data },
+    { 0, 2, clausec_673_pos, clausec_673_data },
+    { 2, 5, clausec_674_pos, clausec_674_data },
+    { 1, 0, clausec_675_pos, clausec_675_data },
+    { 2, 9, clausec_676_pos, clausec_676_data },
+    { 0, 1, clausec_677_pos, clausec_677_data },
+    { 8, 15, clausec_678_pos, clausec_678_data },
+    { 2, 4, clausec_679_pos, clausec_679_data },
+    { 1, 0, clausec_680_pos, clausec_680_data },
+    { 1, 1, clausec_681_pos, clausec_681_data },
+    { 3, 6, clausec_682_pos, clausec_682_data },
+    { 0, 2, clausec_683_pos, clausec_683_data },
+    { 1, 1, clausec_684_pos, clausec_684_data },
+    { 1, 1, clausec_685_pos, clausec_685_data },
+    { 8, 9, clausec_686_pos, clausec_686_data },
+    { 1, 0, clausec_687_pos, clausec_687_data },
+    { 4, 9, clausec_688_pos, clausec_688_data },
+    { 1, 2, clausec_689_pos, clausec_689_data },
+    { 1, 0, clausec_690_pos, clausec_690_data },
+    { 6, 5, clausec_691_pos, clausec_691_data },
+    { 23, 24, clausec_692_pos, clausec_692_data },
+    { 1, 1, clausec_693_pos, clausec_693_data },
+    { 36, 40, clausec_694_pos, clausec_694_data },
+    { 1, 0, clausec_695_pos, clausec_695_data },
+    { 36, 40, clausec_696_pos, clausec_696_data },
+    { 0, 3, clausec_697_pos, clausec_697_data },
+    { 27, 30, clausec_698_pos, clausec_698_data },
+    { 2, 0, clausec_699_pos, clausec_699_data },
+    { 1, 0, clausec_700_pos, clausec_700_data },
+    { 0, 1, clausec_701_pos, clausec_701_data },
+    { 1, 4, clausec_702_pos, clausec_702_data },
+    { 2, 1, clausec_703_pos, clausec_703_data },
+    { 2, 3, clausec_704_pos, clausec_704_data },
+    { 1, 0, clausec_705_pos, clausec_705_data },
+    { 3, 3, clausec_706_pos, clausec_706_data },
+    { 1, 0, clausec_707_pos, clausec_707_data },
+    { 4, 3, clausec_708_pos, clausec_708_data },
+    { 1, 1, clausec_709_pos, clausec_709_data },
+    { 9, 8, clausec_710_pos, clausec_710_data },
+    { 1, 1, clausec_711_pos, clausec_711_data },
+    { 4, 8, clausec_712_pos, clausec_712_data },
+    { 1, 0, clausec_713_pos, clausec_713_data },
+    { 1, 0, clausec_714_pos, clausec_714_data },
+    { 1, 0, clausec_715_pos, clausec_715_data },
+    { 4, 4, clausec_716_pos, clausec_716_data },
+    { 1, 1, clausec_717_pos, clausec_717_data },
+    { 1, 0, clausec_718_pos, clausec_718_data },
+    { 1, 0, clausec_719_pos, clausec_719_data },
+    { 2, 1, clausec_720_pos, clausec_720_data },
+    { 0, 2, clausec_721_pos, clausec_721_data },
+    { 11, 21, clausec_722_pos, clausec_722_data },
+    { 1, 0, clausec_723_pos, clausec_723_data },
+    { 1, 0, clausec_724_pos, clausec_724_data },
+    { 29, 33, clausec_725_pos, clausec_725_data },
+    { 0, 1, clausec_726_pos, clausec_726_data },
+    { 1, 0, clausec_727_pos, clausec_727_data },
+    { 0, 1, clausec_728_pos, clausec_728_data },
+    { 2, 3, clausec_729_pos, clausec_729_data },
+    { 18, 7, clausec_730_pos, clausec_730_data },
+    { 7, 5, clausec_731_pos, clausec_731_data },
+    { 4, 0, clausec_732_pos, clausec_732_data },
+    { 2, 11, clausec_733_pos, clausec_733_data },
+    { 1, 0, clausec_734_pos, clausec_734_data },
+    { 1, 0, clausec_735_pos, clausec_735_data },
+    { 9, 7, clausec_736_pos, clausec_736_data },
+    { 1, 3, clausec_737_pos, clausec_737_data },
+    { 13, 21, clausec_738_pos, clausec_738_data },
+    { 0, 0, clausec_739_pos, clausec_739_data },
+    { 0, 1, clausec_740_pos, clausec_740_data },
+    { 2, 0, clausec_741_pos, clausec_741_data },
+    { 1, 0, clausec_742_pos, clausec_742_data },
+    { 1, 1, clausec_743_pos, clausec_743_data },
+    { 22, 32, clausec_744_pos, clausec_744_data },
+    { 1, 1, clausec_745_pos, clausec_745_data },
+    { 1, 0, clausec_746_pos, clausec_746_data },
+    { 1, 1, clausec_747_pos, clausec_747_data },
+    { 7, 8, clausec_748_pos, clausec_748_data },
+    { 1, 0, clausec_749_pos, clausec_749_data },
+    { 0, 4, clausec_750_pos, clausec_750_data },
+    { 8, 6, clausec_751_pos, clausec_751_data },
+    { 13, 11, clausec_752_pos, clausec_752_data },
+    { 5, 4, clausec_753_pos, clausec_753_data },
+    { 1, 1, clausec_754_pos, clausec_754_data },
+    { 1, 0, clausec_755_pos, clausec_755_data },
+    { 5, 2, clausec_756_pos, clausec_756_data },
+    { 1, 0, clausec_757_pos, clausec_757_data },
+    { 2, 1, clausec_758_pos, clausec_758_data },
+    { 0, 6, clausec_759_pos, clausec_759_data },
+    { 3, 4, clausec_760_pos, clausec_760_data },
+    { 5, 3, clausec_761_pos, clausec_761_data },
+    { 2, 3, clausec_762_pos, clausec_762_data },
+    { 2, 4, clausec_763_pos, clausec_763_data },
+    { 4, 10, clausec_764_pos, clausec_764_data },
+    { 2, 0, clausec_765_pos, clausec_765_data },
+    { 7, 14, clausec_766_pos, clausec_766_data },
+    { 1, 0, clausec_767_pos, clausec_767_data },
+    { 9, 13, clausec_768_pos, clausec_768_data },
+    { 1, 2, clausec_769_pos, clausec_769_data },
+    { 1, 5, clausec_770_pos, clausec_770_data },
+    { 1, 0, clausec_771_pos, clausec_771_data },
+    { 0, 1, clausec_772_pos, clausec_772_data },
+    { 2, 0, clausec_773_pos, clausec_773_data },
+    { 1, 0, clausec_774_pos, clausec_774_data },
+    { 14, 14, clausec_775_pos, clausec_775_data },
+    { 0, 1, clausec_776_pos, clausec_776_data },
+    { 1, 0, clausec_777_pos, clausec_777_data },
+    { 0, 5, clausec_778_pos, clausec_778_data },
+    { 0, 2, clausec_779_pos, clausec_779_data },
+    { 74, 74, clausec_780_pos, clausec_780_data },
+    { 1, 0, clausec_781_pos, clausec_781_data },
+    { 2, 1, clausec_782_pos, clausec_782_data },
+    { 0, 1, clausec_783_pos, clausec_783_data },
+    { 6, 10, clausec_784_pos, clausec_784_data },
+    { 1, 0, clausec_785_pos, clausec_785_data },
+    { 11, 10, clausec_786_pos, clausec_786_data },
+    { 1, 0, clausec_787_pos, clausec_787_data },
+    { 2, 7, clausec_788_pos, clausec_788_data },
+    { 3, 3, clausec_789_pos, clausec_789_data },
+    { 5, 15, clausec_790_pos, clausec_790_data },
+    { 2, 0, clausec_791_pos, clausec_791_data },
+    { 14, 22, clausec_792_pos, clausec_792_data },
+    { 1, 4, clausec_793_pos, clausec_793_data },
+    { 13, 18, clausec_794_pos, clausec_794_data },
+    { 2, 1, clausec_795_pos, clausec_795_data },
+    { 24, 33, clausec_796_pos, clausec_796_data },
+    { 1, 0, clausec_797_pos, clausec_797_data },
+    { 1, 2, clausec_798_pos, clausec_798_data },
+    { 1, 0, clausec_799_pos, clausec_799_data },
+    { 1, 1, clausec_800_pos, clausec_800_data },
+    { 1, 1, clausec_801_pos, clausec_801_data },
+    { 7, 10, clausec_802_pos, clausec_802_data },
+    { 3, 4, clausec_803_pos, clausec_803_data },
+    { 2, 1, clausec_804_pos, clausec_804_data },
+    { 1, 2, clausec_805_pos, clausec_805_data },
+    { 1, 0, clausec_806_pos, clausec_806_data },
+    { 1, 3, clausec_807_pos, clausec_807_data },
+    { 1, 0, clausec_808_pos, clausec_808_data },
+    { 11, 5, clausec_809_pos, clausec_809_data },
+    { 2, 0, clausec_810_pos, clausec_810_data },
+    { 0, 3, clausec_811_pos, clausec_811_data },
+    { 0, 1, clausec_812_pos, clausec_812_data },
+    { 4, 12, clausec_813_pos, clausec_813_data },
+    { 1, 0, clausec_814_pos, clausec_814_data },
+    { 8, 7, clausec_815_pos, clausec_815_data },
+    { 3, 0, clausec_816_pos, clausec_816_data },
+    { 0, 4, clausec_817_pos, clausec_817_data },
+    { 0, 1, clausec_818_pos, clausec_818_data },
+    { 0, 1, clausec_819_pos, clausec_819_data },
+    { 0, 1, clausec_820_pos, clausec_820_data },
+    { 0, 2, clausec_821_pos, clausec_821_data },
+    { 0, 1, clausec_822_pos, clausec_822_data },
+    { 1, 5, clausec_823_pos, clausec_823_data },
+    { 1, 0, clausec_824_pos, clausec_824_data },
+    { 3, 4, clausec_825_pos, clausec_825_data },
+    { 0, 1, clausec_826_pos, clausec_826_data },
+    { 0, 2, clausec_827_pos, clausec_827_data },
+    { 18, 8, clausec_828_pos, clausec_828_data },
+    { 0, 2, clausec_829_pos, clausec_829_data },
+    { 0, 1, clausec_830_pos, clausec_830_data },
+    { 2, 6, clausec_831_pos, clausec_831_data },
+    { 1, 0, clausec_832_pos, clausec_832_data },
+    { 9, 12, clausec_833_pos, clausec_833_data },
+    { 2, 1, clausec_834_pos, clausec_834_data },
+    { 1, 0, clausec_835_pos, clausec_835_data },
+    { 1, 0, clausec_836_pos, clausec_836_data },
+    { 0, 2, clausec_837_pos, clausec_837_data },
+    { 0, 1, clausec_838_pos, clausec_838_data },
+    { 1, 2, clausec_839_pos, clausec_839_data },
+    { 3, 2, clausec_840_pos, clausec_840_data },
+    { 9, 4, clausec_841_pos, clausec_841_data },
+    { 1, 0, clausec_842_pos, clausec_842_data },
+    { 2, 0, clausec_843_pos, clausec_843_data },
+    { 2, 0, clausec_844_pos, clausec_844_data },
+    { 2, 0, clausec_845_pos, clausec_845_data },
+    { 2, 0, clausec_846_pos, clausec_846_data },
+    { 7, 10, clausec_847_pos, clausec_847_data },
+    { 1, 1, clausec_848_pos, clausec_848_data },
+    { 1, 6, clausec_849_pos, clausec_849_data },
+    { 9, 20, clausec_850_pos, clausec_850_data },
+    { 1, 2, clausec_851_pos, clausec_851_data },
+    { 1, 0, clausec_852_pos, clausec_852_data },
+    { 0, 2, clausec_853_pos, clausec_853_data },
+    { 1, 3, clausec_854_pos, clausec_854_data },
+    { 0, 2, clausec_855_pos, clausec_855_data },
+    { 1, 0, clausec_856_pos, clausec_856_data },
+    { 3, 4, clausec_857_pos, clausec_857_data },
+    { 1, 0, clausec_858_pos, clausec_858_data },
+    { 0, 3, clausec_859_pos, clausec_859_data },
+    { 0, 1, clausec_860_pos, clausec_860_data },
+    { 13, 5, clausec_861_pos, clausec_861_data },
+    { 2, 0, clausec_862_pos, clausec_862_data },
+    { 0, 5, clausec_863_pos, clausec_863_data },
+    { 19, 29, clausec_864_pos, clausec_864_data },
+    { 5, 9, clausec_865_pos, clausec_865_data },
+    { 1, 2, clausec_866_pos, clausec_866_data },
+    { 0, 2, clausec_867_pos, clausec_867_data },
+    { 0, 1, clausec_868_pos, clausec_868_data },
+    { 2, 8, clausec_869_pos, clausec_869_data },
+    { 2, 1, clausec_870_pos, clausec_870_data },
+    { 4, 1, clausec_871_pos, clausec_871_data },
+    { 0, 1, clausec_872_pos, clausec_872_data },
+    { 0, 3, clausec_873_pos, clausec_873_data },
+    { 4, 3, clausec_874_pos, clausec_874_data },
+    { 3, 6, clausec_875_pos, clausec_875_data },
+    { 1, 0, clausec_876_pos, clausec_876_data },
+    { 0, 2, clausec_877_pos, clausec_877_data },
+    { 0, 0, clausec_878_pos, clausec_878_data },
+    { 11, 10, clausec_879_pos, clausec_879_data },
+    { 0, 0, clausec_880_pos, clausec_880_data },
+    { 0, 2, clausec_881_pos, clausec_881_data },
+    { 0, 1, clausec_882_pos, clausec_882_data },
+    { 0, 4, clausec_883_pos, clausec_883_data },
+    { 11, 6, clausec_884_pos, clausec_884_data },
+    { 21, 27, clausec_885_pos, clausec_885_data },
+    { 0, 1, clausec_886_pos, clausec_886_data },
+    { 2, 4, clausec_887_pos, clausec_887_data },
+    { 0, 1, clausec_888_pos, clausec_888_data },
+    { 10, 12, clausec_889_pos, clausec_889_data },
+    { 2, 0, clausec_890_pos, clausec_890_data },
+    { 12, 12, clausec_891_pos, clausec_891_data },
+    { 0, 0, clausec_892_pos, clausec_892_data },
+    { 0, 9, clausec_893_pos, clausec_893_data },
+    { 1, 0, clausec_894_pos, clausec_894_data },
+    { 2, 5, clausec_895_pos, clausec_895_data },
+    { 1, 0, clausec_896_pos, clausec_896_data },
+    { 0, 5, clausec_897_pos, clausec_897_data },
+    { 1, 1, clausec_898_pos, clausec_898_data },
+    { 0, 1, clausec_899_pos, clausec_899_data },
+    { 6, 3, clausec_900_pos, clausec_900_data },
+    { 1, 0, clausec_901_pos, clausec_901_data },
+    { 1, 0, clausec_902_pos, clausec_902_data },
+    { 1, 0, clausec_903_pos, clausec_903_data },
+    { 36, 33, clausec_904_pos, clausec_904_data },
+    { 0, 0, clausec_905_pos, clausec_905_data },
+    { 5, 3, clausec_906_pos, clausec_906_data },
+    { 1, 5, clausec_907_pos, clausec_907_data },
+    { 1, 0, clausec_908_pos, clausec_908_data },
+    { 1, 0, clausec_909_pos, clausec_909_data },
+    { 31, 30, clausec_910_pos, clausec_910_data },
+    { 3, 2, clausec_911_pos, clausec_911_data },
+    { 1, 0, clausec_912_pos, clausec_912_data },
+    { 0, 1, clausec_913_pos, clausec_913_data },
+    { 0, 0, clausec_914_pos, clausec_914_data },
+    { 0, 0, clausec_915_pos, clausec_915_data },
+    { 1, 0, clausec_916_pos, clausec_916_data },
+    { 1, 1, clausec_917_pos, clausec_917_data },
+    { 9, 14, clausec_918_pos, clausec_918_data },
+    { 1, 0, clausec_919_pos, clausec_919_data },
+    { 0, 0, clausec_920_pos, clausec_920_data },
+    { 5, 7, clausec_921_pos, clausec_921_data },
+    { 26, 27, clausec_922_pos, clausec_922_data },
+    { 1, 1, clausec_923_pos, clausec_923_data },
+    { 1, 1, clausec_924_pos, clausec_924_data },
+    { 1, 1, clausec_925_pos, clausec_925_data },
+    { 0, 1, clausec_926_pos, clausec_926_data },
+    { 2, 4, clausec_927_pos, clausec_927_data },
+    { 3, 2, clausec_928_pos, clausec_928_data },
+    { 1, 7, clausec_929_pos, clausec_929_data },
+    { 4, 8, clausec_930_pos, clausec_930_data },
+    { 0, 2, clausec_931_pos, clausec_931_data },
+    { 26, 32, clausec_932_pos, clausec_932_data },
+    { 0, 2, clausec_933_pos, clausec_933_data },
+    { 14, 31, clausec_934_pos, clausec_934_data },
+    { 1, 0, clausec_935_pos, clausec_935_data },
+    { 3, 1, clausec_936_pos, clausec_936_data },
+    { 15, 18, clausec_937_pos, clausec_937_data },
+    { 3, 0, clausec_938_pos, clausec_938_data },
+    { 0, 2, clausec_939_pos, clausec_939_data },
+    { 30, 34, clausec_940_pos, clausec_940_data },
+    { 2, 0, clausec_941_pos, clausec_941_data },
+    { 1, 0, clausec_942_pos, clausec_942_data },
+    { 1, 2, clausec_943_pos, clausec_943_data },
+    { 0, 1, clausec_944_pos, clausec_944_data },
+    { 7, 9, clausec_945_pos, clausec_945_data },
+    { 1, 0, clausec_946_pos, clausec_946_data },
+    { 0, 2, clausec_947_pos, clausec_947_data },
+    { 2, 6, clausec_948_pos, clausec_948_data },
+    { 1, 0, clausec_949_pos, clausec_949_data },
+    { 18, 23, clausec_950_pos, clausec_950_data },
+    { 1, 0, clausec_951_pos, clausec_951_data },
+    { 58, 63, clausec_952_pos, clausec_952_data },
+    { 1, 1, clausec_953_pos, clausec_953_data },
+    { 2, 2, clausec_954_pos, clausec_954_data },
+    { 1, 0, clausec_955_pos, clausec_955_data },
+    { 0, 1, clausec_956_pos, clausec_956_data },
+    { 1, 1, clausec_957_pos, clausec_957_data },
+    { 0, 1, clausec_958_pos, clausec_958_data },
+    { 0, 3, clausec_959_pos, clausec_959_data },
+    { 1, 0, clausec_960_pos, clausec_960_data },
+    { 3, 7, clausec_961_pos, clausec_961_data },
+    { 1, 0, clausec_962_pos, clausec_962_data },
+    { 1, 1, clausec_963_pos, clausec_963_data },
+    { 0, 1, clausec_964_pos, clausec_964_data },
+    { 1, 0, clausec_965_pos, clausec_965_data },
+    { 0, 0, clausec_966_pos, clausec_966_data },
+    { 1, 0, clausec_967_pos, clausec_967_data },
+    { 1, 0, clausec_968_pos, clausec_968_data },
+    { 1, 1, clausec_969_pos, clausec_969_data },
+    { 2, 0, clausec_970_pos, clausec_970_data },
+    { 1, 0, clausec_971_pos, clausec_971_data },
+    { 1, 0, clausec_972_pos, clausec_972_data },
+    { 0, 0, clausec_973_pos, clausec_973_data },
+    { 1, 0, clausec_974_pos, clausec_974_data },
+    { 1, 0, clausec_975_pos, clausec_975_data },
+    { 10, 11, clausec_976_pos, clausec_976_data },
+    { 1, 4, clausec_977_pos, clausec_977_data },
+    { 11, 9, clausec_978_pos, clausec_978_data },
+    { 1, 0, clausec_979_pos, clausec_979_data },
+    { 0, 1, clausec_980_pos, clausec_980_data },
+    { 1, 1, clausec_981_pos, clausec_981_data },
+    { 8, 9, clausec_982_pos, clausec_982_data },
+    { 0, 0, clausec_983_pos, clausec_983_data },
+    { 0, 1, clausec_984_pos, clausec_984_data },
+    { 0, 2, clausec_985_pos, clausec_985_data },
+    { 66, 78, clausec_986_pos, clausec_986_data },
+    { 1, 0, clausec_987_pos, clausec_987_data },
+    { 33, 37, clausec_988_pos, clausec_988_data },
+    { 1, 0, clausec_989_pos, clausec_989_data },
+    { 1, 0, clausec_990_pos, clausec_990_data },
+    { 0, 2, clausec_991_pos, clausec_991_data },
+    { 9, 14, clausec_992_pos, clausec_992_data },
+    { 1, 7, clausec_993_pos, clausec_993_data },
+    { 28, 32, clausec_994_pos, clausec_994_data },
+    { 1, 0, clausec_995_pos, clausec_995_data },
+    { 2, 8, clausec_996_pos, clausec_996_data },
+    { 0, 4, clausec_997_pos, clausec_997_data },
+    { 64, 61, clausec_998_pos, clausec_998_data },
+    { 0, 0, clausec_999_pos, clausec_999_data },
+};
+
+
+static ClauseCompressedOffset clauses_compressed_offset[] = {
+};
+
+
+static ClauseCompressedBitpack clauses_compressed_bitpack[] = {
+};
+
+
+#define TSETLIN_MODEL_TOTAL_BYTES 34668
+// #define TSETLIN_MODEL_TRAINABLE
+
+static Tsetlin tsetlin_model = {
+    .n_class = 10,
+    .n_feature = 6272,
+    .n_clause = 100,
+    .n_state = 50,
+    .model_type = (ModelType)0,
+
+    .clauses = clauses,
+    .clauses_compressed = clauses_compressed,
+    .clauses_compressed_offset = clauses_compressed_offset,
+    .clauses_compressed_bitpack = clauses_compressed_bitpack,
+};
