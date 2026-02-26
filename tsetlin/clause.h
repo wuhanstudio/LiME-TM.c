@@ -4,7 +4,7 @@
 
 #ifdef _WIN32
 #include <windows.h>
-#else
+#elif !defined(__AVR__)
 #include <sys/unistd.h>
 #endif
 
@@ -26,6 +26,7 @@
 
 #if defined(ARDUINO)
   /* Arduino */
+  #include <Arduino.h> 
   #define TSETLIN_USING_STATIC_MODEL
 #endif
 

@@ -12,5 +12,6 @@ endif()
 if (CONFIG_TSETLIN_USING_STATIC_MODEL)
     target_compile_definitions(${COMPONENT_LIB}
         PRIVATE TSETLIN_USING_STATIC_MODEL
+        PRIVATE TSETLIN_MODEL_TRAINABLE
     )
 endif()

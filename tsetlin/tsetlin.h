@@ -7,7 +7,7 @@
 
 #ifdef _WIN32
 #include <windows.h>
-#else
+#elif !defined(__AVR__)
 #include <sys/unistd.h>
 #endif
 

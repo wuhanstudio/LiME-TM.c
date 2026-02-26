@@ -5068,7 +5068,10 @@ static ClauseCompressedBitpack clauses_compressed_bitpack[] = {
 
 
 #define TSETLIN_MODEL_TOTAL_BYTES 59528
-#define TSETLIN_MODEL_TRAINABLE
+
+#if !defined(TSETLIN_MODEL_TRAINABLE)
+    #define TSETLIN_MODEL_TRAINABLE
+#endif
 
 static Tsetlin tsetlin_model = {
     .n_class = 10,

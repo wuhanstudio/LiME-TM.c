@@ -20,6 +20,7 @@ endif()
 if (CONFIG_TSETLIN_USING_STATIC_MODEL)
     target_compile_definitions(app
         PRIVATE TSETLIN_USING_STATIC_MODEL
+        PRIVATE TSETLIN_MODEL_TRAINABLE
     )
 endif()
 

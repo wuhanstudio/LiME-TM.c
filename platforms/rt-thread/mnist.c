@@ -1,6 +1,10 @@
 #include <stdio.h>
 #include <rtthread.h>
 
+#if defined(TSETLIN_USING_STATIC_MODEL)
+#include <mnist_model.h>
+#endif
+
 #include <mnist.h>
 #include <tsetlin.h>
 
