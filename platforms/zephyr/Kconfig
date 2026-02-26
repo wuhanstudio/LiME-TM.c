@@ -30,4 +30,10 @@ menu "LiME-TM: Lightning fast and Memory Efficient Machine Learning for MCU (Tse
             Using the tsetlin compiler to save the model as a static C header file.
         depends on LIME_TM_USING_MNIST_STATIC_EXAMPLE
         default y
+
+    config TSETLIN_MODEL_TRAINABLE
+        bool "Enable model training"
+        help
+            Enabling this option allows the model to be trained on-device.
+        default y
 endmenu
