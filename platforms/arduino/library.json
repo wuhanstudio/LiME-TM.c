@@ -1,0 +1,16 @@
+{
+  "name": "LiME-TM",
+  "keywords": "Data Processing",
+  "description": "LiME-TM: Lightning fast and Memory-Efficient Machine Learning model for MCU.",
+  "repository":
+  {
+    "type": "git",
+    "url": "https://github.com/wuhanstudio/tsetlin.ide"
+  },
+  "version": "1.0.0",
+  "frameworks": "arduino",
+  "platforms": "ststm32",
+  "build": {
+    "libArchive": false
+  }
+}

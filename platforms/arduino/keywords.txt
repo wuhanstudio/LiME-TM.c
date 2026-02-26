@@ -1,0 +1,31 @@
+#######################################
+# Syntax Coloring Map LiME-TM
+#######################################
+
+#######################################
+# Datatypes (KEYWORD1)
+#######################################
+
+Tsetlin	KEYWORD1
+Clause	KEYWORD1
+ClauseCompressed	KEYWORD1
+
+ModelType   KEYWORD1
+
+#######################################
+# Methods and Functions (KEYWORD2)
+#######################################
+
+tsetlin_read_file       KEYWORD2
+tsetlin_step 	        KEYWORD2
+tsetlin_evaluate 	    KEYWORD2
+clause_evaluate         KEYWORD2
+clause_update_type_I    KEYWORD2
+clause_update_type_II   KEYWORD2
+
+#######################################
+# Constants (LITERAL1)
+#######################################
+
+TSETLIN_USING_PROTOBUF	    LITERAL1
+TSETLIN_USING_STATIC_HEADER	LITERAL1
