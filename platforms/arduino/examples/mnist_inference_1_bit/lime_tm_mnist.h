@@ -1,7 +1,7 @@
 #include <tsetlin.h>
 #include "mnist.h"
 
-#define MODEL_BITS 4
+#define MODEL_BITS 1
 
 void print_progress(const char *label, int percent);
 
