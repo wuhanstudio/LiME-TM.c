@@ -37,6 +37,7 @@ void mnist_print_info(File f_train_imgs, File f_train_labels, int img_index, int
   }
 
   mnist_print_img(train_img);
+  free(train_img);
 
   int8_t train_label = mnist_load_label(f_train_labels, img_index);
   LOGI(TAG, "Image label: %d", train_label);
@@ -88,6 +89,7 @@ int lime_tm_mnist_test_all(Tsetlin* model, File f_test_imgs, File f_test_labels,
         int8_t label = mnist_load_next_label(f_test_labels, i);
         if (label < 0) {
             LOGE(TAG, "Failed to load test label %d", i);
+            free(img);
             continue;
         }
 
@@ -100,8 +102,10 @@ int lime_tm_mnist_test_all(Tsetlin* model, File f_test_imgs, File f_test_labels,
         int ret = lime_tm_mnist_inference(model, img, rows, cols, votes, &predicted_class);
         if (ret < 0) {
             LOGE(TAG, "Inference failed on test image %d", i);
+            free(img);
             continue;
         }
+        free(img);
 
         if (predicted_class == label) {
             correct++;

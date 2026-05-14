@@ -2,7 +2,7 @@
 #define MNIST_H
 
 #include <Arduino.h>
-#include <STM32SD.h>
+#include <SD.h>
 
 #include <math.h>
 #include <stdio.h>
@@ -17,7 +17,7 @@
 #include <stdint.h>
 #include <logging.h>
 
-#define MODEL_BITS 4
+#define MODEL_BITS 8
 
 uint32_t mnist_image_info(const char* path, int* out_rows, int* out_cols);
 uint32_t mnist_label_info(const char* path);

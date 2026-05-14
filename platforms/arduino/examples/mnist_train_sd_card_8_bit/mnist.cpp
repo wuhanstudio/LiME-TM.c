@@ -9,36 +9,17 @@ static const char *TAG = "mnist";
 #define MNIST_X_MEAN 33.318f
 #define MNIST_X_STD 78.567f
 
-static uint8_t img[ 28 * 28];
 static uint8_t bool_img[ 28 * 28 * MODEL_BITS];
 
-#ifdef __AVR__
-float erff(float x) {
-    // Abramowitz & Stegun approximation
-    float t = 1.0f / (1.0f + 0.5f * fabsf(x));
-    float tau = t * expf(-x*x - 1.26551223f +
-                         t*(1.00002368f +
-                         t*(0.37409196f +
-                         t*(0.09678418f +
-                         t*(-0.18628806f +
-                         t*(0.27886807f +
-                         t*(-1.13520398f +
-                         t*(1.48851587f +
-                         t*(-0.82215223f +
-                         t*0.17087277f)))))))));
-    return (x >= 0) ? 1.0f - tau : tau - 1.0f;
+static inline float norm_cdf(float x) {
+    return 0.5f * (1.0f + erff(x / 1.41421356237f)); // sqrt(2)
 }
-#endif
 
 static uint32_t read_u32_be(const uint8_t *p) {
     return ((uint32_t)p[0] << 24) |
            ((uint32_t)p[1] << 16) |
            ((uint32_t)p[2] << 8)  |
            (uint32_t)p[3];
-}
-
-static inline float norm_cdf(float x) {
-    return 0.5f * (1.0f + erff(x / 1.41421356237f)); // sqrt(2)
 }
 
 uint8_t* mnist_booleanize_img_n_bit(
@@ -74,12 +55,6 @@ uint8_t* mnist_booleanize_img_n_bit(
     }
 
     return bool_img;
-}
-
-void mnist_booleanize_img(uint8_t* img, uint32_t size, uint8_t threshold) {
-    for (uint32_t i = 0; i < size; i++) {
-        img[i] = (img[i] > threshold) ? 1 : 0;
-    }
 }
 
 uint32_t mnist_image_info(const char* path, int* out_rows, int* out_cols)
@@ -120,30 +95,45 @@ uint8_t* mnist_load_image(File f, int idx, int rows, int cols)
 {
     size_t total = (size_t) rows * cols;
 
+    // Allocate buffer
+    uint8_t* buf = (uint8_t*) malloc(total);
+    if (!buf) {
+        LOGE(TAG, "Failed to allocate memory for image %d", idx);
+        return nullptr;
+    }
+
     // Seek to the start of the image
     if (!f.seek(16 + (size_t)idx * total)) {
         LOGE(TAG, "Failed to seek to image %d", idx);
+        free(buf);
         return nullptr;
     }
 
     // Read the image data
-    if (f.read(img, total) != total) {
+    if (f.read(buf, total) != total) {
         LOGE(TAG, "Failed to read image %d", idx);
+        free(buf);
         return nullptr;
     }
 
-    return img;
+    return buf;
 }
 
 uint8_t* mnist_load_next_image(File f, int idx, int rows, int cols) {
     size_t total = (size_t) rows * cols;
-
-    if (f.read(img, total) != total) {
-        LOGE(TAG, "Failed to read %lu bytes data", total);
+    uint8_t* buf = (uint8_t*) malloc( sizeof(uint8_t) * total);
+    if (!buf) {
+        LOGE(TAG, "Failed to allocate %lu bytes of memory", total);
         return NULL;
     }
 
-    return img;
+    if (f.read(buf, total) != total) {
+        LOGE(TAG, "Failed to read %lu bytes data", total);
+        free(buf);
+        return NULL;
+    }
+
+    return buf;
 }
 
 uint32_t mnist_label_info(const char* path)
