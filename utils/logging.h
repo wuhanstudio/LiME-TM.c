@@ -12,7 +12,7 @@
     #define LOGI(tag, fmt, ...) LOG_INF("[%s] " fmt, tag, ##__VA_ARGS__)
     #define LOGD(tag, fmt, ...) LOG_DBG("[%s] " fmt, tag, ##__VA_ARGS__)
 
-#elif defined(ESP_PLATFORM)
+#elif defined(ESP_PLATFORM) && !defined(ARDUINO)
     /* ================= ESP-IDF ================= */
     #include "esp_log.h"
 
