@@ -3,8 +3,8 @@
 
 static const char* TAG = "main";
 
-// #define CONSOLE_USE_CDC
-#define CONSOLE_USE_SERIAL
+#define CONSOLE_USE_CDC
+// #define CONSOLE_USE_SERIAL
 // #define CONSOLE_USE_RTT
 
 // Print to Serial 1
