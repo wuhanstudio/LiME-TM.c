@@ -3,15 +3,25 @@
 /* Please uncomment the line below for model training */
 /* // #define TSETLIN_MODEL_TRAINABLE                 */
 
-#include <STM32SD.h>
+#include <SPI.h>
+#include <SD.h>
 
 #include "mnist_model.h"
 #include "lime_tm_mnist.h"
 
 static const char* TAG = "main";
 
-#define CONSOLE_USE_SERIAL
-// #define CONSOLE_USE_CDC
+/* =========================
+   ESP32 SD SPI PINS
+   Change if needed
+   ========================= */
+#define SD_SCK   18
+#define SD_MISO  19
+#define SD_MOSI  23
+#define SD_CS     5
+
+// #define CONSOLE_USE_SERIAL
+#define CONSOLE_USE_CDC
 // #define CONSOLE_USE_RTT
 
 // Print to Serial 1
@@ -39,11 +49,11 @@ extern "C" int _write(int file, char* ptr, int len) {
   return len;
 }
 
-#define MNIST_TRAIN_IMG_PATH "train-images-idx3-ubyte"
-#define MNIST_TRAIN_LABEL_PATH "train-labels-idx1-ubyte"
+#define MNIST_TRAIN_IMG_PATH "/train-images-idx3-ubyte"
+#define MNIST_TRAIN_LABEL_PATH "/train-labels-idx1-ubyte"
 
-#define MNIST_TEST_IMG_PATH "t10k-images-idx3-ubyte"
-#define MNIST_TEST_LABEL_PATH "t10k-labels-idx1-ubyte"
+#define MNIST_TEST_IMG_PATH "/t10k-images-idx3-ubyte"
+#define MNIST_TEST_LABEL_PATH "/t10k-labels-idx1-ubyte"
 
 uint32_t N_EPOCHS = 10;
 uint32_t T = 10;
@@ -142,7 +152,7 @@ int lime_tm_mnist_main() {
   LOGI(TAG, "");
 
   // Step 3: Print a random mnist train image
-  int img_index = fast_rand() % train_img_count;
+  int img_index = random(train_img_count);
 
   LOGI(TAG, "Loading and printing training image %d", img_index);
 
@@ -163,7 +173,7 @@ int lime_tm_mnist_main() {
   LOGI(TAG, "");
 
   // Step 4: Print a random mnist test image
-  img_index = fast_rand() % train_img_count;
+  img_index = random(train_img_count);
 
   LOGI(TAG, "Loading and printing testing image %d", img_index);
 
@@ -184,7 +194,7 @@ int lime_tm_mnist_main() {
   LOGI(TAG, "");
 
   // Step 5: Evaluate model on a random test image
-  img_index = fast_rand() % test_img_count;
+  img_index = random(test_img_count);
 
   uint8_t* img = mnist_load_image(f_test_imgs, img_index, rows, cols);
   if (!img) {
@@ -234,6 +244,11 @@ int lime_tm_mnist_main() {
   }
 
   for (size_t i = 0; i < N_EPOCHS; i++) {
+    // Benchmark
+    long total_fs_time = 0;
+    long total_boolean_time = 0;
+    long total_calc_time = 0;
+  
     for (uint32_t j = 0; j < train_img_count; j++) {
       if (j == 0) {
         // Skip the header
@@ -241,6 +256,7 @@ int lime_tm_mnist_main() {
         f_test_labels.seek(8);
       }
 
+      uint32_t start_utility = micros();
       uint8_t* X_img = mnist_load_image(f_train_imgs, j, rows, cols);
       if (!X_img) {
         LOGE(TAG, "Failed to load train image %d", j);
@@ -252,14 +268,19 @@ int lime_tm_mnist_main() {
         LOGE(TAG, "Failed to load train label %d", j);
         continue;
       }
-
+      total_fs_time += micros() - start_utility;
+  
       // Booleanize image using threshold 75
       // mnist_booleanize_img(X_img, rows * cols, 75);
 
       // Booleanize image using 4-bit representation
+      uint32_t start_boolean = micros();
       uint8_t* bool_img = mnist_booleanize_img_n_bit(X_img, rows, cols, MODEL_BITS);
+      total_boolean_time += micros() - start_boolean;
 
+      uint32_t start_calc = micros();
       tsetlin_step(model, bool_img, y_target, T, s);
+      total_calc_time += micros() - start_calc;
       free(img);
 
       // Print progress every 1000 images
@@ -270,11 +291,22 @@ int lime_tm_mnist_main() {
       }
     }
 
+    printf("[FS] Achieved %d us/image\n", (int)(total_fs_time / train_img_count));
+    printf("[BOOL] Achieved %d us/image\n", (int)(total_boolean_time / train_img_count));
+    printf("[TM] Achieved %d us/image\n", (int)(total_calc_time / train_img_count));
+
     printf("\n");
 
     // Evaluate on test set after each epoch
     lime_tm_mnist_test_all(model, f_test_imgs, f_test_labels, test_img_count, rows, cols, votes);
   }
+
+  free(votes);
+
+  f_train_imgs.close();
+  f_train_labels.close();
+  f_test_imgs.close();
+  f_test_labels.close();
 
   return 0;
 }
@@ -295,8 +327,11 @@ void setup() {
 #endif
 
   LOGI(TAG, "Initializing SD card...");
-  while (!SD.begin()) {
-    delay(10);
+  if (!SD.begin(SD_CS)) {
+    LOGE(TAG, "SD card initialization failed!");
+    while (1) {
+      delay(1000);
+    }
   }
   LOGI(TAG, "SD card initialized.");
 

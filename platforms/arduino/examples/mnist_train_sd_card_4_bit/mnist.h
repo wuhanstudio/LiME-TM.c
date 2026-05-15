@@ -2,7 +2,7 @@
 #define MNIST_H
 
 #include <Arduino.h>
-#include <STM32SD.h>
+#include <SD.h>
 
 #include <math.h>
 #include <stdio.h>

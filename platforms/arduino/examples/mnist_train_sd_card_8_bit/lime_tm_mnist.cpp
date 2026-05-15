@@ -68,11 +68,12 @@ int lime_tm_mnist_test_all(Tsetlin* model, File f_test_imgs, File f_test_labels,
     int correct = 0;
 
     long total_utility_time = 0;
+    long total_boolean_time = 0;
     long total_calc_time = 0;
 
     for (uint32_t i = 0; i < test_img_count; i++)
     {
-        uint32_t start_utility = millis();
+        uint32_t start_utility = micros();
 
         if( i == 0) {
             // Skip the header
@@ -93,25 +94,29 @@ int lime_tm_mnist_test_all(Tsetlin* model, File f_test_imgs, File f_test_labels,
             continue;
         }
 
-        total_utility_time += (millis() - start_utility);
-
-        uint32_t start = millis();
+        total_utility_time += (micros() - start_utility);
 
         uint8_t predicted_class = 0;
 
-        int ret = lime_tm_mnist_inference(model, img, rows, cols, votes, &predicted_class);
-        if (ret < 0) {
-            LOGE(TAG, "Inference failed on test image %d", i);
-            free(img);
-            continue;
+        // Booleanize image using 8-bit representation
+        uint32_t start_bool = micros();
+        uint8_t* bool_img = mnist_booleanize_img_n_bit(img, rows, cols, MODEL_BITS);
+        if (!bool_img) {
+            LOGE(TAG, "Failed to booleanize image");
+            return -1;
         }
+        total_boolean_time += (micros() - start_bool);
+    
+        uint32_t start_calc = micros();
+        // Evaluate
+        tsetlin_evaluate(model, bool_img, votes, &predicted_class);
+        total_calc_time += (micros() - start_calc);
+
         free(img);
 
         if (predicted_class == label) {
             correct++;
         }
-
-        total_calc_time += (millis() - start);
 
         // Print progress every 1000 images
         if ((i + 1) % 1000 == 0) {
@@ -123,11 +128,9 @@ int lime_tm_mnist_test_all(Tsetlin* model, File f_test_imgs, File f_test_labels,
 
     printf("\n");
 
-    float tks = test_img_count / (double)(total_calc_time) * 1000;
-    printf("[TM] Achieved images/s: %d\n", (int)tks);
-
-    float uts = test_img_count / (double)(total_utility_time) * 1000;
-    printf("[FS] Achieved images/s: %d\n", (int)uts);
+    printf("[FS] Achieved %d us/image\n", (int)(total_utility_time / test_img_count));
+    printf("[BOOL] Achieved %d us/image\n", (int)(total_boolean_time / test_img_count));
+    printf("[TM] Achieved %d us/image\n", (int)(total_calc_time / test_img_count));
 
     printf("Correct predictions on test set %d / %d\n", (int) correct, (int) test_img_count);
 

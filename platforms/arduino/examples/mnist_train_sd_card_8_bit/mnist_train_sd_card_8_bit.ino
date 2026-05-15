@@ -277,91 +277,62 @@ int lime_tm_mnist_main() {
     return -1;
   }
 
-  uint64_t total_step_time_us = 0;
-  uint32_t total_steps = 0;
-
   for (size_t i = 0; i < N_EPOCHS; i++) {
-
+    // Benchmark
+    long total_fs_time = 0;
+    long total_boolean_time = 0;
+    long total_calc_time = 0;
+  
     for (uint32_t j = 0; j < train_img_count; j++) {
+      if (j == 0) {
+        // Skip the header
+        f_test_imgs.seek(16);
+        f_test_labels.seek(8);
+      }
 
-      uint8_t* X_img =
-          mnist_load_image(
-              f_train_imgs,
-              j,
-              rows,
-              cols);
-
+      uint32_t start_utility = micros();
+      uint8_t* X_img = mnist_load_image(f_train_imgs, j, rows, cols);
       if (!X_img) {
         LOGE(TAG, "Failed to load train image %d", j);
         continue;
       }
 
-      int8_t y_target =
-          mnist_load_label(
-              f_train_labels,
-              j);
-
+      int8_t y_target = mnist_load_label(f_train_labels, j);
       if (y_target < 0) {
         LOGE(TAG, "Failed to load train label %d", j);
-        free(X_img);
         continue;
       }
+      total_fs_time += micros() - start_utility;
+  
+      // Booleanize image using threshold 75
+      // mnist_booleanize_img(X_img, rows * cols, 75);
 
-      // Booleanize image using n-bit representation
-      uint8_t* bool_img =
-          mnist_booleanize_img_n_bit(
-              X_img,
-              rows,
-              cols,
-              MODEL_BITS);
+      // Booleanize image using 4-bit representation
+      uint32_t start_boolean = micros();
+      uint8_t* bool_img = mnist_booleanize_img_n_bit(X_img, rows, cols, MODEL_BITS);
+      total_boolean_time += micros() - start_boolean;
 
-      unsigned long step_start_us = micros();
-      tsetlin_step(
-          model,
-          bool_img,
-          y_target,
-          T,
-          s);
+      uint32_t start_calc = micros();
+      tsetlin_step(model, bool_img, y_target, T, s);
+      total_calc_time += micros() - start_calc;
+      free(img);
 
-      unsigned long step_time_us = micros() - step_start_us;
-
-      total_step_time_us += step_time_us;
-      total_steps++;
-
-      free(X_img);
-
-      // Progress print
+      // Print progress every 1000 images
       if ((j + 1) % 1000 == 0) {
-
-        char message[64];
-        double avg_step_ms = (double)total_step_time_us / total_steps / 1000.0;
-
-        snprintf(
-            message,
-            sizeof(message),
-            "Epoch %d: %d/%d Avg step %.3f ms/image\n",
-            i + 1,
-            j + 1,
-            train_img_count,
-            avg_step_ms);
-
-        print_progress(
-            message,
-            (j + 1) * 100 / train_img_count);
+        char message[32];
+        snprintf(message, sizeof(message), "Epoch %d: Processed %d/%d", i + 1, j + 1, train_img_count);
+        print_progress(message, (j + 1) * 100 / train_img_count);
       }
     }
 
+    printf("[FS] Achieved %d us/image\n", (int)(total_fs_time / train_img_count));
+    printf("[BOOL] Achieved %d us/image\n", (int)(total_boolean_time / train_img_count));
+    printf("[TM] Achieved %d us/image\n", (int)(total_calc_time / train_img_count));
+
     printf("\n");
 
-    // Evaluate after each epoch
-    lime_tm_mnist_test_all(
-        model,
-        f_test_imgs,
-        f_test_labels,
-        test_img_count,
-        rows,
-        cols,
-        votes);
+    // Evaluate on test set after each epoch
+    lime_tm_mnist_test_all(model, f_test_imgs, f_test_labels, test_img_count, rows, cols, votes);
   }
 
   free(votes);
