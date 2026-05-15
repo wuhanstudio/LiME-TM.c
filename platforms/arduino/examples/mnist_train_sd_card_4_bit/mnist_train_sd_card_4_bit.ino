@@ -268,7 +268,7 @@ int lime_tm_mnist_main() {
         LOGE(TAG, "Failed to load train label %d", j);
         continue;
       }
-      total_fs_time += micros() - start_utility;
+      total_fs_time += (micros() - start_utility);
   
       // Booleanize image using threshold 75
       // mnist_booleanize_img(X_img, rows * cols, 75);
@@ -276,11 +276,11 @@ int lime_tm_mnist_main() {
       // Booleanize image using 4-bit representation
       uint32_t start_boolean = micros();
       uint8_t* bool_img = mnist_booleanize_img_n_bit(X_img, rows, cols, MODEL_BITS);
-      total_boolean_time += micros() - start_boolean;
+      total_boolean_time += (micros() - start_boolean);
 
       uint32_t start_calc = micros();
       tsetlin_step(model, bool_img, y_target, T, s);
-      total_calc_time += micros() - start_calc;
+      total_calc_time += (micros() - start_calc);
       free(img);
 
       // Print progress every 1000 images
