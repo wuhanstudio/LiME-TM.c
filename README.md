@@ -5,10 +5,10 @@
 ## Supported Platforms
 
 - [Windows / Linux](platforms/win_linux)
-- [Zephyr RTOS](zephyr)
-- [RT-Thread RTOS](rt-thread)
-- [ESP-IDF (FreeRTOS)](esp-idf)
-- [Arduino](arduino)
+- [Zephyr RTOS](platforms/zephyr)
+- [RT-Thread RTOS](platforms/rt-thread)
+- [ESP-IDF (FreeRTOS)](platforms/esp-idf)
+- [Arduino](platforms/arduino)
 
 ## Quick Start (PC)
 
@@ -38,6 +38,28 @@ cmake -S . -B build -G "Visual Studio 17 2022"
 ### Load the model
 
 Load the model from file system (#define TSETLIN_USING_PROTOBUF):
+
+```
+#if defined(TSETLIN_USING_PROTOBUF)
+Tsetlin* lime_tm_mnist_load_model(const char* model_path) 
+{
+    // Load Tsetlin model from file
+    size_t size = 0;
+    uint8_t* data = tsetlin_read_file(model_path, &size);
+    if (!data) {
+        LOGE(TAG, "Failed to read file");
+        return NULL;
+    }
+
+    LOGI(TAG, "Model loaded (%ld Bytes)", size);
+
+    Tsetlin* model = tsetlin__unpack(NULL, size, data);
+    free(data);
+
+    return model;
+}
+#endif
+```
 
 ```
 Tsetlin* model = NULL;
