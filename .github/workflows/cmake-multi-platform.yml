@@ -46,6 +46,8 @@ jobs:
 
     steps:
     - uses: actions/checkout@v4
+      with:
+        submodules: true
 
     - name: Configure CMake
       working-directory: platforms/win_linux
