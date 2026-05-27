@@ -10,6 +10,8 @@
 
 #include <fast_rand.h>
 
+#define MODEL_BITS 8
+
 #define DISK_MOUNT_PT "/sdcard"
 static const char *TAG = "main";
 
@@ -107,7 +109,7 @@ int lime_tm_mnist_inference(Tsetlin* model, uint8_t* img, int rows, int cols, in
     // mnist_booleanize_img(img, rows * cols, 75);
 
     // Booleanize image using 8-bit representation
-    uint8_t* bool_img = mnist_booleanize_img_n_bit(img, rows, cols, 8);
+    uint8_t* bool_img = mnist_booleanize_img_n_bit(img, rows, cols, MODEL_BITS);
     if (!bool_img) {
         LOGE(TAG, "Failed to booleanize image");
         return -1;
@@ -124,7 +126,8 @@ int lime_tm_mnist_test_all(Tsetlin* model, FILE* f_test_imgs, FILE* f_test_label
 {
     int correct = 0;
 
-    long total_utility_time = 0;
+    long total_fs_time = 0;
+    long total_booleanize_time = 0;
     long total_calc_time = 0;
 
     for (uint32_t i = 0; i < test_img_count; i++)
@@ -150,22 +153,28 @@ int lime_tm_mnist_test_all(Tsetlin* model, FILE* f_test_imgs, FILE* f_test_label
             continue;
         }
 
-        total_utility_time += (rt_tick_get() - start_utility);
-
-        uint32_t start = rt_tick_get();
+        total_fs_time += (rt_tick_get() - start_utility);
 
         uint8_t predicted_class = 0;
-        int ret = lime_tm_mnist_inference(model, img, rows, cols, votes, &predicted_class);
-        if (ret < 0) {
-            LOGE(TAG, "Inference failed on test image %d", i);
-            continue;
+
+        // Booleanize image using 8-bit representation
+        uint32_t start_booleanize = rt_tick_get();
+        uint8_t* bool_img = mnist_booleanize_img_n_bit(img, rows, cols, MODEL_BITS);
+        if (!bool_img) {
+            LOGE(TAG, "Failed to booleanize image");
+            return -1;
         }
+        total_booleanize_time += (rt_tick_get() - start_booleanize);
+    
+        // Evaluate
+        uint32_t start = rt_tick_get();
+        tsetlin_evaluate(model, bool_img, votes, &predicted_class);
+        total_calc_time += (rt_tick_get() - start);
+        free(bool_img);
 
         if (predicted_class == label) {
             correct++;
         }
-
-        total_calc_time += (rt_tick_get() - start);
 
         // Print progress every 1000 images
         if ((i + 1) % 1000 == 0) {
@@ -177,11 +186,11 @@ int lime_tm_mnist_test_all(Tsetlin* model, FILE* f_test_imgs, FILE* f_test_label
 
     printf("\n");
 
-    double tks = test_img_count / (double)(total_calc_time / RT_TICK_PER_SECOND);
-    printf("[TM] Achieved images/s: %f\n", tks);
-
-    double uts = test_img_count / (double)(total_utility_time / RT_TICK_PER_SECOND);
-    printf("[FS] Achieved images/s: %f\n", uts);
+    printf("\n");
+    printf("[FS] Achieved %d ms/image\n", (int)(total_fs_time * 1000 / RT_TICK_PER_SECOND / test_img_count));
+    printf("[BOOL] Achieved %d ms/image\n", (int)(total_booleanize_time * 1000 / RT_TICK_PER_SECOND / test_img_count));
+    printf("[TM] Achieved %d ms/image\n", (int)(total_calc_time * 1000 / RT_TICK_PER_SECOND / test_img_count));
+    printf("\n");
 
     printf("Accuracy on test set (%d): %.2f%% \n", test_img_count, (double)correct / test_img_count * 100);
 
@@ -345,8 +354,12 @@ static int lime_tm_mnist(int argc, char* argv[])
 
     for (size_t i = 0; i < N_EPOCHS; i++)
     {
+        long total_fs_time = 0;
+        long total_booleanize_time = 0;
+        long total_calc_time = 0;
         for (uint32_t j = 0; j < train_img_count; j++)
         {
+            uint32_t start_fs = rt_tick_get();
             if( j == 0) {
                 fseek(f_train_imgs, 16, SEEK_SET);
                 fseek(f_train_labels, 8, SEEK_SET);
@@ -363,14 +376,19 @@ static int lime_tm_mnist(int argc, char* argv[])
                 LOGE(TAG, "Failed to load train label %d", j);
                 continue;
             }
+            total_fs_time += (rt_tick_get() - start_fs);
 
             // Booleanize image using threshold 75
             // mnist_booleanize_img(X_img, rows * cols, 75);
 
             // Booleanize image using 8-bit representation
-            uint8_t* bool_img = mnist_booleanize_img_n_bit(X_img, rows, cols, 8);
+            uint32_t start_booleanize = rt_tick_get();
+            uint8_t* bool_img = mnist_booleanize_img_n_bit(X_img, rows, cols, MODEL_BITS);
+            total_booleanize_time += (rt_tick_get() - start_booleanize);
 
+            uint32_t start_calc = rt_tick_get();
             tsetlin_step(model, bool_img, y_target, T, s);
+            total_calc_time += (rt_tick_get() - start_calc);
             free(bool_img);
 
             // Print progress every 1000 images
@@ -379,8 +397,13 @@ static int lime_tm_mnist(int argc, char* argv[])
                 snprintf(message, sizeof(message), "Epoch %d: Processed %d/%d", i + 1, j + 1, train_img_count);
                 print_progress(message, (j + 1) * 100 / train_img_count);
             }
+
         }
 
+        printf("\n");
+        printf("[FS] Achieved %d ms/image\n", (int)(total_fs_time * 1000 / RT_TICK_PER_SECOND / train_img_count));
+        printf("[BOOL] Achieved %d ms/image\n", (int)(total_booleanize_time * 1000 / RT_TICK_PER_SECOND / train_img_count));
+        printf("[TM] Achieved %d ms/image\n", (int)(total_calc_time * 1000 / RT_TICK_PER_SECOND / train_img_count));
         printf("\n");
 
         // Evaluate on test set after each epoch

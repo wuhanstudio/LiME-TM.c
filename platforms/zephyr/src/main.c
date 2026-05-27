@@ -155,8 +155,6 @@ int lime_tm_mnist_test_all(Tsetlin* model, FILE* f_test_imgs, FILE* f_test_label
 
         total_fs_time += (k_uptime_get_32() - start_utility);
 
-        uint32_t start = k_uptime_get_32();
-
         uint8_t predicted_class = 0;
 
         // Booleanize image using 8-bit representation
@@ -179,7 +177,7 @@ int lime_tm_mnist_test_all(Tsetlin* model, FILE* f_test_imgs, FILE* f_test_label
             correct++;
         }
 
-        total_calc_time += (k_uptime_get_32() - start);
+        total_calc_time += (k_uptime_get_32() - start_calc);
 
         // Print progress every 1000 images
         if ((i + 1) % 1000 == 0) {
@@ -365,20 +363,20 @@ int main(void)
         return -1; 
     }
 
-    long total_fs_time = 0;
-    long total_booleanize_time = 0;
-    long total_calc_time = 0;
-
     for (size_t i = 0; i < N_EPOCHS; i++)
     {
+        long total_fs_time = 0;
+        long total_booleanize_time = 0;
+        long total_calc_time = 0;
+
         for (uint32_t j = 0; j < train_img_count; j++)
         {
+            uint32_t start_fs = k_uptime_get_32();
             if( j == 0) {
                 fseek(f_train_imgs, 16, SEEK_SET);
                 fseek(f_train_labels, 8, SEEK_SET);
             }
 
-            uint32_t start_fs = k_uptime_get_32();
             uint8_t* X_img = mnist_load_next_image(f_train_imgs, j, rows, cols);
             if (!X_img) {
                 LOGE(TAG, "Failed to load train image %d", j);
@@ -419,10 +417,10 @@ int main(void)
             }
         }
 
-        printf("[FS] Achieved %d ms/image\n", (int)(total_fs_time / test_img_count));
-        printf("[BOOL] Achieved %d ms/image\n", (int)(total_booleanize_time / test_img_count));
-        printf("[TM] Achieved %d ms/image\n", (int)(total_calc_time / test_img_count));
-
+        printf("\n");
+        printf("[FS] Achieved %d ms/image\n", (int)(total_fs_time / train_img_count));
+        printf("[BOOL] Achieved %d ms/image\n", (int)(total_booleanize_time / train_img_count));
+        printf("[TM] Achieved %d ms/image\n", (int)(total_calc_time / train_img_count));
         printf("\n");
 
         // Evaluate on test set after each epoch
