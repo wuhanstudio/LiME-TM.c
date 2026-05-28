@@ -142,7 +142,7 @@ int lime_tm_mnist_test_all(Tsetlin* model, FILE* f_test_imgs, FILE* f_test_label
 
     for (uint32_t i = 0; i < test_img_count; i++)
     {
-        uint32_t start_utility = get_tick_ms();
+        uint64_t start_utility = get_tick_ms();
 
         if( i == 0) {
             // Skip the header
@@ -165,7 +165,7 @@ int lime_tm_mnist_test_all(Tsetlin* model, FILE* f_test_imgs, FILE* f_test_label
 
         total_utility_time += (get_tick_ms() - start_utility);
 
-        uint32_t start = get_tick_ms();
+        uint64_t start = get_tick_ms();
 
         uint8_t predicted_class = 0;
         int ret = lime_tm_mnist_inference(model, img, rows, cols, votes, &predicted_class);
@@ -190,11 +190,11 @@ int lime_tm_mnist_test_all(Tsetlin* model, FILE* f_test_imgs, FILE* f_test_label
 
     printf("\n");
 
-    float tks = test_img_count / (double)(total_calc_time) * 1000;
-    printf("[TM] Achieved images/s: %.2f\n", tks);
+    float uts = (double)(total_utility_time) / test_img_count;
+    printf("[FS] Achieved %.2f ms/image\n", uts);
 
-    float uts = test_img_count / (double)(total_utility_time) * 1000;
-    printf("[FS] Achieved images/s: %.2f\n", uts);
+    float tks = (double)(total_calc_time) / test_img_count;
+    printf("[TM] Achieved %.2f ms/image\n", tks);
 
     printf("Accuracy on test set (%d): %.2f%% \n", test_img_count, (double)correct / test_img_count * 100);
 
