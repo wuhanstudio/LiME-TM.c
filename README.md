@@ -10,36 +10,18 @@
 - [ESP-IDF (FreeRTOS)](platforms/esp-idf)
 - [Arduino](platforms/arduino)
 
-## Quick Start (PC)
-
-```
-git clone --recursive https://github.com/wuhanstudio/LiME-TM.c
-```
-
-```
-cd platforms/win_linux
-```
-
-For Linux:
-
-```
-cmake -S . -B build
-cmake --build build
-```
-
-For Windows:
-
-```
-cmake -S . -B build -G "Visual Studio 17 2022"
-```
+> [!NOTE]
+> Please refer to the corresponding platform directory for build and usage instructions.
 
 ## API Examples
 
 ### Load the model
 
-Load the model from file system (#define TSETLIN_USING_PROTOBUF):
+#### Option 1 : Load the model from file system (Protobuf)
 
 ```
+#define TSETLIN_USING_PROTOBUF
+
 #if defined(TSETLIN_USING_PROTOBUF)
 Tsetlin* lime_tm_mnist_load_model(const char* model_path) 
 {
@@ -66,16 +48,18 @@ Tsetlin* model = NULL;
 model = lime_tm_mnist_load_model(TSETLIN_MODEL_PATH);
 ```
 
-Alternatively, the model can be compiled as a C header file (#define TSETLIN_USING_STATIC_MODEL):
+#### Option 2: the model can be compiled as a C header file:
 
 ```
+#define TSETLIN_USING_STATIC_MODEL
+
 #include "mnist_model.h"
 
 Tsetlin* model = NULL;
 model = &tsetlin_model;
 ```
 
-Print model information:
+#### Print model information:
 
 ```
 LOGI(TAG, "n_class   = %d", model->n_class);
@@ -85,7 +69,7 @@ LOGI(TAG, "n_state   = %d", model->n_state);
 LOGI(TAG, "model_type = %d", model->model_type);
 ```
 
-### Evaluation:
+### Model Evaluation:
 
 ```
 // Outputs for model evaluation
@@ -99,9 +83,10 @@ uint8_t* bool_img = mnist_booleanize_img_n_bit(img, rows, cols, 8);
 tsetlin_evaluate(model, bool_img, votes, predicted_class);
 ```
 
-### Training:
+### Model Training:
 
 ```
+#define N_EPOCHS 10
 for (size_t i = 0; i < N_EPOCHS; i++)
 {
     for (uint32_t j = 0; j < train_img_count; j++)
