@@ -1,1 +1,3 @@
-# Tsetlin Machine (ESP32-IDF)
+# ESP32-IDF
+
+> LiME-TM: MNIST Training Example
