@@ -36,3 +36,5 @@ Restart Arduino IDE, and you wil find the following examples:
 - [mnist_inference_8_bit](examples/mnist_inference_8_bit)
 - [mnist_train_sd_card_4_bit](examples/mnist_train_sd_card_4_bit)
 - [mnist_train_sd_card_8_bit](examples/mnist_train_sd_card_8_bit)
+
+![](./arduino.png)
