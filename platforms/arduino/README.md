@@ -2,12 +2,14 @@
 
 > LiME-TM: Arduino package
 
-The Arduino package can be automatically generated:
+The Arduino package can be automatically generated bu running the following scripts:
 
 ```
 # Windows:
 ./arduino_library.bat
+```
 
+```
 # Linux
 chmod u+x ./arduino_library.sh
 ./arduino_library.sh
