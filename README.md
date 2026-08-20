@@ -2,6 +2,19 @@
 
 >  A Lightning Fast and Memory Efficient Machine Learning Model for Training on MCUs
 
+| MNIST Dataset | 2D-CNN | Tsetlin Machine (TM) |
+|---|---:|---:|
+| **Tested on** | ESP32 | ESP32 |
+| Accuracy | 95.04% | 93.86% |
+| Training | 114.2 ms | 0.37 ms |
+| Inference | 24.6 ms | 1.20 ms |
+| Operations | Convolution | & + |
+| Batch Size | 8 | 1 |
+| Optimizer | Gradient Descent | Reinforcement Feedback |
+
+
+
+
 ## Supported Platforms
 
 - [Windows / Linux](platforms/win_linux)
